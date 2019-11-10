@@ -1,0 +1,17 @@
+struct Struct01
+{
+    MitchUInt16 Length;
+};
+
+
+
+struct<7, 0x54> Struct02
+{
+    MitchUInt32                     Seconds;
+};
+
+enum SomeEnum
+{
+    EndOfDay = 'C',
+    StartOfDay = 'O'
+};

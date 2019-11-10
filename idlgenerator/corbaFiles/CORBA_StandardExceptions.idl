@@ -1,0 +1,69 @@
+// File: CORBA_StandardExceptions.idl
+// CORBA 3.0, Chapter 4
+    
+    const unsigned long OMGVMCID = 0x4f4d0000;
+
+#define {unsigned long minor; completion_status completed;} {unsigned long minor; completion_status completed;}
+
+    enum completion_status {COMPLETED_YES, 
+                            COMPLETED_NO, 
+                            COMPLETED_MAYBE};
+    enum exception_type {   NO_EXCEPTION, 
+                            USER_EXCEPTION, 
+                            SYSTEM_EXCEPTION};
+
+    exception UNKNOWN       {unsigned long minor; completion_status completed;};    // the unknown exception
+    exception BAD_PARAM     {unsigned long minor; completion_status completed;};    // an invalid parameter was
+                                        // passed
+    exception NO_MEMORY     {unsigned long minor; completion_status completed;};    // dynamic memory allocation
+                                        // failure  
+    exception IMP_LIMIT     {unsigned long minor; completion_status completed;};    // violated implementation
+                                        // limit
+    exception COMM_FAILURE  {unsigned long minor; completion_status completed;};    // communication failure
+    exception INV_OBJREF    {unsigned long minor; completion_status completed;};    // invalid object reference
+    exception NO_PERMISSION {unsigned long minor; completion_status completed;};    // no permission for 
+                                        // attempted op.
+    exception INTERNAL      {unsigned long minor; completion_status completed;};    // ORB internal error
+    exception MARSHAL       {unsigned long minor; completion_status completed;};    // error marshaling
+                                        // param/result
+    exception INITIALIZE    {unsigned long minor; completion_status completed;};    // ORB initialization failure
+    exception NO_IMPLEMENT  {unsigned long minor; completion_status completed;};    // operation implementation
+                                        // unavailable
+    exception BAD_TYPECODE  {unsigned long minor; completion_status completed;};    // bad typecode
+    exception BAD_OPERATION {unsigned long minor; completion_status completed;};    // invalid operation
+    exception NO_RESOURCES  {unsigned long minor; completion_status completed;};    // insufficient resources 
+                                        // for req.
+    exception NO_RESPONSE   {unsigned long minor; completion_status completed;};    // response to req. not yet
+                                        // available
+    exception PERSIST_STORE {unsigned long minor; completion_status completed;};    // persistent storage failure
+    exception BAD_INV_ORDER {unsigned long minor; completion_status completed;};    // routine invocations 
+                                        // out of order
+    exception TRANSIENT     {unsigned long minor; completion_status completed;};    // transient failure - reissue
+                                        // request
+    exception FREE_MEM      {unsigned long minor; completion_status completed;};    // cannot free memory
+    exception INV_IDENT     {unsigned long minor; completion_status completed;};    // invalid identifier syntax
+    exception INV_FLAG      {unsigned long minor; completion_status completed;};    // invalid flag was specified
+    exception INTF_REPOS    {unsigned long minor; completion_status completed;};    // error accessing interface
+                                        // repository
+    exception BAD_CONTEXT   {unsigned long minor; completion_status completed;};    // error processing context
+                                        // object
+    exception OBJ_ADAPTER   {unsigned long minor; completion_status completed;};    // failure detected by object
+                                        // adapter
+    exception DATA_CONVERSION  {unsigned long minor; completion_status completed;}; // data conversion error
+    exception OBJECT_NOT_EXIST {unsigned long minor; completion_status completed;}; // non-existent object,
+                                        // delete reference
+    exception TRANSACTION_REQUIRED                      
+                            {unsigned long minor; completion_status completed;};    // transaction required
+    exception TRANSACTION_ROLLEDBACK    
+                            {unsigned long minor; completion_status completed;};    // transaction rolled back
+    exception INVALID_TRANSACTION                       
+                            {unsigned long minor; completion_status completed;};    // invalid transaction
+    exception INV_POLICY    {unsigned long minor; completion_status completed;};    // invalid policy
+    exception CODESET_INCOMPATIBLE
+                            {unsigned long minor; completion_status completed;};    // incompatible code set
+    exception REBIND        {unsigned long minor; completion_status completed;};    // rebind needed
+    exception TIMEOUT       {unsigned long minor; completion_status completed;};    // operation timed out
+    exception TRANSACTION_UNAVAILABLE {unsigned long minor; completion_status completed;};
+                                        // no transaction
+    exception TRANSACTION_MODE {unsigned long minor; completion_status completed;}; // invalid transaction mode
+    exception BAD_QOS       {unsigned long minor; completion_status completed;};    // bad quality of service

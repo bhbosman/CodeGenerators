@@ -1,0 +1,22 @@
+[
+	{
+		"Type": "struct",
+		"Identifier": "A",
+		"Members": [
+			{
+				"TypeSpec": {},
+				"Identifier": "a"
+			}
+		]
+	},
+	{
+		"Type": "struct",
+		"Identifier": "A",
+		"Members": [
+			{
+				"TypeSpec": {},
+				"Identifier": "a"
+			}
+		]
+	}
+]

@@ -1,0 +1,6 @@
+#include<first.idl>
+
+struct B
+{
+    ABC abc;
+};

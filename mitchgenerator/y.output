@@ -1,0 +1,1048 @@
+
+state 0
+	$accept: .specification $end 
+
+	Rwenum  shift 11
+	Rwstruct  shift 12
+	Rwtypedef  shift 9
+	.  error
+
+	specification  goto 1
+	definition  goto 3
+	definitions  goto 2
+	type_dcl  goto 4
+	struct_dcl  goto 7
+	struct_def  goto 10
+	constr_type_dcl  goto 5
+	enum_dcl  goto 8
+	typedef_dcl  goto 6
+
+state 1
+	$accept:  specification.$end 
+
+	$end  accept
+	.  error
+
+
+state 2
+	specification:  definitions.    (1)
+	definitions:  definitions.definition 
+
+	Rwenum  shift 11
+	Rwstruct  shift 12
+	Rwtypedef  shift 9
+	.  reduce 1 (src line 76)
+
+	definition  goto 13
+	type_dcl  goto 4
+	struct_dcl  goto 7
+	struct_def  goto 10
+	constr_type_dcl  goto 5
+	enum_dcl  goto 8
+	typedef_dcl  goto 6
+
+state 3
+	definitions:  definition.    (2)
+
+	.  reduce 2 (src line 83)
+
+
+state 4
+	definition:  type_dcl.';' 
+
+	';'  shift 14
+	.  error
+
+
+state 5
+	type_dcl:  constr_type_dcl.    (18)
+
+	.  reduce 18 (src line 191)
+
+
+state 6
+	type_dcl:  typedef_dcl.    (19)
+
+	.  reduce 19 (src line 195)
+
+
+state 7
+	constr_type_dcl:  struct_dcl.    (35)
+
+	.  reduce 35 (src line 249)
+
+
+state 8
+	constr_type_dcl:  enum_dcl.    (36)
+
+	.  reduce 36 (src line 253)
+
+
+state 9
+	typedef_dcl:  Rwtypedef.type_declarator 
+
+	Identifier  shift 32
+	Rwenum  shift 11
+	Rwstruct  shift 12
+	RwMitchAlpha  shift 22
+	RwMitchBitField  shift 33
+	RwMitchByte  shift 23
+	RwMitchDate  shift 24
+	RwMitchTime  shift 25
+	RwMitchPrice04  shift 26
+	RwMitchPrice08  shift 27
+	RwMitchUInt08  shift 28
+	RwMitchUInt16  shift 29
+	RwMitchUInt32  shift 30
+	RwMitchUInt64  shift 31
+	.  error
+
+	simple_type_spec  goto 16
+	mitch_type_spec  goto 19
+	scoped_name  goto 20
+	mitch_bit_field  goto 21
+	template_type_spec  goto 17
+	struct_dcl  goto 7
+	struct_def  goto 10
+	constr_type_dcl  goto 18
+	enum_dcl  goto 8
+	type_declarator  goto 15
+
+state 10
+	struct_dcl:  struct_def.    (37)
+
+	.  reduce 37 (src line 257)
+
+
+state 11
+	enum_dcl:  Rwenum.Identifier '{' enumerator '}' 
+
+	Identifier  shift 34
+	.  error
+
+
+state 12
+	struct_def:  Rwstruct.Identifier '{' member '}' 
+	struct_def:  Rwstruct.Identifier '{' '}' 
+	struct_def:  Rwstruct.'<' positive_int_const ',' positive_int_const '>' Identifier '{' member '}' 
+	struct_def:  Rwstruct.'<' positive_int_const ',' positive_int_const '>' Identifier '{' '}' 
+
+	Identifier  shift 35
+	'<'  shift 36
+	.  error
+
+
+state 13
+	definitions:  definitions definition.    (3)
+
+	.  reduce 3 (src line 87)
+
+
+state 14
+	definition:  type_dcl ';'.    (4)
+
+	.  reduce 4 (src line 92)
+
+
+state 15
+	typedef_dcl:  Rwtypedef type_declarator.    (52)
+
+	.  reduce 52 (src line 351)
+
+
+state 16
+	type_declarator:  simple_type_spec.any_declarators 
+
+	Identifier  shift 40
+	.  error
+
+	simple_declarator  goto 38
+	any_declarators  goto 37
+	array_declarator  goto 39
+
+state 17
+	type_declarator:  template_type_spec.any_declarators 
+
+	Identifier  shift 40
+	.  error
+
+	simple_declarator  goto 38
+	any_declarators  goto 41
+	array_declarator  goto 39
+
+state 18
+	type_declarator:  constr_type_dcl.any_declarators 
+
+	Identifier  shift 40
+	.  error
+
+	simple_declarator  goto 38
+	any_declarators  goto 42
+	array_declarator  goto 39
+
+state 19
+	simple_type_spec:  mitch_type_spec.    (31)
+
+	.  reduce 31 (src line 230)
+
+
+state 20
+	simple_type_spec:  scoped_name.    (32)
+
+	.  reduce 32 (src line 234)
+
+
+state 21
+	template_type_spec:  mitch_bit_field.    (33)
+
+	.  reduce 33 (src line 239)
+
+
+state 22
+	mitch_type_spec:  RwMitchAlpha.'<' positive_int_const '>' 
+
+	'<'  shift 43
+	.  error
+
+
+state 23
+	mitch_type_spec:  RwMitchByte.    (22)
+
+	.  reduce 22 (src line 220)
+
+
+state 24
+	mitch_type_spec:  RwMitchDate.    (23)
+
+	.  reduce 23 (src line 221)
+
+
+state 25
+	mitch_type_spec:  RwMitchTime.    (24)
+
+	.  reduce 24 (src line 222)
+
+
+state 26
+	mitch_type_spec:  RwMitchPrice04.    (25)
+
+	.  reduce 25 (src line 223)
+
+
+state 27
+	mitch_type_spec:  RwMitchPrice08.    (26)
+
+	.  reduce 26 (src line 224)
+
+
+state 28
+	mitch_type_spec:  RwMitchUInt08.    (27)
+
+	.  reduce 27 (src line 225)
+
+
+state 29
+	mitch_type_spec:  RwMitchUInt16.    (28)
+
+	.  reduce 28 (src line 226)
+
+
+state 30
+	mitch_type_spec:  RwMitchUInt32.    (29)
+
+	.  reduce 29 (src line 227)
+
+
+state 31
+	mitch_type_spec:  RwMitchUInt64.    (30)
+
+	.  reduce 30 (src line 228)
+
+
+state 32
+	scoped_name:  Identifier.    (5)
+
+	.  reduce 5 (src line 103)
+
+
+state 33
+	mitch_bit_field:  RwMitchBitField.'<' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator '>' 
+
+	'<'  shift 44
+	.  error
+
+
+state 34
+	enum_dcl:  Rwenum Identifier.'{' enumerator '}' 
+
+	'{'  shift 45
+	.  error
+
+
+state 35
+	struct_def:  Rwstruct Identifier.'{' member '}' 
+	struct_def:  Rwstruct Identifier.'{' '}' 
+
+	'{'  shift 46
+	.  error
+
+
+state 36
+	struct_def:  Rwstruct '<'.positive_int_const ',' positive_int_const '>' Identifier '{' member '}' 
+	struct_def:  Rwstruct '<'.positive_int_const ',' positive_int_const '>' Identifier '{' '}' 
+
+	Identifier  shift 32
+	Integer_literal  shift 58
+	Character_literal  shift 59
+	'-'  shift 52
+	'+'  shift 53
+	'~'  shift 54
+	'('  shift 57
+	.  error
+
+	literal  goto 56
+	primary_expr  goto 51
+	positive_int_const  goto 47
+	const_expr  goto 48
+	unary_expr  goto 49
+	unary_operator  goto 50
+	scoped_name  goto 55
+
+state 37
+	type_declarator:  simple_type_spec any_declarators.    (53)
+	any_declarators:  any_declarators.',' any_declarators 
+
+	','  shift 60
+	.  reduce 53 (src line 355)
+
+
+state 38
+	any_declarators:  simple_declarator.    (56)
+
+	.  reduce 56 (src line 365)
+
+
+state 39
+	any_declarators:  array_declarator.    (57)
+
+	.  reduce 57 (src line 369)
+
+
+state 40
+	array_declarator:  Identifier.fixed_array_sizes 
+	simple_declarator:  Identifier.    (51)
+
+	'['  shift 63
+	.  reduce 51 (src line 346)
+
+	fixed_array_sizes  goto 61
+	fixed_array_size  goto 62
+
+state 41
+	type_declarator:  template_type_spec any_declarators.    (54)
+	any_declarators:  any_declarators.',' any_declarators 
+
+	','  shift 60
+	.  reduce 54 (src line 359)
+
+
+state 42
+	type_declarator:  constr_type_dcl any_declarators.    (55)
+	any_declarators:  any_declarators.',' any_declarators 
+
+	','  shift 60
+	.  reduce 55 (src line 362)
+
+
+state 43
+	mitch_type_spec:  RwMitchAlpha '<'.positive_int_const '>' 
+
+	Identifier  shift 32
+	Integer_literal  shift 58
+	Character_literal  shift 59
+	'-'  shift 52
+	'+'  shift 53
+	'~'  shift 54
+	'('  shift 57
+	.  error
+
+	literal  goto 56
+	primary_expr  goto 51
+	positive_int_const  goto 64
+	const_expr  goto 48
+	unary_expr  goto 49
+	unary_operator  goto 50
+	scoped_name  goto 55
+
+state 44
+	mitch_bit_field:  RwMitchBitField '<'.simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator '>' 
+
+	Identifier  shift 66
+	.  error
+
+	simple_declarator  goto 65
+
+state 45
+	enum_dcl:  Rwenum Identifier '{'.enumerator '}' 
+
+	Identifier  shift 66
+	.  error
+
+	simple_declarator  goto 69
+	declarator  goto 68
+	enumerator  goto 67
+
+state 46
+	struct_def:  Rwstruct Identifier '{'.member '}' 
+	struct_def:  Rwstruct Identifier '{'.'}' 
+
+	Identifier  shift 32
+	RwMitchAlpha  shift 22
+	RwMitchByte  shift 23
+	RwMitchDate  shift 24
+	RwMitchTime  shift 25
+	RwMitchPrice04  shift 26
+	RwMitchPrice08  shift 27
+	RwMitchUInt08  shift 28
+	RwMitchUInt16  shift 29
+	RwMitchUInt32  shift 30
+	RwMitchUInt64  shift 31
+	'}'  shift 71
+	.  error
+
+	member  goto 70
+	type_spec  goto 72
+	simple_type_spec  goto 73
+	mitch_type_spec  goto 19
+	scoped_name  goto 20
+
+state 47
+	struct_def:  Rwstruct '<' positive_int_const.',' positive_int_const '>' Identifier '{' member '}' 
+	struct_def:  Rwstruct '<' positive_int_const.',' positive_int_const '>' Identifier '{' '}' 
+
+	','  shift 74
+	.  error
+
+
+state 48
+	positive_int_const:  const_expr.    (17)
+
+	.  reduce 17 (src line 189)
+
+
+state 49
+	const_expr:  unary_expr.    (6)
+
+	.  reduce 6 (src line 121)
+
+
+state 50
+	unary_expr:  unary_operator.primary_expr 
+
+	Identifier  shift 32
+	Integer_literal  shift 58
+	Character_literal  shift 59
+	'('  shift 57
+	.  error
+
+	literal  goto 56
+	primary_expr  goto 75
+	scoped_name  goto 55
+
+state 51
+	unary_expr:  primary_expr.    (8)
+
+	.  reduce 8 (src line 137)
+
+
+state 52
+	unary_operator:  '-'.    (9)
+
+	.  reduce 9 (src line 147)
+
+
+state 53
+	unary_operator:  '+'.    (10)
+
+	.  reduce 10 (src line 151)
+
+
+state 54
+	unary_operator:  '~'.    (11)
+
+	.  reduce 11 (src line 154)
+
+
+state 55
+	primary_expr:  scoped_name.    (12)
+
+	.  reduce 12 (src line 159)
+
+
+state 56
+	primary_expr:  literal.    (13)
+
+	.  reduce 13 (src line 173)
+
+
+state 57
+	primary_expr:  '('.const_expr ')' 
+
+	Identifier  shift 32
+	Integer_literal  shift 58
+	Character_literal  shift 59
+	'-'  shift 52
+	'+'  shift 53
+	'~'  shift 54
+	'('  shift 57
+	.  error
+
+	literal  goto 56
+	primary_expr  goto 51
+	const_expr  goto 76
+	unary_expr  goto 49
+	unary_operator  goto 50
+	scoped_name  goto 55
+
+state 58
+	literal:  Integer_literal.    (15)
+
+	.  reduce 15 (src line 180)
+
+
+state 59
+	literal:  Character_literal.    (16)
+
+	.  reduce 16 (src line 184)
+
+
+state 60
+	any_declarators:  any_declarators ','.any_declarators 
+
+	Identifier  shift 40
+	.  error
+
+	simple_declarator  goto 38
+	any_declarators  goto 77
+	array_declarator  goto 39
+
+state 61
+	array_declarator:  Identifier fixed_array_sizes.    (47)
+	fixed_array_sizes:  fixed_array_sizes.fixed_array_size 
+
+	'['  shift 63
+	.  reduce 47 (src line 328)
+
+	fixed_array_size  goto 78
+
+state 62
+	fixed_array_sizes:  fixed_array_size.    (48)
+
+	.  reduce 48 (src line 333)
+
+
+state 63
+	fixed_array_size:  '['.positive_int_const ']' 
+
+	Identifier  shift 32
+	Integer_literal  shift 58
+	Character_literal  shift 59
+	'-'  shift 52
+	'+'  shift 53
+	'~'  shift 54
+	'('  shift 57
+	.  error
+
+	literal  goto 56
+	primary_expr  goto 51
+	positive_int_const  goto 79
+	const_expr  goto 48
+	unary_expr  goto 49
+	unary_operator  goto 50
+	scoped_name  goto 55
+
+state 64
+	mitch_type_spec:  RwMitchAlpha '<' positive_int_const.'>' 
+
+	'>'  shift 80
+	.  error
+
+
+state 65
+	mitch_bit_field:  RwMitchBitField '<' simple_declarator.',' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator '>' 
+
+	','  shift 81
+	.  error
+
+
+state 66
+	simple_declarator:  Identifier.    (51)
+
+	.  reduce 51 (src line 346)
+
+
+state 67
+	enum_dcl:  Rwenum Identifier '{' enumerator.'}' 
+	enumerator:  enumerator.',' enumerator 
+
+	','  shift 83
+	'}'  shift 82
+	.  error
+
+
+68: shift/reduce conflict (shift 84(0), red'n 45(0)) on ','
+state 68
+	enumerator:  declarator.    (45)
+	declarator:  declarator.',' declarator 
+
+	','  shift 84
+	.  reduce 45 (src line 321)
+
+
+state 69
+	declarator:  simple_declarator.'=' literal 
+	declarator:  simple_declarator.    (60)
+
+	'='  shift 85
+	.  reduce 60 (src line 380)
+
+
+state 70
+	struct_def:  Rwstruct Identifier '{' member.'}' 
+	member:  member.member 
+
+	Identifier  shift 32
+	RwMitchAlpha  shift 22
+	RwMitchByte  shift 23
+	RwMitchDate  shift 24
+	RwMitchTime  shift 25
+	RwMitchPrice04  shift 26
+	RwMitchPrice08  shift 27
+	RwMitchUInt08  shift 28
+	RwMitchUInt16  shift 29
+	RwMitchUInt32  shift 30
+	RwMitchUInt64  shift 31
+	'}'  shift 86
+	.  error
+
+	member  goto 87
+	type_spec  goto 72
+	simple_type_spec  goto 73
+	mitch_type_spec  goto 19
+	scoped_name  goto 20
+
+state 71
+	struct_def:  Rwstruct Identifier '{' '}'.    (39)
+
+	.  reduce 39 (src line 278)
+
+
+state 72
+	member:  type_spec.declarator ';' 
+
+	Identifier  shift 66
+	.  error
+
+	simple_declarator  goto 69
+	declarator  goto 88
+
+state 73
+	type_spec:  simple_type_spec.    (20)
+
+	.  reduce 20 (src line 214)
+
+
+state 74
+	struct_def:  Rwstruct '<' positive_int_const ','.positive_int_const '>' Identifier '{' member '}' 
+	struct_def:  Rwstruct '<' positive_int_const ','.positive_int_const '>' Identifier '{' '}' 
+
+	Identifier  shift 32
+	Integer_literal  shift 58
+	Character_literal  shift 59
+	'-'  shift 52
+	'+'  shift 53
+	'~'  shift 54
+	'('  shift 57
+	.  error
+
+	literal  goto 56
+	primary_expr  goto 51
+	positive_int_const  goto 89
+	const_expr  goto 48
+	unary_expr  goto 49
+	unary_operator  goto 50
+	scoped_name  goto 55
+
+state 75
+	unary_expr:  unary_operator primary_expr.    (7)
+
+	.  reduce 7 (src line 127)
+
+
+state 76
+	primary_expr:  '(' const_expr.')' 
+
+	')'  shift 90
+	.  error
+
+
+77: shift/reduce conflict (shift 60(0), red'n 58(0)) on ','
+state 77
+	any_declarators:  any_declarators.',' any_declarators 
+	any_declarators:  any_declarators ',' any_declarators.    (58)
+
+	','  shift 60
+	.  reduce 58 (src line 372)
+
+
+state 78
+	fixed_array_sizes:  fixed_array_sizes fixed_array_size.    (49)
+
+	.  reduce 49 (src line 337)
+
+
+state 79
+	fixed_array_size:  '[' positive_int_const.']' 
+
+	']'  shift 91
+	.  error
+
+
+state 80
+	mitch_type_spec:  RwMitchAlpha '<' positive_int_const '>'.    (21)
+
+	.  reduce 21 (src line 218)
+
+
+state 81
+	mitch_bit_field:  RwMitchBitField '<' simple_declarator ','.simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator '>' 
+
+	Identifier  shift 66
+	.  error
+
+	simple_declarator  goto 92
+
+state 82
+	enum_dcl:  Rwenum Identifier '{' enumerator '}'.    (44)
+
+	.  reduce 44 (src line 311)
+
+
+state 83
+	enumerator:  enumerator ','.enumerator 
+
+	Identifier  shift 66
+	.  error
+
+	simple_declarator  goto 69
+	declarator  goto 68
+	enumerator  goto 93
+
+state 84
+	declarator:  declarator ','.declarator 
+
+	Identifier  shift 66
+	.  error
+
+	simple_declarator  goto 69
+	declarator  goto 94
+
+state 85
+	declarator:  simple_declarator '='.literal 
+
+	Integer_literal  shift 58
+	Character_literal  shift 59
+	.  error
+
+	literal  goto 95
+
+state 86
+	struct_def:  Rwstruct Identifier '{' member '}'.    (38)
+
+	.  reduce 38 (src line 264)
+
+
+87: shift/reduce conflict (shift 32(0), red'n 43(0)) on Identifier
+87: shift/reduce conflict (shift 22(0), red'n 43(0)) on RwMitchAlpha
+87: shift/reduce conflict (shift 23(0), red'n 43(0)) on RwMitchByte
+87: shift/reduce conflict (shift 24(0), red'n 43(0)) on RwMitchDate
+87: shift/reduce conflict (shift 25(0), red'n 43(0)) on RwMitchTime
+87: shift/reduce conflict (shift 26(0), red'n 43(0)) on RwMitchPrice04
+87: shift/reduce conflict (shift 27(0), red'n 43(0)) on RwMitchPrice08
+87: shift/reduce conflict (shift 28(0), red'n 43(0)) on RwMitchUInt08
+87: shift/reduce conflict (shift 29(0), red'n 43(0)) on RwMitchUInt16
+87: shift/reduce conflict (shift 30(0), red'n 43(0)) on RwMitchUInt32
+87: shift/reduce conflict (shift 31(0), red'n 43(0)) on RwMitchUInt64
+state 87
+	member:  member.member 
+	member:  member member.    (43)
+
+	Identifier  shift 32
+	RwMitchAlpha  shift 22
+	RwMitchByte  shift 23
+	RwMitchDate  shift 24
+	RwMitchTime  shift 25
+	RwMitchPrice04  shift 26
+	RwMitchPrice08  shift 27
+	RwMitchUInt08  shift 28
+	RwMitchUInt16  shift 29
+	RwMitchUInt32  shift 30
+	RwMitchUInt64  shift 31
+	.  reduce 43 (src line 305)
+
+	member  goto 87
+	type_spec  goto 72
+	simple_type_spec  goto 73
+	mitch_type_spec  goto 19
+	scoped_name  goto 20
+
+state 88
+	member:  type_spec declarator.';' 
+	declarator:  declarator.',' declarator 
+
+	';'  shift 96
+	','  shift 84
+	.  error
+
+
+state 89
+	struct_def:  Rwstruct '<' positive_int_const ',' positive_int_const.'>' Identifier '{' member '}' 
+	struct_def:  Rwstruct '<' positive_int_const ',' positive_int_const.'>' Identifier '{' '}' 
+
+	'>'  shift 97
+	.  error
+
+
+state 90
+	primary_expr:  '(' const_expr ')'.    (14)
+
+	.  reduce 14 (src line 176)
+
+
+state 91
+	fixed_array_size:  '[' positive_int_const ']'.    (50)
+
+	.  reduce 50 (src line 341)
+
+
+state 92
+	mitch_bit_field:  RwMitchBitField '<' simple_declarator ',' simple_declarator.',' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator '>' 
+
+	','  shift 98
+	.  error
+
+
+93: shift/reduce conflict (shift 83(0), red'n 46(0)) on ','
+state 93
+	enumerator:  enumerator.',' enumerator 
+	enumerator:  enumerator ',' enumerator.    (46)
+
+	','  shift 83
+	.  reduce 46 (src line 323)
+
+
+94: shift/reduce conflict (shift 84(0), red'n 61(0)) on ','
+state 94
+	declarator:  declarator.',' declarator 
+	declarator:  declarator ',' declarator.    (61)
+
+	','  shift 84
+	.  reduce 61 (src line 383)
+
+
+state 95
+	declarator:  simple_declarator '=' literal.    (59)
+
+	.  reduce 59 (src line 376)
+
+
+state 96
+	member:  type_spec declarator ';'.    (42)
+
+	.  reduce 42 (src line 301)
+
+
+state 97
+	struct_def:  Rwstruct '<' positive_int_const ',' positive_int_const '>'.Identifier '{' member '}' 
+	struct_def:  Rwstruct '<' positive_int_const ',' positive_int_const '>'.Identifier '{' '}' 
+
+	Identifier  shift 99
+	.  error
+
+
+state 98
+	mitch_bit_field:  RwMitchBitField '<' simple_declarator ',' simple_declarator ','.simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator '>' 
+
+	Identifier  shift 66
+	.  error
+
+	simple_declarator  goto 100
+
+state 99
+	struct_def:  Rwstruct '<' positive_int_const ',' positive_int_const '>' Identifier.'{' member '}' 
+	struct_def:  Rwstruct '<' positive_int_const ',' positive_int_const '>' Identifier.'{' '}' 
+
+	'{'  shift 101
+	.  error
+
+
+state 100
+	mitch_bit_field:  RwMitchBitField '<' simple_declarator ',' simple_declarator ',' simple_declarator.',' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator '>' 
+
+	','  shift 102
+	.  error
+
+
+state 101
+	struct_def:  Rwstruct '<' positive_int_const ',' positive_int_const '>' Identifier '{'.member '}' 
+	struct_def:  Rwstruct '<' positive_int_const ',' positive_int_const '>' Identifier '{'.'}' 
+
+	Identifier  shift 32
+	RwMitchAlpha  shift 22
+	RwMitchByte  shift 23
+	RwMitchDate  shift 24
+	RwMitchTime  shift 25
+	RwMitchPrice04  shift 26
+	RwMitchPrice08  shift 27
+	RwMitchUInt08  shift 28
+	RwMitchUInt16  shift 29
+	RwMitchUInt32  shift 30
+	RwMitchUInt64  shift 31
+	'}'  shift 104
+	.  error
+
+	member  goto 103
+	type_spec  goto 72
+	simple_type_spec  goto 73
+	mitch_type_spec  goto 19
+	scoped_name  goto 20
+
+state 102
+	mitch_bit_field:  RwMitchBitField '<' simple_declarator ',' simple_declarator ',' simple_declarator ','.simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator '>' 
+
+	Identifier  shift 66
+	.  error
+
+	simple_declarator  goto 105
+
+state 103
+	struct_def:  Rwstruct '<' positive_int_const ',' positive_int_const '>' Identifier '{' member.'}' 
+	member:  member.member 
+
+	Identifier  shift 32
+	RwMitchAlpha  shift 22
+	RwMitchByte  shift 23
+	RwMitchDate  shift 24
+	RwMitchTime  shift 25
+	RwMitchPrice04  shift 26
+	RwMitchPrice08  shift 27
+	RwMitchUInt08  shift 28
+	RwMitchUInt16  shift 29
+	RwMitchUInt32  shift 30
+	RwMitchUInt64  shift 31
+	'}'  shift 106
+	.  error
+
+	member  goto 87
+	type_spec  goto 72
+	simple_type_spec  goto 73
+	mitch_type_spec  goto 19
+	scoped_name  goto 20
+
+state 104
+	struct_def:  Rwstruct '<' positive_int_const ',' positive_int_const '>' Identifier '{' '}'.    (41)
+
+	.  reduce 41 (src line 296)
+
+
+state 105
+	mitch_bit_field:  RwMitchBitField '<' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator.',' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator '>' 
+
+	','  shift 107
+	.  error
+
+
+state 106
+	struct_def:  Rwstruct '<' positive_int_const ',' positive_int_const '>' Identifier '{' member '}'.    (40)
+
+	.  reduce 40 (src line 282)
+
+
+state 107
+	mitch_bit_field:  RwMitchBitField '<' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator ','.simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator '>' 
+
+	Identifier  shift 66
+	.  error
+
+	simple_declarator  goto 108
+
+state 108
+	mitch_bit_field:  RwMitchBitField '<' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator.',' simple_declarator ',' simple_declarator ',' simple_declarator '>' 
+
+	','  shift 109
+	.  error
+
+
+state 109
+	mitch_bit_field:  RwMitchBitField '<' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator ','.simple_declarator ',' simple_declarator ',' simple_declarator '>' 
+
+	Identifier  shift 66
+	.  error
+
+	simple_declarator  goto 110
+
+state 110
+	mitch_bit_field:  RwMitchBitField '<' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator.',' simple_declarator ',' simple_declarator '>' 
+
+	','  shift 111
+	.  error
+
+
+state 111
+	mitch_bit_field:  RwMitchBitField '<' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator ','.simple_declarator ',' simple_declarator '>' 
+
+	Identifier  shift 66
+	.  error
+
+	simple_declarator  goto 112
+
+state 112
+	mitch_bit_field:  RwMitchBitField '<' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator.',' simple_declarator '>' 
+
+	','  shift 113
+	.  error
+
+
+state 113
+	mitch_bit_field:  RwMitchBitField '<' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator ','.simple_declarator '>' 
+
+	Identifier  shift 66
+	.  error
+
+	simple_declarator  goto 114
+
+state 114
+	mitch_bit_field:  RwMitchBitField '<' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator.'>' 
+
+	'>'  shift 115
+	.  error
+
+
+state 115
+	mitch_bit_field:  RwMitchBitField '<' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator ',' simple_declarator '>'.    (34)
+
+	.  reduce 34 (src line 244)
+
+
+36 terminals, 31 nonterminals
+62 grammar rules, 116/8000 states
+15 shift/reduce, 0 reduce/reduce conflicts reported
+80 working sets used
+memory: parser 121/120000
+23 extra closures
+173 shift entries, 1 exceptions
+66 goto entries
+56 entries saved by goto default
+Optimizer space used: output 205/120000
+205 table entries, 16 zero
+maximum spread: 36, maximum offset: 113
