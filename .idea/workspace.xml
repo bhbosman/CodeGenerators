@@ -2,26 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a0cc7de-409b-44ec-9b61-0baab4e0c265" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/idlgenerator/CodeGeneration/ScopeWalker.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/idlgenerator/AppInterfaces/AppInterfacesMock.go" beforeDir="false" afterPath="$PROJECT_DIR$/idlgenerator/AppInterfaces/AppInterfacesMock.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/idlgenerator/AppInterfaces/DeclaredInterface.go" beforeDir="false" afterPath="$PROJECT_DIR$/idlgenerator/AppInterfaces/DeclaredInterface.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/idlgenerator/CodeGeneration/GenerateCodeGolang.go" beforeDir="false" afterPath="$PROJECT_DIR$/idlgenerator/scoping/ScopeWalker.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/idlgenerator/CodeGeneration/GenerateCodeGolang_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/idlgenerator/scoping/ScopeWalker_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/idlgenerator/ScopingInterfaces/IDlSupportedTypes.go" beforeDir="false" afterPath="$PROJECT_DIR$/idlgenerator/ScopingInterfaces/IDlSupportedTypes.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/idlgenerator/ScopingInterfaces/IIdlKind.go" beforeDir="false" afterPath="$PROJECT_DIR$/idlgenerator/ScopingInterfaces/IIdlKind.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/idlgenerator/fx/fxGenerateGoCode.go" beforeDir="false" afterPath="$PROJECT_DIR$/idlgenerator/fx/fxGenerateGoCode.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/idlgenerator/fx/fxProcessor.go" beforeDir="false" afterPath="$PROJECT_DIR$/idlgenerator/fx/fxProcessor.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/idlgenerator/scopedObjects/AttrDeclarator.go" beforeDir="false" afterPath="$PROJECT_DIR$/idlgenerator/scopedObjects/AttrDeclarator.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/idlgenerator/scopedObjects/EmptyIdlDefinition.go" beforeDir="false" afterPath="$PROJECT_DIR$/idlgenerator/scopedObjects/EmptyIdlDefinition.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/idlgenerator/scopedObjects/IIdlIdentifier.go" beforeDir="false" afterPath="$PROJECT_DIR$/idlgenerator/scopedObjects/IIdlIdentifier.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/idlgenerator/scopedObjects/ParameterDeclarations.go" beforeDir="false" afterPath="$PROJECT_DIR$/idlgenerator/scopedObjects/ParameterDeclarations.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/idlgenerator/scopedObjects/ScopedName.go" beforeDir="false" afterPath="$PROJECT_DIR$/idlgenerator/scopedObjects/ScopedName.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/idlgenerator/scopedObjects/TypeSpecBase.go" beforeDir="false" afterPath="$PROJECT_DIR$/idlgenerator/scopedObjects/TypeSpecBase.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/idlgenerator/yacc/completeIdl.go" beforeDir="false" afterPath="$PROJECT_DIR$/idlgenerator/yacc/completeIdl.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/idlgenerator/yacc/completeIdl.y" beforeDir="false" afterPath="$PROJECT_DIR$/idlgenerator/yacc/completeIdl.y" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/idlgenerator/yacc/completeIdlLex.go" beforeDir="false" afterPath="$PROJECT_DIR$/idlgenerator/yacc/completeIdlLex.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/idlgenerator/yacc/y.output" beforeDir="false" afterPath="$PROJECT_DIR$/idlgenerator/yacc/y.output" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/idlgenerator/CodeGeneration/CodeGeneration.go" beforeDir="false" afterPath="$PROJECT_DIR$/idlgenerator/CodeGeneration/CodeGeneration.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/idlgenerator/corbaFiles/CORBA_Policy.idl.go" beforeDir="false" afterPath="$PROJECT_DIR$/idlgenerator/corbaFiles/CORBA_Policy.idl.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/idlgenerator/corbaFiles/CORBA_Pollable.idl.go" beforeDir="false" afterPath="$PROJECT_DIR$/idlgenerator/corbaFiles/CORBA_Pollable.idl.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/idlgenerator/corbaFiles/CORBA_StandardExceptions.idl.go" beforeDir="false" afterPath="$PROJECT_DIR$/idlgenerator/corbaFiles/CORBA_StandardExceptions.idl.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/idlgenerator/corbaFiles/CORBA_Stream.idl.go" beforeDir="false" afterPath="$PROJECT_DIR$/idlgenerator/corbaFiles/CORBA_Stream.idl.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/idlgenerator/corbaFiles/CORBA_TypeCode.idl.go" beforeDir="false" afterPath="$PROJECT_DIR$/idlgenerator/corbaFiles/CORBA_TypeCode.idl.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/idlgenerator/scopedObjects/IdlRwException.go" beforeDir="false" afterPath="$PROJECT_DIR$/idlgenerator/scopedObjects/IdlRwException.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/idlgenerator/yacc/testFiles/third.idl" beforeDir="false" afterPath="$PROJECT_DIR$/idlgenerator/yacc/testFiles/third.idl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/idlgenerator/yacc/testFiles/third.idl.go" beforeDir="false" afterPath="$PROJECT_DIR$/idlgenerator/yacc/testFiles/third.idl.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -95,20 +85,13 @@
     <property name="go.tried.to.enable.integration.dep.integrator" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
     <property name="go.vendoring.notification.had.been.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/idlgenerator/CodeGeneration" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/idlgenerator/yacc/testFiles" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="goland.project.structure" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/idlgenerator/scoping" />
-      <recent name="$PROJECT_DIR$/idlgenerator/CodeGeneration" />
-      <recent name="$PROJECT_DIR$/idlgenerator/AppImpl" />
-      <recent name="$PROJECT_DIR$/idlgenerator/fx" />
-      <recent name="$PROJECT_DIR$/idlgenerator/scopedObjects" />
-    </key>
     <key name="GoMoveDeclarationDialog.RECENT_KEY">
       <recent name="$PROJECT_DIR$/idlgenerator/AppInterfaces" />
       <recent name="$PROJECT_DIR$/idlgenerator/CodeGeneration" />
@@ -116,11 +99,18 @@
       <recent name="$PROJECT_DIR$/idlgenerator/yacc" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/idlgenerator/yacc/testFiles" />
       <recent name="$PROJECT_DIR$/idlgenerator/CodeGeneration" />
       <recent name="$PROJECT_DIR$/idlgenerator/AppInterfaces" />
       <recent name="$PROJECT_DIR$/idlgenerator/yacc" />
       <recent name="$PROJECT_DIR$/idlgenerator/ScopingInterfaces" />
-      <recent name="$PROJECT_DIR$/blockReads/yacc" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/idlgenerator/scoping" />
+      <recent name="$PROJECT_DIR$/idlgenerator/CodeGeneration" />
+      <recent name="$PROJECT_DIR$/idlgenerator/AppImpl" />
+      <recent name="$PROJECT_DIR$/idlgenerator/fx" />
+      <recent name="$PROJECT_DIR$/idlgenerator/scopedObjects" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -169,37 +159,6 @@
       <directory value="$PROJECT_DIR$/" />
       <method v="2" />
     </configuration>
-    <configuration name="go build ScopeWalker.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
-      <module name="CodeGenerators" />
-      <working_directory value="$PROJECT_DIR$/" />
-      <kind value="FILE" />
-      <filePath value="$PROJECT_DIR$/idlgenerator/CodeGeneration/ScopeWalker.go" />
-      <package value="github.com/bhbosman/CodeGenerators" />
-      <directory value="$PROJECT_DIR$/" />
-      <method v="2" />
-    </configuration>
-    <configuration name="TestGenerateCodeGolang_Generate in github.com/bhbosman/CodeGenerators/idlgenerator/CodeGeneration" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="CodeGenerators" />
-      <working_directory value="$PROJECT_DIR$/idlgenerator/CodeGeneration" />
-      <framework value="gotest" />
-      <kind value="PACKAGE" />
-      <package value="github.com/bhbosman/CodeGenerators/idlgenerator/CodeGeneration" />
-      <directory value="$PROJECT_DIR$/" />
-      <filePath value="$PROJECT_DIR$/" />
-      <pattern value="^TestGenerateCodeGolang_Generate$" />
-      <method v="2" />
-    </configuration>
-    <configuration name="TestGenerateCodeGolang_Generate/Interface_with_return_value_operation_with_params in github.com/bhbosman/CodeGenerators/idlgenerator/CodeGeneration" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="CodeGenerators" />
-      <working_directory value="$PROJECT_DIR$/idlgenerator/CodeGeneration" />
-      <framework value="gotest" />
-      <kind value="PACKAGE" />
-      <package value="github.com/bhbosman/CodeGenerators/idlgenerator/CodeGeneration" />
-      <directory value="$PROJECT_DIR$/" />
-      <filePath value="$PROJECT_DIR$/" />
-      <pattern value="^TestGenerateCodeGolang_Generate$/^Interface_with_return_value_operation_with_params$" />
-      <method v="2" />
-    </configuration>
     <configuration name="TestGenerateCodeGolang_Generate/Interface_with_return_value_operation_with_params in github.com/bhbosman/CodeGenerators/idlgenerator/scoping" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="CodeGenerators" />
       <working_directory value="$PROJECT_DIR$/idlgenerator/scoping" />
@@ -209,6 +168,39 @@
       <directory value="$PROJECT_DIR$/" />
       <filePath value="$PROJECT_DIR$/" />
       <pattern value="^TestGenerateCodeGolang_Generate$/^Interface_with_return_value_operation_with_params$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestName/Basic_struct_in_a_definition_block in github.com/bhbosman/CodeGenerators/idlgenerator/yacc" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="CodeGenerators" />
+      <working_directory value="$PROJECT_DIR$/idlgenerator/yacc" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/bhbosman/CodeGenerators/idlgenerator/yacc" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^TestName$/^Basic_struct_in_a_definition_block$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestName/Basic_struct_in_a_definition_block#01 in github.com/bhbosman/CodeGenerators/idlgenerator/yacc" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="CodeGenerators" />
+      <working_directory value="$PROJECT_DIR$/idlgenerator/yacc" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/bhbosman/CodeGenerators/idlgenerator/yacc" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^TestName$/^Basic_struct_in_a_definition_block#01$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestName/Basic_struct_in_a_definition_block#02 in github.com/bhbosman/CodeGenerators/idlgenerator/yacc" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="CodeGenerators" />
+      <working_directory value="$PROJECT_DIR$/idlgenerator/yacc" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/bhbosman/CodeGenerators/idlgenerator/yacc" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^TestName$/^Basic_struct_in_a_definition_block#02$" />
       <method v="2" />
     </configuration>
     <configuration name="go test CodeGenerators" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
@@ -225,29 +217,20 @@
       <item itemvalue="Go Build.compile CORBA_InterfaceRepository.idl" />
       <item itemvalue="Go Build.compile CORBA_ORB.idl" />
       <item itemvalue="Go Test.go test CodeGenerators" />
-      <item itemvalue="Go Test.TestGenerateCodeGolang_Generate/Interface_with_return_value_operation_with_params in github.com/bhbosman/CodeGenerators/idlgenerator/CodeGeneration" />
-      <item itemvalue="Go Test.TestGenerateCodeGolang_Generate in github.com/bhbosman/CodeGenerators/idlgenerator/CodeGeneration" />
       <item itemvalue="Go Test.TestGenerateCodeGolang_Generate/Interface_with_return_value_operation_with_params in github.com/bhbosman/CodeGenerators/idlgenerator/scoping" />
-      <item itemvalue="Go Build.go build ScopeWalker.go" />
+      <item itemvalue="Go Test.TestName/Basic_struct_in_a_definition_block in github.com/bhbosman/CodeGenerators/idlgenerator/yacc" />
+      <item itemvalue="Go Test.TestName/Basic_struct_in_a_definition_block#01 in github.com/bhbosman/CodeGenerators/idlgenerator/yacc" />
+      <item itemvalue="Go Test.TestName/Basic_struct_in_a_definition_block#02 in github.com/bhbosman/CodeGenerators/idlgenerator/yacc" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Test.TestGenerateCodeGolang_Generate/Interface_with_return_value_operation_with_params in github.com/bhbosman/CodeGenerators/idlgenerator/scoping" />
-        <item itemvalue="Go Build.go build ScopeWalker.go" />
-        <item itemvalue="Go Test.TestGenerateCodeGolang_Generate/Interface_with_return_value_operation_with_params in github.com/bhbosman/CodeGenerators/idlgenerator/CodeGeneration" />
+        <item itemvalue="Go Test.TestName/Basic_struct_in_a_definition_block#02 in github.com/bhbosman/CodeGenerators/idlgenerator/yacc" />
+        <item itemvalue="Go Test.TestName/Basic_struct_in_a_definition_block#01 in github.com/bhbosman/CodeGenerators/idlgenerator/yacc" />
         <item itemvalue="Go Test.go test CodeGenerators" />
-        <item itemvalue="Go Test.TestGenerateCodeGolang_Generate in github.com/bhbosman/CodeGenerators/idlgenerator/CodeGeneration" />
+        <item itemvalue="Go Test.TestName/Basic_struct_in_a_definition_block in github.com/bhbosman/CodeGenerators/idlgenerator/yacc" />
+        <item itemvalue="Go Test.TestGenerateCodeGolang_Generate/Interface_with_return_value_operation_with_params in github.com/bhbosman/CodeGenerators/idlgenerator/scoping" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="TodoView">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -309,34 +292,19 @@
           <option name="timeStamp" value="164" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/idlgenerator/yacc/completeIdlLex.go</url>
-          <line>79</line>
-          <option name="timeStamp" value="494" />
+          <url>file://$PROJECT_DIR$/idlgenerator/CodeGeneration/CodeGeneration.go</url>
+          <line>366</line>
+          <option name="timeStamp" value="585" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/idlgenerator/fx/fxProcessor.go</url>
-          <line>44</line>
-          <option name="timeStamp" value="513" />
+          <url>file://$PROJECT_DIR$/idlgenerator/CodeGeneration/CodeGeneration.go</url>
+          <line>364</line>
+          <option name="timeStamp" value="586" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/idlgenerator/scoping/Context.go</url>
-          <line>88</line>
-          <option name="timeStamp" value="522" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/idlgenerator/scoping/ScopeWalker_test.go</url>
-          <line>76</line>
-          <option name="timeStamp" value="530" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/idlgenerator/scoping/ScopeWalker.go</url>
-          <line>103</line>
-          <option name="timeStamp" value="532" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/idlgenerator/scopedObjects/ParameterDeclarations.go</url>
-          <line>23</line>
-          <option name="timeStamp" value="535" />
+          <url>file://$PROJECT_DIR$/idlgenerator/yacc/idl_include_test.go</url>
+          <line>121</line>
+          <option name="timeStamp" value="587" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -27,7 +27,7 @@ state 0
 	RWtypeprefix  shift 34
 	RWunion  shift 78
 	RWvaluetype  shift 57
-	.  reduce 373 (src line 2895)
+	.  reduce 373 (src line 2896)
 
 	value_header  goto 55
 	value_kind  goto 56
@@ -120,8 +120,8 @@ state 2
 	RWtypeprefix  shift 34
 	RWunion  shift 78
 	RWvaluetype  shift 57
-	';'  reduce 373 (src line 2895)
-	.  reduce 1 (src line 305)
+	';'  reduce 373 (src line 2896)
+	.  reduce 1 (src line 306)
 
 	value_header  goto 55
 	value_kind  goto 56
@@ -179,7 +179,7 @@ state 2
 state 3
 	definitionPlus:  definition.    (2)
 
-	.  reduce 2 (src line 319)
+	.  reduce 2 (src line 320)
 
 
 state 4
@@ -365,19 +365,19 @@ state 22
 state 23
 	type_dcl:  constr_type_dcl.    (75)
 
-	.  reduce 75 (src line 847)
+	.  reduce 75 (src line 848)
 
 
 state 24
 	type_dcl:  native_dcl.    (76)
 
-	.  reduce 76 (src line 852)
+	.  reduce 76 (src line 853)
 
 
 state 25
 	type_dcl:  typedef_dcl.    (77)
 
-	.  reduce 77 (src line 856)
+	.  reduce 77 (src line 857)
 
 
 state 26
@@ -390,37 +390,37 @@ state 26
 state 27
 	interface_dcl:  interface_def.    (195)
 
-	.  reduce 195 (src line 1719)
+	.  reduce 195 (src line 1720)
 
 
 state 28
 	interface_dcl:  interface_forward_dcl.    (196)
 
-	.  reduce 196 (src line 1725)
+	.  reduce 196 (src line 1726)
 
 
 state 29
 	value_dcl:  value_def.    (252)
 
-	.  reduce 252 (src line 2191)
+	.  reduce 252 (src line 2192)
 
 
 state 30
 	value_dcl:  value_forward_dcl.    (253)
 
-	.  reduce 253 (src line 2197)
+	.  reduce 253 (src line 2198)
 
 
 state 31
 	value_dcl:  value_box_def.    (254)
 
-	.  reduce 254 (src line 2202)
+	.  reduce 254 (src line 2203)
 
 
 state 32
 	value_dcl:  value_abs_def.    (255)
 
-	.  reduce 255 (src line 2207)
+	.  reduce 255 (src line 2208)
 
 
 state 33
@@ -455,13 +455,13 @@ state 35
 state 36
 	component_dcl:  component_def.    (312)
 
-	.  reduce 312 (src line 2593)
+	.  reduce 312 (src line 2594)
 
 
 state 37
 	component_dcl:  component_forward_dcl.    (313)
 
-	.  reduce 313 (src line 2598)
+	.  reduce 313 (src line 2599)
 
 
 state 38
@@ -474,31 +474,31 @@ state 38
 state 39
 	event_dcl:  event_def.    (374)
 
-	.  reduce 374 (src line 2899)
+	.  reduce 374 (src line 2900)
 
 
 state 40
 	event_dcl:  event_abs_def.    (375)
 
-	.  reduce 375 (src line 2903)
+	.  reduce 375 (src line 2904)
 
 
 state 41
 	event_dcl:  event_forward_dcl.    (376)
 
-	.  reduce 376 (src line 2907)
+	.  reduce 376 (src line 2908)
 
 
 state 42
 	porttype_dcl:  porttype_def.    (386)
 
-	.  reduce 386 (src line 2956)
+	.  reduce 386 (src line 2957)
 
 
 state 43
 	porttype_dcl:  porttype_forward_dcl.    (387)
 
-	.  reduce 387 (src line 2961)
+	.  reduce 387 (src line 2962)
 
 
 state 44
@@ -518,31 +518,31 @@ state 45
 state 46
 	constr_type_dcl:  struct_dcl.    (133)
 
-	.  reduce 133 (src line 1337)
+	.  reduce 133 (src line 1338)
 
 
 state 47
 	constr_type_dcl:  union_dcl.    (134)
 
-	.  reduce 134 (src line 1342)
+	.  reduce 134 (src line 1343)
 
 
 state 48
 	constr_type_dcl:  enum_dcl.    (135)
 
-	.  reduce 135 (src line 1346)
+	.  reduce 135 (src line 1347)
 
 
 state 49
 	constr_type_dcl:  bitset_dcl.    (136)
 
-	.  reduce 136 (src line 1350)
+	.  reduce 136 (src line 1351)
 
 
 state 50
 	constr_type_dcl:  bitmask_dcl.    (137)
 
-	.  reduce 137 (src line 1354)
+	.  reduce 137 (src line 1355)
 
 
 state 51
@@ -762,25 +762,25 @@ state 66
 state 67
 	struct_dcl:  struct_def.    (138)
 
-	.  reduce 138 (src line 1360)
+	.  reduce 138 (src line 1361)
 
 
 state 68
 	struct_dcl:  struct_forward_dcl.    (139)
 
-	.  reduce 139 (src line 1365)
+	.  reduce 139 (src line 1366)
 
 
 state 69
 	union_dcl:  union_def.    (149)
 
-	.  reduce 149 (src line 1440)
+	.  reduce 149 (src line 1441)
 
 
 state 70
 	union_dcl:  union_forward_dcl.    (150)
 
-	.  reduce 150 (src line 1445)
+	.  reduce 150 (src line 1446)
 
 
 state 71
@@ -807,7 +807,7 @@ state 73
 state 74
 	interface_kind:  RWinterface.    (201)
 
-	.  reduce 201 (src line 1804)
+	.  reduce 201 (src line 1805)
 
 
 state 75
@@ -848,109 +848,109 @@ state 78
 state 79
 	definitionPlus:  definitionPlus definition.    (3)
 
-	.  reduce 3 (src line 330)
+	.  reduce 3 (src line 331)
 
 
 state 80
 	definition:  module_dcl ';'.    (4)
 
-	.  reduce 4 (src line 336)
+	.  reduce 4 (src line 337)
 
 
 state 81
 	definition:  const_dcl ';'.    (5)
 
-	.  reduce 5 (src line 343)
+	.  reduce 5 (src line 344)
 
 
 state 82
 	definition:  type_dcl ';'.    (6)
 
-	.  reduce 6 (src line 348)
+	.  reduce 6 (src line 349)
 
 
 state 83
 	definition:  except_dcl ';'.    (7)
 
-	.  reduce 7 (src line 353)
+	.  reduce 7 (src line 354)
 
 
 state 84
 	definition:  interface_dcl ';'.    (8)
 
-	.  reduce 8 (src line 358)
+	.  reduce 8 (src line 359)
 
 
 state 85
 	definition:  value_dcl ';'.    (9)
 
-	.  reduce 9 (src line 363)
+	.  reduce 9 (src line 364)
 
 
 state 86
 	definition:  type_id_dcl ';'.    (10)
 
-	.  reduce 10 (src line 368)
+	.  reduce 10 (src line 369)
 
 
 state 87
 	definition:  type_prefix_dcl ';'.    (11)
 
-	.  reduce 11 (src line 373)
+	.  reduce 11 (src line 374)
 
 
 state 88
 	definition:  import_dcl ';'.    (12)
 
-	.  reduce 12 (src line 378)
+	.  reduce 12 (src line 379)
 
 
 state 89
 	definition:  component_dcl ';'.    (13)
 
-	.  reduce 13 (src line 383)
+	.  reduce 13 (src line 384)
 
 
 state 90
 	definition:  home_dcl ';'.    (14)
 
-	.  reduce 14 (src line 388)
+	.  reduce 14 (src line 389)
 
 
 state 91
 	definition:  event_dcl ';'.    (15)
 
-	.  reduce 15 (src line 393)
+	.  reduce 15 (src line 394)
 
 
 state 92
 	definition:  porttype_dcl ';'.    (16)
 
-	.  reduce 16 (src line 398)
+	.  reduce 16 (src line 399)
 
 
 state 93
 	definition:  connector_dcl ';'.    (17)
 
-	.  reduce 17 (src line 403)
+	.  reduce 17 (src line 404)
 
 
 state 94
 	definition:  template_module_dcl ';'.    (18)
 
-	.  reduce 18 (src line 408)
+	.  reduce 18 (src line 409)
 
 
 state 95
 	definition:  template_module_inst ';'.    (19)
 
-	.  reduce 19 (src line 413)
+	.  reduce 19 (src line 414)
 
 
 state 96
 	definition:  annotation_dcl ';'.    (20)
 
-	.  reduce 20 (src line 418)
+	.  reduce 20 (src line 419)
 
 
 97: shift/reduce conflict (shift 204(0), red'n 25(0)) on '<'
@@ -962,7 +962,7 @@ state 97
 
 	'{'  shift 203
 	'<'  shift 204
-	.  reduce 25 (src line 464)
+	.  reduce 25 (src line 465)
 
 
 state 98
@@ -991,55 +991,55 @@ state 100
 state 101
 	const_type:  integer_type.    (29)
 
-	.  reduce 29 (src line 494)
+	.  reduce 29 (src line 495)
 
 
 state 102
 	const_type:  floating_pt_type.    (30)
 
-	.  reduce 30 (src line 500)
+	.  reduce 30 (src line 501)
 
 
 state 103
 	const_type:  fixed_pt_const_type.    (31)
 
-	.  reduce 31 (src line 505)
+	.  reduce 31 (src line 506)
 
 
 state 104
 	const_type:  char_type.    (32)
 
-	.  reduce 32 (src line 510)
+	.  reduce 32 (src line 511)
 
 
 state 105
 	const_type:  wide_char_type.    (33)
 
-	.  reduce 33 (src line 515)
+	.  reduce 33 (src line 516)
 
 
 state 106
 	const_type:  boolean_type.    (34)
 
-	.  reduce 34 (src line 520)
+	.  reduce 34 (src line 521)
 
 
 state 107
 	const_type:  octet_type.    (35)
 
-	.  reduce 35 (src line 525)
+	.  reduce 35 (src line 526)
 
 
 state 108
 	const_type:  string_type.    (36)
 
-	.  reduce 36 (src line 530)
+	.  reduce 36 (src line 531)
 
 
 state 109
 	const_type:  wide_string_type.    (37)
 
-	.  reduce 37 (src line 535)
+	.  reduce 37 (src line 536)
 
 
 state 110
@@ -1047,31 +1047,31 @@ state 110
 	const_type:  scoped_name.    (38)
 
 	ScopeOp  shift 205
-	.  reduce 38 (src line 540)
+	.  reduce 38 (src line 541)
 
 
 state 111
 	integer_type:  signed_int.    (94)
 
-	.  reduce 94 (src line 969)
+	.  reduce 94 (src line 970)
 
 
 state 112
 	integer_type:  unsigned_int.    (95)
 
-	.  reduce 95 (src line 974)
+	.  reduce 95 (src line 975)
 
 
 state 113
 	floating_pt_type:  RWfloat.    (91)
 
-	.  reduce 91 (src line 940)
+	.  reduce 91 (src line 941)
 
 
 state 114
 	floating_pt_type:  RWdouble.    (92)
 
-	.  reduce 92 (src line 950)
+	.  reduce 92 (src line 951)
 
 
 state 115
@@ -1081,37 +1081,37 @@ state 115
 
 	RWdouble  shift 209
 	RWlong  shift 210
-	.  reduce 102 (src line 1017)
+	.  reduce 102 (src line 1018)
 
 
 state 116
 	fixed_pt_const_type:  RWfixed.    (132)
 
-	.  reduce 132 (src line 1330)
+	.  reduce 132 (src line 1331)
 
 
 state 117
 	char_type:  RWchar.    (116)
 
-	.  reduce 116 (src line 1153)
+	.  reduce 116 (src line 1154)
 
 
 state 118
 	wide_char_type:  RWwchar.    (117)
 
-	.  reduce 117 (src line 1165)
+	.  reduce 117 (src line 1166)
 
 
 state 119
 	boolean_type:  RWboolean.    (118)
 
-	.  reduce 118 (src line 1176)
+	.  reduce 118 (src line 1177)
 
 
 state 120
 	octet_type:  RWoctet.    (119)
 
-	.  reduce 119 (src line 1188)
+	.  reduce 119 (src line 1189)
 
 
 state 121
@@ -1119,7 +1119,7 @@ state 121
 	string_type:  RWstring.    (128)
 
 	'<'  shift 211
-	.  reduce 128 (src line 1273)
+	.  reduce 128 (src line 1274)
 
 
 state 122
@@ -1127,91 +1127,91 @@ state 122
 	wide_string_type:  RWwstring.    (130)
 
 	'<'  shift 212
-	.  reduce 130 (src line 1299)
+	.  reduce 130 (src line 1300)
 
 
 state 123
 	scoped_name:  identifier.    (25)
 
-	.  reduce 25 (src line 464)
+	.  reduce 25 (src line 465)
 
 
 state 124
 	signed_int:  signed_short_int.    (96)
 
-	.  reduce 96 (src line 980)
+	.  reduce 96 (src line 981)
 
 
 state 125
 	signed_int:  signed_long_int.    (97)
 
-	.  reduce 97 (src line 984)
+	.  reduce 97 (src line 985)
 
 
 state 126
 	signed_int:  signed_longlong_int.    (98)
 
-	.  reduce 98 (src line 987)
+	.  reduce 98 (src line 988)
 
 
 state 127
 	signed_int:  signed_tiny_int.    (99)
 
-	.  reduce 99 (src line 990)
+	.  reduce 99 (src line 991)
 
 
 state 128
 	unsigned_int:  unsigned_short_int.    (106)
 
-	.  reduce 106 (src line 1065)
+	.  reduce 106 (src line 1066)
 
 
 state 129
 	unsigned_int:  unsigned_long_int.    (107)
 
-	.  reduce 107 (src line 1071)
+	.  reduce 107 (src line 1072)
 
 
 state 130
 	unsigned_int:  unsigned_longlong_int.    (108)
 
-	.  reduce 108 (src line 1075)
+	.  reduce 108 (src line 1076)
 
 
 state 131
 	unsigned_int:  unsigned_tiny_int.    (109)
 
-	.  reduce 109 (src line 1079)
+	.  reduce 109 (src line 1080)
 
 
 state 132
 	signed_short_int:  RWshort.    (100)
 
-	.  reduce 100 (src line 994)
+	.  reduce 100 (src line 995)
 
 
 state 133
 	signed_short_int:  RWint16.    (101)
 
-	.  reduce 101 (src line 1005)
+	.  reduce 101 (src line 1006)
 
 
 state 134
 	signed_long_int:  RWint32.    (103)
 
-	.  reduce 103 (src line 1029)
+	.  reduce 103 (src line 1030)
 
 
 state 135
 	signed_longlong_int:  RWint64.    (105)
 
-	.  reduce 105 (src line 1053)
+	.  reduce 105 (src line 1054)
 
 
 state 136
 	signed_tiny_int:  RWint8.    (450)
 
-	.  reduce 450 (src line 3086)
+	.  reduce 450 (src line 3087)
 
 
 state 137
@@ -1227,25 +1227,25 @@ state 137
 state 138
 	unsigned_short_int:  RWuint16.    (111)
 
-	.  reduce 111 (src line 1095)
+	.  reduce 111 (src line 1096)
 
 
 state 139
 	unsigned_long_int:  RWuint32.    (113)
 
-	.  reduce 113 (src line 1118)
+	.  reduce 113 (src line 1119)
 
 
 state 140
 	unsigned_longlong_int:  RWuint64.    (115)
 
-	.  reduce 115 (src line 1141)
+	.  reduce 115 (src line 1142)
 
 
 state 141
 	unsigned_tiny_int:  RWuint8.    (451)
 
-	.  reduce 451 (src line 3097)
+	.  reduce 451 (src line 3098)
 
 
 state 142
@@ -1276,7 +1276,7 @@ state 144
 state 145
 	import_dcl:  RWimport imported_scope.    (290)
 
-	.  reduce 290 (src line 2464)
+	.  reduce 290 (src line 2465)
 
 
 state 146
@@ -1284,13 +1284,13 @@ state 146
 	imported_scope:  scoped_name.    (291)
 
 	ScopeOp  shift 205
-	.  reduce 291 (src line 2466)
+	.  reduce 291 (src line 2467)
 
 
 state 147
 	imported_scope:  string_literal.    (292)
 
-	.  reduce 292 (src line 2466)
+	.  reduce 292 (src line 2467)
 
 
 148: shift/reduce conflict (shift 99(0), red'n 350(0)) on ScopeOp
@@ -1387,7 +1387,7 @@ state 148
 	RWuint16  shift 138
 	RWuint32  shift 139
 	RWuint64  shift 140
-	.  reduce 350 (src line 2780)
+	.  reduce 350 (src line 2781)
 
 	op_dcl  goto 224
 	attr_dcl  goto 225
@@ -1454,7 +1454,7 @@ state 149
 	connector_dcl:  connector_header '{'.connector_exportPlus '}' 
 	connector_exportPlus: .    (403)
 
-	.  reduce 403 (src line 3017)
+	.  reduce 403 (src line 3018)
 
 	connector_exportPlus  goto 246
 
@@ -1462,7 +1462,7 @@ state 150
 	annotation_dcl:  annotation_header '{'.annotation_body '}' 
 	annotation_bodyEntryStar: .    (458)
 
-	.  reduce 458 (src line 3120)
+	.  reduce 458 (src line 3121)
 
 	annotation_body  goto 247
 	annotation_bodyEntryStar  goto 248
@@ -1470,19 +1470,19 @@ state 150
 state 151
 	native_dcl:  RWnative simple_declarator.    (175)
 
-	.  reduce 175 (src line 1554)
+	.  reduce 175 (src line 1555)
 
 
 state 152
 	simple_declarator:  identifier.    (178)
 
-	.  reduce 178 (src line 1575)
+	.  reduce 178 (src line 1576)
 
 
 state 153
 	typedef_dcl:  RWtypedef type_declarator.    (179)
 
-	.  reduce 179 (src line 1581)
+	.  reduce 179 (src line 1582)
 
 
 state 154
@@ -1524,7 +1524,7 @@ state 156
 state 157
 	simple_type_spec:  base_type_spec.    (80)
 
-	.  reduce 80 (src line 874)
+	.  reduce 80 (src line 875)
 
 
 state 158
@@ -1532,91 +1532,91 @@ state 158
 	simple_type_spec:  scoped_name.    (81)
 
 	ScopeOp  shift 205
-	.  reduce 81 (src line 880)
+	.  reduce 81 (src line 881)
 
 
 state 159
 	template_type_spec:  sequence_type.    (120)
 
-	.  reduce 120 (src line 1200)
+	.  reduce 120 (src line 1201)
 
 
 state 160
 	template_type_spec:  string_type.    (121)
 
-	.  reduce 121 (src line 1206)
+	.  reduce 121 (src line 1207)
 
 
 state 161
 	template_type_spec:  wide_string_type.    (122)
 
-	.  reduce 122 (src line 1211)
+	.  reduce 122 (src line 1212)
 
 
 state 162
 	template_type_spec:  fixed_pt_type.    (123)
 
-	.  reduce 123 (src line 1216)
+	.  reduce 123 (src line 1217)
 
 
 state 163
 	template_type_spec:  map_type.    (124)
 
-	.  reduce 124 (src line 1221)
+	.  reduce 124 (src line 1222)
 
 
 state 164
 	base_type_spec:  integer_type.    (82)
 
-	.  reduce 82 (src line 892)
+	.  reduce 82 (src line 893)
 
 
 state 165
 	base_type_spec:  floating_pt_type.    (83)
 
-	.  reduce 83 (src line 898)
+	.  reduce 83 (src line 899)
 
 
 state 166
 	base_type_spec:  char_type.    (84)
 
-	.  reduce 84 (src line 903)
+	.  reduce 84 (src line 904)
 
 
 state 167
 	base_type_spec:  wide_char_type.    (85)
 
-	.  reduce 85 (src line 908)
+	.  reduce 85 (src line 909)
 
 
 state 168
 	base_type_spec:  boolean_type.    (86)
 
-	.  reduce 86 (src line 913)
+	.  reduce 86 (src line 914)
 
 
 state 169
 	base_type_spec:  octet_type.    (87)
 
-	.  reduce 87 (src line 918)
+	.  reduce 87 (src line 919)
 
 
 state 170
 	base_type_spec:  any_type.    (88)
 
-	.  reduce 88 (src line 923)
+	.  reduce 88 (src line 924)
 
 
 state 171
 	base_type_spec:  object_type.    (89)
 
-	.  reduce 89 (src line 928)
+	.  reduce 89 (src line 929)
 
 
 state 172
 	base_type_spec:  value_base_type.    (90)
 
-	.  reduce 90 (src line 933)
+	.  reduce 90 (src line 934)
 
 
 state 173
@@ -1645,19 +1645,19 @@ state 175
 state 176
 	any_type:  RWany.    (193)
 
-	.  reduce 193 (src line 1694)
+	.  reduce 193 (src line 1695)
 
 
 state 177
 	object_type:  RWObject.    (293)
 
-	.  reduce 293 (src line 2468)
+	.  reduce 293 (src line 2469)
 
 
 state 178
 	value_base_type:  RWValueBase.    (311)
 
-	.  reduce 311 (src line 2581)
+	.  reduce 311 (src line 2582)
 
 
  179: reduce/reduce conflict  (red'ns 209 and 210) on '}'
@@ -1709,7 +1709,7 @@ state 179
 	RWuint16  shift 138
 	RWuint32  shift 139
 	RWuint64  shift 140
-	.  reduce 209 (src line 1884)
+	.  reduce 209 (src line 1885)
 
 	op_dcl  goto 224
 	attr_dcl  goto 225
@@ -1775,9 +1775,9 @@ state 180
 	interface_header:  interface_kind identifier.    (199)
 	interface_header:  interface_kind identifier.interface_inheritance_spec 
 
-	'{'  reduce 199 (src line 1768)
+	'{'  reduce 199 (src line 1769)
 	':'  shift 264
-	.  reduce 198 (src line 1750)
+	.  reduce 198 (src line 1751)
 
 	interface_inheritance_spec  goto 263
 
@@ -1785,7 +1785,7 @@ state 181
 	value_def:  value_header '{'.value_elementPlus '}' 
 	value_elementPlus: .    (272)
 
-	.  reduce 272 (src line 2364)
+	.  reduce 272 (src line 2365)
 
 	value_elementPlus  goto 265
 
@@ -1797,9 +1797,9 @@ state 182
 	value_inheritance_spec: .    (261)
 
 	RWsupports  shift 267
-	'{'  reduce 258 (src line 2230)
+	'{'  reduce 258 (src line 2231)
 	':'  shift 268
-	.  reduce 287 (src line 2435)
+	.  reduce 287 (src line 2436)
 
 	value_inheritance_spec  goto 266
 
@@ -1868,7 +1868,7 @@ state 183
 state 184
 	interface_kind:  RWabstract RWinterface.    (203)
 
-	.  reduce 203 (src line 1825)
+	.  reduce 203 (src line 1826)
 
 
 state 185
@@ -1911,7 +1911,7 @@ state 187
 	RWpublishes  shift 285
 	RWreadonly  shift 242
 	RWuses  shift 283
-	.  reduce 322 (src line 2647)
+	.  reduce 322 (src line 2648)
 
 	attr_dcl  goto 277
 	readonly_attr_spec  goto 237
@@ -1934,9 +1934,9 @@ state 188
 	component_header:  RWcomponent identifier.component_inheritance_spec supported_interface_spec 
 
 	RWsupports  shift 292
-	'{'  reduce 316 (src line 2616)
+	'{'  reduce 316 (src line 2617)
 	':'  shift 291
-	.  reduce 314 (src line 2603)
+	.  reduce 314 (src line 2604)
 
 	component_inheritance_spec  goto 289
 	supported_interface_spec  goto 290
@@ -1965,7 +1965,7 @@ state 190
 	event_def:  event_header '{'.value_elementStar '}' 
 	value_elementStar: .    (273)
 
-	.  reduce 273 (src line 2368)
+	.  reduce 273 (src line 2369)
 
 	value_elementStar  goto 297
 
@@ -1977,9 +1977,9 @@ state 191
 	value_inheritance_spec: .    (261)
 
 	RWsupports  shift 267
-	'{'  reduce 261 (src line 2264)
+	'{'  reduce 261 (src line 2265)
 	':'  shift 268
-	.  reduce 377 (src line 2912)
+	.  reduce 377 (src line 2913)
 
 	value_inheritance_spec  goto 298
 
@@ -1988,7 +1988,7 @@ state 192
 	porttype_def:  RWporttype identifier.'{' port_body '}' 
 
 	'{'  shift 299
-	.  reduce 388 (src line 2966)
+	.  reduce 388 (src line 2967)
 
 
 state 193
@@ -1996,14 +1996,14 @@ state 193
 	connector_header:  RWconnector identifier.connector_inherit_spec 
 
 	':'  shift 301
-	.  reduce 400 (src line 3011)
+	.  reduce 400 (src line 3012)
 
 	connector_inherit_spec  goto 300
 
 state 194
 	annotation_header:  Annotation identifier.    (453)
 
-	.  reduce 453 (src line 3112)
+	.  reduce 453 (src line 3113)
 
 
 state 195
@@ -2030,13 +2030,13 @@ state 197
 state 198
 	interface_kind:  RWlocal RWinterface.    (202)
 
-	.  reduce 202 (src line 1815)
+	.  reduce 202 (src line 1816)
 
 
 state 199
 	value_kind:  RWcustom RWvaluetype.    (260)
 
-	.  reduce 260 (src line 2252)
+	.  reduce 260 (src line 2253)
 
 
 state 200
@@ -2055,7 +2055,7 @@ state 201
 
 	'{'  shift 306
 	':'  shift 307
-	.  reduce 148 (src line 1428)
+	.  reduce 148 (src line 1429)
 
 
 state 202
@@ -2063,7 +2063,7 @@ state 202
 	union_forward_dcl:  RWunion identifier.    (166)
 
 	RWswitch  shift 308
-	.  reduce 166 (src line 1481)
+	.  reduce 166 (src line 1482)
 
 
 state 203
@@ -2096,7 +2096,7 @@ state 203
 	RWunion  shift 78
 	RWvaluetype  shift 57
 	'}'  shift 310
-	.  reduce 373 (src line 2895)
+	.  reduce 373 (src line 2896)
 
 	value_header  goto 55
 	value_kind  goto 56
@@ -2273,7 +2273,7 @@ state 206
 state 207
 	scoped_name:  ScopeOp identifier.    (26)
 
-	.  reduce 26 (src line 470)
+	.  reduce 26 (src line 471)
 
 
 state 208
@@ -2286,13 +2286,13 @@ state 208
 state 209
 	floating_pt_type:  RWlong RWdouble.    (93)
 
-	.  reduce 93 (src line 959)
+	.  reduce 93 (src line 960)
 
 
 state 210
 	signed_longlong_int:  RWlong RWlong.    (104)
 
-	.  reduce 104 (src line 1042)
+	.  reduce 104 (src line 1043)
 
 
 state 211
@@ -2368,7 +2368,7 @@ state 212
 state 213
 	unsigned_short_int:  RWunsigned RWshort.    (110)
 
-	.  reduce 110 (src line 1084)
+	.  reduce 110 (src line 1085)
 
 
 state 214
@@ -2376,7 +2376,7 @@ state 214
 	unsigned_longlong_int:  RWunsigned RWlong.RWlong 
 
 	RWlong  shift 362
-	.  reduce 112 (src line 1107)
+	.  reduce 112 (src line 1108)
 
 
 state 215
@@ -2410,7 +2410,7 @@ state 215
 	RWuint16  shift 138
 	RWuint32  shift 139
 	RWuint64  shift 140
-	.  reduce 145 (src line 1409)
+	.  reduce 145 (src line 1410)
 
 	member  goto 365
 	memberPlus  goto 364
@@ -2448,13 +2448,13 @@ state 215
 state 216
 	type_id_dcl:  RWtypeid scoped_name string_literal.    (288)
 
-	.  reduce 288 (src line 2450)
+	.  reduce 288 (src line 2451)
 
 
 state 217
 	type_prefix_dcl:  RWtypeprefix scoped_name string_literal.    (289)
 
-	.  reduce 289 (src line 2452)
+	.  reduce 289 (src line 2453)
 
 
 state 218
@@ -2513,7 +2513,7 @@ state 219
 	RWuint16  shift 138
 	RWuint32  shift 139
 	RWuint64  shift 140
-	.  reduce 349 (src line 2774)
+	.  reduce 349 (src line 2775)
 
 	op_dcl  goto 224
 	attr_dcl  goto 225
@@ -2577,13 +2577,13 @@ state 219
 state 220
 	home_exportStar:  home_export.    (351)
 
-	.  reduce 351 (src line 2784)
+	.  reduce 351 (src line 2785)
 
 
 state 221
 	home_export:  export.    (353)
 
-	.  reduce 353 (src line 2792)
+	.  reduce 353 (src line 2793)
 
 
 state 222
@@ -2709,13 +2709,13 @@ state 236
 state 237
 	attr_dcl:  readonly_attr_spec.    (238)
 
-	.  reduce 238 (src line 2079)
+	.  reduce 238 (src line 2080)
 
 
 state 238
 	attr_dcl:  attr_spec.    (239)
 
-	.  reduce 239 (src line 2085)
+	.  reduce 239 (src line 2086)
 
 
 state 239
@@ -2728,13 +2728,13 @@ state 239
 state 240
 	op_type_spec:  type_spec.    (228)
 
-	.  reduce 228 (src line 2013)
+	.  reduce 228 (src line 2014)
 
 
 state 241
 	op_type_spec:  RWvoid.    (229)
 
-	.  reduce 229 (src line 2017)
+	.  reduce 229 (src line 2018)
 
 
 state 242
@@ -2809,13 +2809,13 @@ state 243
 state 244
 	type_spec:  simple_type_spec.    (78)
 
-	.  reduce 78 (src line 861)
+	.  reduce 78 (src line 862)
 
 
 state 245
 	type_spec:  template_type_spec.    (79)
 
-	.  reduce 79 (src line 867)
+	.  reduce 79 (src line 868)
 
 
 state 246
@@ -2835,13 +2835,13 @@ state 247
 state 248
 	annotation_body:  annotation_bodyEntryStar.    (459)
 
-	.  reduce 459 (src line 3121)
+	.  reduce 459 (src line 3122)
 
 
 state 249
 	type_declarator:  simple_type_spec any_declarators.    (180)
 
-	.  reduce 180 (src line 1589)
+	.  reduce 180 (src line 1590)
 
 
 state 250
@@ -2849,13 +2849,13 @@ state 250
 	any_declaratorsPlus:  any_declaratorsPlus.',' any_declarator 
 
 	','  shift 392
-	.  reduce 183 (src line 1621)
+	.  reduce 183 (src line 1622)
 
 
 state 251
 	any_declaratorsPlus:  any_declarator.    (184)
 
-	.  reduce 184 (src line 1627)
+	.  reduce 184 (src line 1628)
 
 
 state 252
@@ -2863,7 +2863,7 @@ state 252
 	any_declarator:  simple_declarator.    (186)
 
 	'['  shift 395
-	.  reduce 186 (src line 1642)
+	.  reduce 186 (src line 1643)
 
 	fixed_array_sizePlus  goto 393
 	fixed_array_size  goto 394
@@ -2871,19 +2871,19 @@ state 252
 state 253
 	any_declarator:  array_declarator.    (187)
 
-	.  reduce 187 (src line 1653)
+	.  reduce 187 (src line 1654)
 
 
 state 254
 	type_declarator:  template_type_spec any_declarators.    (181)
 
-	.  reduce 181 (src line 1600)
+	.  reduce 181 (src line 1601)
 
 
 state 255
 	type_declarator:  constr_type_dcl any_declarators.    (182)
 
-	.  reduce 182 (src line 1610)
+	.  reduce 182 (src line 1611)
 
 
 state 256
@@ -3057,7 +3057,7 @@ state 259
 state 260
 	interface_body:  exportStar.    (208)
 
-	.  reduce 208 (src line 1878)
+	.  reduce 208 (src line 1879)
 
 
 state 261
@@ -3107,7 +3107,7 @@ state 261
 	RWuint16  shift 138
 	RWuint32  shift 139
 	RWuint64  shift 140
-	.  reduce 211 (src line 1893)
+	.  reduce 211 (src line 1894)
 
 	op_dcl  goto 224
 	attr_dcl  goto 225
@@ -3168,13 +3168,13 @@ state 261
 state 262
 	exportPlus:  export.    (213)
 
-	.  reduce 213 (src line 1908)
+	.  reduce 213 (src line 1909)
 
 
 state 263
 	interface_header:  interface_kind identifier interface_inheritance_spec.    (200)
 
-	.  reduce 200 (src line 1785)
+	.  reduce 200 (src line 1786)
 
 
 state 264
@@ -3198,7 +3198,7 @@ state 265
 state 266
 	value_header:  value_kind identifier value_inheritance_spec.    (257)
 
-	.  reduce 257 (src line 2219)
+	.  reduce 257 (src line 2220)
 
 
 state 267
@@ -3231,7 +3231,7 @@ state 268
 state 269
 	value_box_def:  RWvaluetype identifier type_spec.    (307)
 
-	.  reduce 307 (src line 2540)
+	.  reduce 307 (src line 2541)
 
 
 270: shift/reduce conflict (shift 411(0), red'n 261(0)) on '{'
@@ -3244,7 +3244,7 @@ state 270
 	RWsupports  shift 267
 	'{'  shift 411
 	':'  shift 268
-	.  reduce 308 (src line 2546)
+	.  reduce 308 (src line 2547)
 
 	value_inheritance_spec  goto 410
 
@@ -3258,7 +3258,7 @@ state 271
 	RWsupports  shift 267
 	'{'  shift 412
 	':'  shift 268
-	.  reduce 378 (src line 2917)
+	.  reduce 378 (src line 2918)
 
 	value_inheritance_spec  goto 413
 
@@ -3282,7 +3282,7 @@ state 273
 	RWpublishes  shift 285
 	RWreadonly  shift 242
 	RWuses  shift 283
-	.  reduce 321 (src line 2641)
+	.  reduce 321 (src line 2642)
 
 	attr_dcl  goto 277
 	readonly_attr_spec  goto 237
@@ -3298,7 +3298,7 @@ state 273
 state 274
 	component_exportStar:  component_export.    (323)
 
-	.  reduce 323 (src line 2651)
+	.  reduce 323 (src line 2652)
 
 
 state 275
@@ -3424,14 +3424,14 @@ state 289
 	component_header:  RWcomponent identifier component_inheritance_spec.supported_interface_spec 
 
 	RWsupports  shift 292
-	.  reduce 317 (src line 2621)
+	.  reduce 317 (src line 2622)
 
 	supported_interface_spec  goto 433
 
 state 290
 	component_header:  RWcomponent identifier supported_interface_spec.    (318)
 
-	.  reduce 318 (src line 2625)
+	.  reduce 318 (src line 2626)
 
 
 state 291
@@ -3504,7 +3504,7 @@ state 297
 state 298
 	event_header:  RWeventtype identifier value_inheritance_spec.    (383)
 
-	.  reduce 383 (src line 2943)
+	.  reduce 383 (src line 2944)
 
 
 state 299
@@ -3525,7 +3525,7 @@ state 299
 state 300
 	connector_header:  RWconnector identifier connector_inherit_spec.    (401)
 
-	.  reduce 401 (src line 3013)
+	.  reduce 401 (src line 3014)
 
 
 state 301
@@ -3550,7 +3550,7 @@ state 303
 	bitset_dcl:  RWbitset identifier '{'.bitfieldStar '}' $$437 RWbitset identifier ':' scoped_name '{' bitfieldStar '}' 
 	bitfieldStar: .    (440)
 
-	.  reduce 440 (src line 3069)
+	.  reduce 440 (src line 3070)
 
 	bitfieldStar  goto 452
 
@@ -3558,7 +3558,7 @@ state 304
 	bitmask_dcl:  RWbitmask identifier '{'.bit_valueStar '}' 
 	bit_valueStar: .    (448)
 
-	.  reduce 448 (src line 3083)
+	.  reduce 448 (src line 3084)
 
 	bit_valueStar  goto 453
 
@@ -3570,7 +3570,7 @@ state 305
 
 	RWsupports  shift 267
 	':'  shift 268
-	.  reduce 261 (src line 2264)
+	.  reduce 261 (src line 2265)
 
 	value_inheritance_spec  goto 454
 
@@ -3686,7 +3686,7 @@ state 309
 	RWunion  shift 78
 	RWvaluetype  shift 57
 	'}'  shift 459
-	.  reduce 373 (src line 2895)
+	.  reduce 373 (src line 2896)
 
 	value_header  goto 55
 	value_kind  goto 56
@@ -3744,7 +3744,7 @@ state 309
 state 310
 	module_dcl:  RWmodule identifier '{' '}'.    (22)
 
-	.  reduce 22 (src line 435)
+	.  reduce 22 (src line 436)
 
 
 state 311
@@ -3759,13 +3759,13 @@ state 312
 	formal_parameterPlus:  formal_parameterPlus.',' formal_parameter 
 
 	','  shift 461
-	.  reduce 407 (src line 3022)
+	.  reduce 407 (src line 3023)
 
 
 state 313
 	formal_parameterPlus:  formal_parameter.    (408)
 
-	.  reduce 408 (src line 3024)
+	.  reduce 408 (src line 3025)
 
 
 state 314
@@ -3778,49 +3778,49 @@ state 314
 state 315
 	formal_parameter_type:  RWtypename.    (411)
 
-	.  reduce 411 (src line 3029)
+	.  reduce 411 (src line 3030)
 
 
 state 316
 	formal_parameter_type:  RWinterface.    (412)
 
-	.  reduce 412 (src line 3029)
+	.  reduce 412 (src line 3030)
 
 
 state 317
 	formal_parameter_type:  RWvaluetype.    (413)
 
-	.  reduce 413 (src line 3029)
+	.  reduce 413 (src line 3030)
 
 
 state 318
 	formal_parameter_type:  RWeventtype.    (414)
 
-	.  reduce 414 (src line 3029)
+	.  reduce 414 (src line 3030)
 
 
 state 319
 	formal_parameter_type:  RWstruct.    (415)
 
-	.  reduce 415 (src line 3029)
+	.  reduce 415 (src line 3030)
 
 
 state 320
 	formal_parameter_type:  RWunion.    (416)
 
-	.  reduce 416 (src line 3029)
+	.  reduce 416 (src line 3030)
 
 
 state 321
 	formal_parameter_type:  RWexception.    (417)
 
-	.  reduce 417 (src line 3029)
+	.  reduce 417 (src line 3030)
 
 
 state 322
 	formal_parameter_type:  RWenum.    (418)
 
-	.  reduce 418 (src line 3029)
+	.  reduce 418 (src line 3030)
 
 
 state 323
@@ -3829,7 +3829,7 @@ state 323
 	formal_parameter_type:  RWsequence.    (419)
 
 	'<'  shift 256
-	.  reduce 419 (src line 3029)
+	.  reduce 419 (src line 3030)
 
 
 state 324
@@ -3884,13 +3884,13 @@ state 324
 state 325
 	formal_parameter_type:  sequence_type.    (421)
 
-	.  reduce 421 (src line 3029)
+	.  reduce 421 (src line 3030)
 
 
 state 326
 	scoped_name:  scoped_name ScopeOp identifier.    (27)
 
-	.  reduce 27 (src line 475)
+	.  reduce 27 (src line 476)
 
 
 state 327
@@ -3905,25 +3905,25 @@ state 328
 	actual_parameterPlus:  actual_parameterPlus.',' actual_parameter 
 
 	','  shift 465
-	.  reduce 426 (src line 3037)
+	.  reduce 426 (src line 3038)
 
 
 state 329
 	actual_parameterPlus:  actual_parameter.    (427)
 
-	.  reduce 427 (src line 3039)
+	.  reduce 427 (src line 3040)
 
 
 state 330
 	actual_parameter:  type_spec.    (429)
 
-	.  reduce 429 (src line 3040)
+	.  reduce 429 (src line 3041)
 
 
 state 331
 	actual_parameter:  const_expr.    (430)
 
-	.  reduce 430 (src line 3040)
+	.  reduce 430 (src line 3041)
 
 
 state 332
@@ -3931,7 +3931,7 @@ state 332
 	or_expr:  or_expr.'|' xor_expr 
 
 	'|'  shift 466
-	.  reduce 39 (src line 550)
+	.  reduce 39 (src line 551)
 
 
  333: reduce/reduce conflict  (red'ns 61 and 81) on ','
@@ -3942,7 +3942,7 @@ state 333
 	simple_type_spec:  scoped_name.    (81)
 
 	ScopeOp  shift 205
-	.  reduce 61 (src line 716)
+	.  reduce 61 (src line 717)
 
 
 state 334
@@ -3950,7 +3950,7 @@ state 334
 	xor_expr:  xor_expr.'^' and_expr 
 
 	'^'  shift 467
-	.  reduce 40 (src line 557)
+	.  reduce 40 (src line 558)
 
 
 state 335
@@ -3958,7 +3958,7 @@ state 335
 	and_expr:  and_expr.'&' shift_expr 
 
 	'&'  shift 468
-	.  reduce 42 (src line 569)
+	.  reduce 42 (src line 570)
 
 
 state 336
@@ -3968,7 +3968,7 @@ state 336
 
 	ShlOp  shift 470
 	ShrOp  shift 469
-	.  reduce 44 (src line 582)
+	.  reduce 44 (src line 583)
 
 
 state 337
@@ -3978,7 +3978,7 @@ state 337
 
 	'+'  shift 471
 	'-'  shift 472
-	.  reduce 46 (src line 595)
+	.  reduce 46 (src line 596)
 
 
 state 338
@@ -3990,13 +3990,13 @@ state 338
 	'*'  shift 473
 	'/'  shift 474
 	'%'  shift 475
-	.  reduce 49 (src line 624)
+	.  reduce 49 (src line 625)
 
 
 state 339
 	mult_expr:  unary_expr.    (52)
 
-	.  reduce 52 (src line 656)
+	.  reduce 52 (src line 657)
 
 
 state 340
@@ -4024,31 +4024,31 @@ state 340
 state 341
 	unary_expr:  primary_expr.    (57)
 
-	.  reduce 57 (src line 689)
+	.  reduce 57 (src line 690)
 
 
 state 342
 	unary_operator:  '-'.    (58)
 
-	.  reduce 58 (src line 702)
+	.  reduce 58 (src line 703)
 
 
 state 343
 	unary_operator:  '+'.    (59)
 
-	.  reduce 59 (src line 707)
+	.  reduce 59 (src line 708)
 
 
 state 344
 	unary_operator:  '~'.    (60)
 
-	.  reduce 60 (src line 711)
+	.  reduce 60 (src line 712)
 
 
 state 345
 	primary_expr:  literal.    (62)
 
-	.  reduce 62 (src line 728)
+	.  reduce 62 (src line 729)
 
 
 state 346
@@ -4088,61 +4088,61 @@ state 346
 state 347
 	literal:  integer_literal.    (64)
 
-	.  reduce 64 (src line 744)
+	.  reduce 64 (src line 745)
 
 
 state 348
 	literal:  floating_pt_literal.    (65)
 
-	.  reduce 65 (src line 755)
+	.  reduce 65 (src line 756)
 
 
 state 349
 	literal:  fixed_pt_literal.    (66)
 
-	.  reduce 66 (src line 765)
+	.  reduce 66 (src line 766)
 
 
 state 350
 	literal:  character_literal.    (67)
 
-	.  reduce 67 (src line 775)
+	.  reduce 67 (src line 776)
 
 
 state 351
 	literal:  wide_character_literal.    (68)
 
-	.  reduce 68 (src line 785)
+	.  reduce 68 (src line 786)
 
 
 state 352
 	literal:  boolean_literal.    (69)
 
-	.  reduce 69 (src line 795)
+	.  reduce 69 (src line 796)
 
 
 state 353
 	literal:  string_literal.    (70)
 
-	.  reduce 70 (src line 805)
+	.  reduce 70 (src line 806)
 
 
 state 354
 	literal:  wide_string_literal.    (71)
 
-	.  reduce 71 (src line 815)
+	.  reduce 71 (src line 816)
 
 
 state 355
 	boolean_literal:  RWTRUE.    (72)
 
-	.  reduce 72 (src line 826)
+	.  reduce 72 (src line 827)
 
 
 state 356
 	boolean_literal:  RWFALSE.    (73)
 
-	.  reduce 73 (src line 831)
+	.  reduce 73 (src line 832)
 
 
 state 357
@@ -4189,7 +4189,7 @@ state 358
 state 359
 	positive_int_const:  const_expr.    (74)
 
-	.  reduce 74 (src line 836)
+	.  reduce 74 (src line 837)
 
 
 state 360
@@ -4197,7 +4197,7 @@ state 360
 	primary_expr:  scoped_name.    (61)
 
 	ScopeOp  shift 205
-	.  reduce 61 (src line 716)
+	.  reduce 61 (src line 717)
 
 
 state 361
@@ -4210,7 +4210,7 @@ state 361
 state 362
 	unsigned_longlong_int:  RWunsigned RWlong RWlong.    (114)
 
-	.  reduce 114 (src line 1130)
+	.  reduce 114 (src line 1131)
 
 
 state 363
@@ -4251,7 +4251,7 @@ state 364
 	RWuint16  shift 138
 	RWuint32  shift 139
 	RWuint64  shift 140
-	.  reduce 146 (src line 1414)
+	.  reduce 146 (src line 1415)
 
 	member  goto 482
 	type_spec  goto 366
@@ -4287,7 +4287,7 @@ state 364
 state 365
 	memberPlus:  member.    (143)
 
-	.  reduce 143 (src line 1400)
+	.  reduce 143 (src line 1401)
 
 
 state 366
@@ -4305,37 +4305,37 @@ state 366
 state 367
 	home_dcl:  home_header '{' home_body '}'.    (337)
 
-	.  reduce 337 (src line 2718)
+	.  reduce 337 (src line 2719)
 
 
 state 368
 	home_exportStar:  home_exportStar home_export.    (352)
 
-	.  reduce 352 (src line 2788)
+	.  reduce 352 (src line 2789)
 
 
 state 369
 	home_export:  factory_dcl ';'.    (354)
 
-	.  reduce 354 (src line 2797)
+	.  reduce 354 (src line 2798)
 
 
 state 370
 	home_export:  finder_dcl ';'.    (355)
 
-	.  reduce 355 (src line 2801)
+	.  reduce 355 (src line 2802)
 
 
 state 371
 	export:  op_dcl ';'.    (214)
 
-	.  reduce 214 (src line 1918)
+	.  reduce 214 (src line 1919)
 
 
 state 372
 	op_with_context:  op_dcl context_expr.    (303)
 
-	.  reduce 303 (src line 2520)
+	.  reduce 303 (src line 2521)
 
 
 state 373
@@ -4348,61 +4348,61 @@ state 373
 state 374
 	export:  attr_dcl ';'.    (215)
 
-	.  reduce 215 (src line 1924)
+	.  reduce 215 (src line 1925)
 
 
 state 375
 	export:  type_dcl ';'.    (216)
 
-	.  reduce 216 (src line 1929)
+	.  reduce 216 (src line 1930)
 
 
 state 376
 	export:  const_dcl ';'.    (217)
 
-	.  reduce 217 (src line 1934)
+	.  reduce 217 (src line 1935)
 
 
 state 377
 	export:  except_dcl ';'.    (218)
 
-	.  reduce 218 (src line 1939)
+	.  reduce 218 (src line 1940)
 
 
 state 378
 	export:  type_id_dcl ';'.    (219)
 
-	.  reduce 219 (src line 1944)
+	.  reduce 219 (src line 1945)
 
 
 state 379
 	export:  type_prefix_dcl ';'.    (220)
 
-	.  reduce 220 (src line 1949)
+	.  reduce 220 (src line 1950)
 
 
 state 380
 	export:  import_dcl ';'.    (221)
 
-	.  reduce 221 (src line 1954)
+	.  reduce 221 (src line 1955)
 
 
 state 381
 	export:  op_oneway_dcl ';'.    (222)
 
-	.  reduce 222 (src line 1959)
+	.  reduce 222 (src line 1960)
 
 
 state 382
 	op_with_context:  op_oneway_dcl context_expr.    (302)
 
-	.  reduce 302 (src line 2515)
+	.  reduce 302 (src line 2516)
 
 
 state 383
 	export:  op_with_context ';'.    (223)
 
-	.  reduce 223 (src line 1964)
+	.  reduce 223 (src line 1965)
 
 
 state 384
@@ -4517,13 +4517,13 @@ state 389
 state 390
 	connector_dcl:  connector_header '{' connector_exportPlus '}'.    (399)
 
-	.  reduce 399 (src line 3009)
+	.  reduce 399 (src line 3010)
 
 
 state 391
 	annotation_dcl:  annotation_header '{' annotation_body '}'.    (452)
 
-	.  reduce 452 (src line 3110)
+	.  reduce 452 (src line 3111)
 
 
 state 392
@@ -4541,14 +4541,14 @@ state 393
 	fixed_array_sizePlus:  fixed_array_sizePlus.fixed_array_size 
 
 	'['  shift 395
-	.  reduce 171 (src line 1523)
+	.  reduce 171 (src line 1524)
 
 	fixed_array_size  goto 498
 
 state 394
 	fixed_array_sizePlus:  fixed_array_size.    (172)
 
-	.  reduce 172 (src line 1535)
+	.  reduce 172 (src line 1536)
 
 
 state 395
@@ -4613,13 +4613,13 @@ state 398
 state 399
 	interface_def:  interface_header '{' interface_body '}'.    (197)
 
-	.  reduce 197 (src line 1732)
+	.  reduce 197 (src line 1733)
 
 
 state 400
 	exportPlus:  exportPlus export.    (212)
 
-	.  reduce 212 (src line 1898)
+	.  reduce 212 (src line 1899)
 
 
 state 401
@@ -4627,13 +4627,13 @@ state 401
 	interface_namePlus:  interface_namePlus.',' interface_name 
 
 	','  shift 504
-	.  reduce 204 (src line 1838)
+	.  reduce 204 (src line 1839)
 
 
 state 402
 	interface_namePlus:  interface_name.    (205)
 
-	.  reduce 205 (src line 1850)
+	.  reduce 205 (src line 1851)
 
 
 state 403
@@ -4641,19 +4641,19 @@ state 403
 	interface_name:  scoped_name.    (207)
 
 	ScopeOp  shift 205
-	.  reduce 207 (src line 1871)
+	.  reduce 207 (src line 1872)
 
 
 state 404
 	value_def:  value_header '{' value_elementPlus '}'.    (256)
 
-	.  reduce 256 (src line 2213)
+	.  reduce 256 (src line 2214)
 
 
 state 405
 	value_inheritance_spec:  RWsupports interface_name.    (262)
 
-	.  reduce 262 (src line 2274)
+	.  reduce 262 (src line 2275)
 
 
 406: shift/reduce conflict (shift 505(0), red'n 269(0)) on RWsupports
@@ -4664,8 +4664,8 @@ state 406
 	value_namePlus:  value_name.    (269)
 
 	RWsupports  shift 505
-	','  reduce 269 (src line 2346)
-	.  reduce 263 (src line 2284)
+	','  reduce 269 (src line 2347)
+	.  reduce 263 (src line 2285)
 
 
 state 407
@@ -4675,7 +4675,7 @@ state 407
 
 	RWsupports  shift 506
 	','  shift 507
-	.  reduce 265 (src line 2304)
+	.  reduce 265 (src line 2305)
 
 
 state 408
@@ -4695,7 +4695,7 @@ state 409
 	value_name:  scoped_name.    (271)
 
 	ScopeOp  shift 205
-	.  reduce 271 (src line 2357)
+	.  reduce 271 (src line 2358)
 
 
 state 410
@@ -4752,7 +4752,7 @@ state 411
 	RWuint16  shift 138
 	RWuint32  shift 139
 	RWuint64  shift 140
-	.  reduce 210 (src line 1888)
+	.  reduce 210 (src line 1889)
 
 	op_dcl  goto 224
 	attr_dcl  goto 225
@@ -4859,7 +4859,7 @@ state 412
 	RWuint16  shift 138
 	RWuint32  shift 139
 	RWuint64  shift 140
-	.  reduce 210 (src line 1888)
+	.  reduce 210 (src line 1889)
 
 	op_dcl  goto 224
 	attr_dcl  goto 225
@@ -4929,55 +4929,55 @@ state 413
 state 414
 	component_def:  component_header '{' component_body '}'.    (315)
 
-	.  reduce 315 (src line 2609)
+	.  reduce 315 (src line 2610)
 
 
 state 415
 	component_exportStar:  component_exportStar component_export.    (324)
 
-	.  reduce 324 (src line 2655)
+	.  reduce 324 (src line 2656)
 
 
 state 416
 	component_export:  provides_dcl ';'.    (325)
 
-	.  reduce 325 (src line 2659)
+	.  reduce 325 (src line 2660)
 
 
 state 417
 	component_export:  uses_dcl ';'.    (326)
 
-	.  reduce 326 (src line 2664)
+	.  reduce 326 (src line 2665)
 
 
 state 418
 	component_export:  attr_dcl ';'.    (327)
 
-	.  reduce 327 (src line 2668)
+	.  reduce 327 (src line 2669)
 
 
 state 419
 	component_export:  emits_dcl ';'.    (328)
 
-	.  reduce 328 (src line 2672)
+	.  reduce 328 (src line 2673)
 
 
 state 420
 	component_export:  publishes_dcl ';'.    (329)
 
-	.  reduce 329 (src line 2676)
+	.  reduce 329 (src line 2677)
 
 
 state 421
 	component_export:  consumes_dcl ';'.    (330)
 
-	.  reduce 330 (src line 2680)
+	.  reduce 330 (src line 2681)
 
 
 state 422
 	component_export:  port_dcl ';'.    (331)
 
-	.  reduce 331 (src line 2684)
+	.  reduce 331 (src line 2685)
 
 
 state 423
@@ -4992,13 +4992,13 @@ state 424
 	interface_type:  scoped_name.    (333)
 
 	ScopeOp  shift 205
-	.  reduce 333 (src line 2696)
+	.  reduce 333 (src line 2697)
 
 
 state 425
 	interface_type:  RWObject.    (334)
 
-	.  reduce 334 (src line 2701)
+	.  reduce 334 (src line 2702)
 
 
 state 426
@@ -5067,7 +5067,7 @@ state 432
 state 433
 	component_header:  RWcomponent identifier component_inheritance_spec supported_interface_spec.    (319)
 
-	.  reduce 319 (src line 2629)
+	.  reduce 319 (src line 2630)
 
 
 state 434
@@ -5075,7 +5075,7 @@ state 434
 	component_inheritance_spec:  ':' scoped_name.    (320)
 
 	ScopeOp  shift 205
-	.  reduce 320 (src line 2635)
+	.  reduce 320 (src line 2636)
 
 
 state 435
@@ -5083,7 +5083,7 @@ state 435
 	supported_interface_spec:  RWsupports scoped_namePlus.    (364)
 
 	','  shift 522
-	.  reduce 364 (src line 2847)
+	.  reduce 364 (src line 2848)
 
 
 state 436
@@ -5091,7 +5091,7 @@ state 436
 	scoped_name:  scoped_name.ScopeOp identifier 
 
 	ScopeOp  shift 205
-	.  reduce 23 (src line 448)
+	.  reduce 23 (src line 449)
 
 
  437: reduce/reduce conflict  (red'ns 338 and 340) on '{'
@@ -5103,7 +5103,7 @@ state 437
 
 	ScopeOp  shift 205
 	RWprimarykey  shift 524
-	.  reduce 338 (src line 2724)
+	.  reduce 338 (src line 2725)
 
 	primary_key_spec  goto 523
 
@@ -5141,13 +5141,13 @@ state 441
 	home_inheritance_spec:  ':' scoped_name.    (348)
 
 	ScopeOp  shift 205
-	.  reduce 348 (src line 2768)
+	.  reduce 348 (src line 2769)
 
 
 state 442
 	event_def:  event_header '{' value_elementStar '}'.    (381)
 
-	.  reduce 381 (src line 2932)
+	.  reduce 381 (src line 2933)
 
 
 state 443
@@ -5161,7 +5161,7 @@ state 444
 	port_body:  port_ref.port_exportStar 
 	port_exportStar: .    (394)
 
-	.  reduce 394 (src line 2985)
+	.  reduce 394 (src line 2986)
 
 	port_exportStar  goto 529
 
@@ -5191,7 +5191,7 @@ state 448
 	connector_inherit_spec:  ':' scoped_name.    (402)
 
 	ScopeOp  shift 205
-	.  reduce 402 (src line 3015)
+	.  reduce 402 (src line 3016)
 
 
 state 449
@@ -5206,13 +5206,13 @@ state 449
 state 450
 	enumerators:  enumerator.    (168)
 
-	.  reduce 168 (src line 1498)
+	.  reduce 168 (src line 1499)
 
 
 state 451
 	enumerator:  identifier.    (170)
 
-	.  reduce 170 (src line 1511)
+	.  reduce 170 (src line 1512)
 
 
 state 452
@@ -5232,7 +5232,7 @@ state 453
 state 454
 	event_header:  RWcustom RWeventtype identifier value_inheritance_spec.    (385)
 
-	.  reduce 385 (src line 2951)
+	.  reduce 385 (src line 2952)
 
 
 state 455
@@ -5303,7 +5303,7 @@ state 455
 state 456
 	struct_def:  RWstruct identifier '{' '}'.    (142)
 
-	.  reduce 142 (src line 1389)
+	.  reduce 142 (src line 1390)
 
 
 state 457
@@ -5358,7 +5358,7 @@ state 458
 state 459
 	module_dcl:  RWmodule identifier '{' definitionPlus '}'.    (21)
 
-	.  reduce 21 (src line 424)
+	.  reduce 21 (src line 425)
 
 
 state 460
@@ -5390,13 +5390,13 @@ state 461
 state 462
 	formal_parameter:  formal_parameter_type identifier.    (410)
 
-	.  reduce 410 (src line 3027)
+	.  reduce 410 (src line 3028)
 
 
 state 463
 	formal_parameter_type:  RWconst const_type.    (420)
 
-	.  reduce 420 (src line 3029)
+	.  reduce 420 (src line 3030)
 
 
 state 464
@@ -5785,7 +5785,7 @@ state 475
 state 476
 	unary_expr:  unary_operator primary_expr.    (56)
 
-	.  reduce 56 (src line 678)
+	.  reduce 56 (src line 679)
 
 
 state 477
@@ -5798,31 +5798,31 @@ state 477
 state 478
 	const_dcl:  RWconst const_type identifier '=' const_expr.    (28)
 
-	.  reduce 28 (src line 481)
+	.  reduce 28 (src line 482)
 
 
 state 479
 	string_type:  RWstring '<' positive_int_const '>'.    (127)
 
-	.  reduce 127 (src line 1258)
+	.  reduce 127 (src line 1259)
 
 
 state 480
 	wide_string_type:  RWwstring '<' positive_int_const '>'.    (129)
 
-	.  reduce 129 (src line 1284)
+	.  reduce 129 (src line 1285)
 
 
 state 481
 	except_dcl:  RWexception identifier '{' memberStar '}'.    (194)
 
-	.  reduce 194 (src line 1706)
+	.  reduce 194 (src line 1707)
 
 
 state 482
 	memberPlus:  memberPlus member.    (144)
 
-	.  reduce 144 (src line 1405)
+	.  reduce 144 (src line 1406)
 
 
 state 483
@@ -5837,13 +5837,13 @@ state 484
 	declaratorPlus:  declaratorPlus.',' declarator 
 
 	','  shift 563
-	.  reduce 188 (src line 1658)
+	.  reduce 188 (src line 1659)
 
 
 state 485
 	declaratorPlus:  declarator.    (189)
 
-	.  reduce 189 (src line 1665)
+	.  reduce 189 (src line 1666)
 
 
 state 486
@@ -5851,7 +5851,7 @@ state 486
 	declarator:  simple_declarator.    (191)
 
 	'['  shift 395
-	.  reduce 191 (src line 1676)
+	.  reduce 191 (src line 1677)
 
 	fixed_array_sizePlus  goto 393
 	fixed_array_size  goto 394
@@ -5859,7 +5859,7 @@ state 486
 state 487
 	declarator:  array_declarator.    (192)
 
-	.  reduce 192 (src line 1687)
+	.  reduce 192 (src line 1688)
 
 
 state 488
@@ -5935,7 +5935,7 @@ state 493
 state 494
 	attr_spec:  RWattribute type_spec attr_declarator.    (243)
 
-	.  reduce 243 (src line 2125)
+	.  reduce 243 (src line 2126)
 
 
 state 495
@@ -5944,7 +5944,7 @@ state 495
 
 	RWgetraises  shift 591
 	RWsetraises  shift 592
-	.  reduce 176 (src line 1561)
+	.  reduce 176 (src line 1562)
 
 	attr_raises_expr  goto 588
 	get_excep_expr  goto 589
@@ -5955,19 +5955,19 @@ state 496
 	attr_declarator:  simple_declaratorPlus.    (245)
 
 	','  shift 593
-	.  reduce 245 (src line 2148)
+	.  reduce 245 (src line 2149)
 
 
 state 497
 	any_declaratorsPlus:  any_declaratorsPlus ',' any_declarator.    (185)
 
-	.  reduce 185 (src line 1634)
+	.  reduce 185 (src line 1635)
 
 
 state 498
 	fixed_array_sizePlus:  fixed_array_sizePlus fixed_array_size.    (173)
 
-	.  reduce 173 (src line 1541)
+	.  reduce 173 (src line 1542)
 
 
 state 499
@@ -6015,7 +6015,7 @@ state 500
 state 501
 	sequence_type:  RWsequence '<' type_spec '>'.    (126)
 
-	.  reduce 126 (src line 1245)
+	.  reduce 126 (src line 1246)
 
 
 state 502
@@ -6164,13 +6164,13 @@ state 508
 
 	RWsupports  shift 602
 	','  shift 507
-	.  reduce 267 (src line 2324)
+	.  reduce 267 (src line 2325)
 
 
 state 509
 	value_namePlus:  value_name.    (269)
 
-	.  reduce 269 (src line 2346)
+	.  reduce 269 (src line 2347)
 
 
 state 510
@@ -6220,7 +6220,7 @@ state 510
 	RWuint16  shift 138
 	RWuint32  shift 139
 	RWuint64  shift 140
-	.  reduce 210 (src line 1888)
+	.  reduce 210 (src line 1889)
 
 	op_dcl  goto 224
 	attr_dcl  goto 225
@@ -6341,7 +6341,7 @@ state 513
 	RWuint16  shift 138
 	RWuint32  shift 139
 	RWuint64  shift 140
-	.  reduce 210 (src line 1888)
+	.  reduce 210 (src line 1889)
 
 	op_dcl  goto 224
 	attr_dcl  goto 225
@@ -6404,13 +6404,13 @@ state 513
 state 514
 	provides_dcl:  RWprovides interface_type identifier.    (332)
 
-	.  reduce 332 (src line 2690)
+	.  reduce 332 (src line 2691)
 
 
 state 515
 	uses_dcl:  RWuses interface_type identifier.    (335)
 
-	.  reduce 335 (src line 2707)
+	.  reduce 335 (src line 2708)
 
 
 state 516
@@ -6423,31 +6423,31 @@ state 516
 state 517
 	emits_dcl:  RWemits scoped_name identifier.    (365)
 
-	.  reduce 365 (src line 2853)
+	.  reduce 365 (src line 2854)
 
 
 state 518
 	publishes_dcl:  RWpublishes scoped_name identifier.    (366)
 
-	.  reduce 366 (src line 2859)
+	.  reduce 366 (src line 2860)
 
 
 state 519
 	consumes_dcl:  RWconsumes scoped_name identifier.    (367)
 
-	.  reduce 367 (src line 2865)
+	.  reduce 367 (src line 2866)
 
 
 state 520
 	port_dcl:  RWmirrorport scoped_name identifier.    (397)
 
-	.  reduce 397 (src line 2999)
+	.  reduce 397 (src line 3000)
 
 
 state 521
 	port_dcl:  RWport scoped_name identifier.    (398)
 
-	.  reduce 398 (src line 3004)
+	.  reduce 398 (src line 3005)
 
 
 state 522
@@ -6462,7 +6462,7 @@ state 522
 state 523
 	home_header:  RWhome identifier RWmanages scoped_name primary_key_spec.    (341)
 
-	.  reduce 341 (src line 2737)
+	.  reduce 341 (src line 2738)
 
 
 state 524
@@ -6483,7 +6483,7 @@ state 525
 
 	ScopeOp  shift 205
 	RWprimarykey  shift 524
-	.  reduce 339 (src line 2729)
+	.  reduce 339 (src line 2730)
 
 	primary_key_spec  goto 610
 
@@ -6504,44 +6504,44 @@ state 527
 
 	ScopeOp  shift 205
 	RWprimarykey  shift 524
-	.  reduce 342 (src line 2741)
+	.  reduce 342 (src line 2742)
 
 	primary_key_spec  goto 612
 
 state 528
 	porttype_def:  RWporttype identifier '{' port_body '}'.    (389)
 
-	.  reduce 389 (src line 2972)
+	.  reduce 389 (src line 2973)
 
 
 state 529
 	port_body:  port_ref port_exportStar.    (390)
 
-	.  reduce 390 (src line 2978)
+	.  reduce 390 (src line 2979)
 
 
 state 530
 	port_ref:  provides_dcl ';'.    (391)
 
-	.  reduce 391 (src line 2980)
+	.  reduce 391 (src line 2981)
 
 
 state 531
 	port_ref:  uses_dcl ';'.    (392)
 
-	.  reduce 392 (src line 2982)
+	.  reduce 392 (src line 2983)
 
 
 state 532
 	port_ref:  port_dcl ';'.    (393)
 
-	.  reduce 393 (src line 2983)
+	.  reduce 393 (src line 2984)
 
 
 state 533
 	enum_dcl:  RWenum identifier '{' enumerators '}'.    (167)
 
-	.  reduce 167 (src line 1488)
+	.  reduce 167 (src line 1489)
 
 
 state 534
@@ -6556,20 +6556,20 @@ state 535
 	bitset_dcl:  RWbitset identifier '{' bitfieldStar '}'.$$437 RWbitset identifier ':' scoped_name '{' bitfieldStar '}' 
 	$$437: .    (437)
 
-	.  reduce 437 (src line 3056)
+	.  reduce 437 (src line 3057)
 
 	$$437  goto 614
 
 state 536
 	bitmask_dcl:  RWbitmask identifier '{' bit_valueStar '}'.    (447)
 
-	.  reduce 447 (src line 3076)
+	.  reduce 447 (src line 3077)
 
 
 state 537
 	struct_def:  RWstruct identifier '{' memberPlus '}'.    (140)
 
-	.  reduce 140 (src line 1370)
+	.  reduce 140 (src line 1371)
 
 
 state 538
@@ -6603,7 +6603,7 @@ state 538
 	RWuint16  shift 138
 	RWuint32  shift 139
 	RWuint64  shift 140
-	.  reduce 145 (src line 1409)
+	.  reduce 145 (src line 1410)
 
 	member  goto 365
 	memberPlus  goto 364
@@ -6648,19 +6648,19 @@ state 539
 state 540
 	switch_type_spec:  integer_type.    (152)
 
-	.  reduce 152 (src line 1456)
+	.  reduce 152 (src line 1457)
 
 
 state 541
 	switch_type_spec:  char_type.    (153)
 
-	.  reduce 153 (src line 1458)
+	.  reduce 153 (src line 1459)
 
 
 state 542
 	switch_type_spec:  boolean_type.    (154)
 
-	.  reduce 154 (src line 1459)
+	.  reduce 154 (src line 1460)
 
 
 state 543
@@ -6668,19 +6668,19 @@ state 543
 	switch_type_spec:  scoped_name.    (155)
 
 	ScopeOp  shift 205
-	.  reduce 155 (src line 1460)
+	.  reduce 155 (src line 1461)
 
 
 state 544
 	switch_type_spec:  wide_char_type.    (156)
 
-	.  reduce 156 (src line 1461)
+	.  reduce 156 (src line 1462)
 
 
 state 545
 	switch_type_spec:  octet_type.    (157)
 
-	.  reduce 157 (src line 1462)
+	.  reduce 157 (src line 1463)
 
 
 state 546
@@ -6688,33 +6688,33 @@ state 546
 	signed_longlong_int:  RWlong.RWlong 
 
 	RWlong  shift 210
-	.  reduce 102 (src line 1017)
+	.  reduce 102 (src line 1018)
 
 
 state 547
 	template_module_dcl:  RWmodule identifier '<' formal_parameters '>' '{'.tpl_definitionPlus '}' 
 	tpl_definitionPlus: .    (422)
 
-	.  reduce 422 (src line 3031)
+	.  reduce 422 (src line 3032)
 
 	tpl_definitionPlus  goto 617
 
 state 548
 	formal_parameterPlus:  formal_parameterPlus ',' formal_parameter.    (409)
 
-	.  reduce 409 (src line 3026)
+	.  reduce 409 (src line 3027)
 
 
 state 549
 	template_module_inst:  RWmodule scoped_name '<' actual_parameters '>' identifier.    (425)
 
-	.  reduce 425 (src line 3034)
+	.  reduce 425 (src line 3035)
 
 
 state 550
 	actual_parameterPlus:  actual_parameterPlus ',' actual_parameter.    (428)
 
-	.  reduce 428 (src line 3039)
+	.  reduce 428 (src line 3040)
 
 
 state 551
@@ -6722,7 +6722,7 @@ state 551
 	xor_expr:  xor_expr.'^' and_expr 
 
 	'^'  shift 467
-	.  reduce 41 (src line 563)
+	.  reduce 41 (src line 564)
 
 
 state 552
@@ -6730,7 +6730,7 @@ state 552
 	and_expr:  and_expr.'&' shift_expr 
 
 	'&'  shift 468
-	.  reduce 43 (src line 575)
+	.  reduce 43 (src line 576)
 
 
 state 553
@@ -6740,7 +6740,7 @@ state 553
 
 	ShlOp  shift 470
 	ShrOp  shift 469
-	.  reduce 45 (src line 588)
+	.  reduce 45 (src line 589)
 
 
 state 554
@@ -6750,7 +6750,7 @@ state 554
 
 	'+'  shift 471
 	'-'  shift 472
-	.  reduce 47 (src line 606)
+	.  reduce 47 (src line 607)
 
 
 state 555
@@ -6760,7 +6760,7 @@ state 555
 
 	'+'  shift 471
 	'-'  shift 472
-	.  reduce 48 (src line 614)
+	.  reduce 48 (src line 615)
 
 
 state 556
@@ -6772,7 +6772,7 @@ state 556
 	'*'  shift 473
 	'/'  shift 474
 	'%'  shift 475
-	.  reduce 50 (src line 635)
+	.  reduce 50 (src line 636)
 
 
 state 557
@@ -6784,37 +6784,37 @@ state 557
 	'*'  shift 473
 	'/'  shift 474
 	'%'  shift 475
-	.  reduce 51 (src line 645)
+	.  reduce 51 (src line 646)
 
 
 state 558
 	mult_expr:  mult_expr '*' unary_expr.    (53)
 
-	.  reduce 53 (src line 662)
+	.  reduce 53 (src line 663)
 
 
 state 559
 	mult_expr:  mult_expr '/' unary_expr.    (54)
 
-	.  reduce 54 (src line 667)
+	.  reduce 54 (src line 668)
 
 
 state 560
 	mult_expr:  mult_expr '%' unary_expr.    (55)
 
-	.  reduce 55 (src line 672)
+	.  reduce 55 (src line 673)
 
 
 state 561
 	primary_expr:  '(' const_expr ')'.    (63)
 
-	.  reduce 63 (src line 733)
+	.  reduce 63 (src line 734)
 
 
 state 562
 	member:  type_spec declarators ';'.    (147)
 
-	.  reduce 147 (src line 1416)
+	.  reduce 147 (src line 1417)
 
 
 state 563
@@ -6839,7 +6839,7 @@ state 564
 state 565
 	string_literalPlus:  string_literal.    (304)
 
-	.  reduce 304 (src line 2525)
+	.  reduce 304 (src line 2526)
 
 
 state 566
@@ -6847,7 +6847,7 @@ state 566
 	factory_dcl:  RWfactory identifier '(' ')'.raises_expr 
 
 	RWraises  shift 622
-	.  reduce 356 (src line 2807)
+	.  reduce 356 (src line 2808)
 
 	raises_expr  goto 621
 
@@ -6864,13 +6864,13 @@ state 568
 	factory_param_dclPlus:  factory_param_dclPlus.',' factory_param_dcl 
 
 	','  shift 624
-	.  reduce 360 (src line 2826)
+	.  reduce 360 (src line 2827)
 
 
 state 569
 	factory_param_dclPlus:  factory_param_dcl.    (361)
 
-	.  reduce 361 (src line 2832)
+	.  reduce 361 (src line 2833)
 
 
 state 570
@@ -6940,7 +6940,7 @@ state 571
 	finder_dcl:  RWfinder identifier '(' ')'.raises_expr 
 
 	RWraises  shift 622
-	.  reduce 369 (src line 2877)
+	.  reduce 369 (src line 2878)
 
 	raises_expr  goto 626
 
@@ -6957,13 +6957,13 @@ state 573
 	init_param_dclPlus:  init_param_dclPlus.',' init_param_dcl 
 
 	','  shift 628
-	.  reduce 283 (src line 2414)
+	.  reduce 283 (src line 2415)
 
 
 state 574
 	init_param_dclPlus:  init_param_dcl.    (284)
 
-	.  reduce 284 (src line 2420)
+	.  reduce 284 (src line 2421)
 
 
 state 575
@@ -7033,7 +7033,7 @@ state 576
 	op_dcl:  op_type_spec identifier '(' ')'.raises_expr 
 
 	RWraises  shift 622
-	.  reduce 224 (src line 1971)
+	.  reduce 224 (src line 1972)
 
 	raises_expr  goto 630
 
@@ -7050,13 +7050,13 @@ state 578
 	param_dclPlus:  param_dclPlus.',' param_dcl 
 
 	','  shift 632
-	.  reduce 230 (src line 2028)
+	.  reduce 230 (src line 2029)
 
 
 state 579
 	param_dclPlus:  param_dcl.    (231)
 
-	.  reduce 231 (src line 2034)
+	.  reduce 231 (src line 2035)
 
 
 state 580
@@ -7124,19 +7124,19 @@ state 580
 state 581
 	param_attribute:  RWin.    (234)
 
-	.  reduce 234 (src line 2056)
+	.  reduce 234 (src line 2057)
 
 
 state 582
 	param_attribute:  RWout.    (235)
 
-	.  reduce 235 (src line 2062)
+	.  reduce 235 (src line 2063)
 
 
 state 583
 	param_attribute:  RWinout.    (236)
 
-	.  reduce 236 (src line 2067)
+	.  reduce 236 (src line 2068)
 
 
 584: shift/reduce conflict (shift 638(0), red'n 295(0)) on RWin
@@ -7145,7 +7145,7 @@ state 584
 	in_parameter_dclsStar: .    (295)
 
 	RWin  shift 638
-	.  reduce 295 (src line 2482)
+	.  reduce 295 (src line 2483)
 
 	in_parameter_dclsStar  goto 634
 	in_parameter_dcls  goto 635
@@ -7155,7 +7155,7 @@ state 584
 state 585
 	readonly_attr_spec:  RWreadonly RWattribute type_spec readonly_attr_declarator.    (240)
 
-	.  reduce 240 (src line 2091)
+	.  reduce 240 (src line 2092)
 
 
 state 586
@@ -7163,7 +7163,7 @@ state 586
 	readonly_attr_declarator:  simple_declarator.raises_expr 
 
 	RWraises  shift 622
-	.  reduce 176 (src line 1561)
+	.  reduce 176 (src line 1562)
 
 	raises_expr  goto 639
 
@@ -7172,13 +7172,13 @@ state 587
 	readonly_attr_declarator:  simple_declaratorPlus.    (242)
 
 	','  shift 593
-	.  reduce 242 (src line 2114)
+	.  reduce 242 (src line 2115)
 
 
 state 588
 	attr_declarator:  simple_declarator attr_raises_expr.    (244)
 
-	.  reduce 244 (src line 2137)
+	.  reduce 244 (src line 2138)
 
 
 state 589
@@ -7186,14 +7186,14 @@ state 589
 	attr_raises_expr:  get_excep_expr.    (247)
 
 	RWsetraises  shift 592
-	.  reduce 247 (src line 2164)
+	.  reduce 247 (src line 2165)
 
 	set_excep_expr  goto 640
 
 state 590
 	attr_raises_expr:  set_excep_expr.    (248)
 
-	.  reduce 248 (src line 2168)
+	.  reduce 248 (src line 2169)
 
 
 state 591
@@ -7223,7 +7223,7 @@ state 593
 state 594
 	fixed_array_size:  '[' positive_int_const ']'.    (174)
 
-	.  reduce 174 (src line 1546)
+	.  reduce 174 (src line 1547)
 
 
 state 595
@@ -7252,13 +7252,13 @@ state 597
 state 598
 	interface_namePlus:  interface_namePlus ',' interface_name.    (206)
 
-	.  reduce 206 (src line 1861)
+	.  reduce 206 (src line 1862)
 
 
 state 599
 	value_inheritance_spec:  ':' value_name RWsupports interface_name.    (264)
 
-	.  reduce 264 (src line 2294)
+	.  reduce 264 (src line 2295)
 
 
 state 600
@@ -7266,13 +7266,13 @@ state 600
 	value_inheritance_spec:  ':' value_namePlus RWsupports interface_namePlus.    (266)
 
 	','  shift 504
-	.  reduce 266 (src line 2314)
+	.  reduce 266 (src line 2315)
 
 
 state 601
 	value_namePlus:  value_namePlus ',' value_name.    (270)
 
-	.  reduce 270 (src line 2352)
+	.  reduce 270 (src line 2353)
 
 
 state 602
@@ -7296,13 +7296,13 @@ state 603
 state 604
 	value_abs_def:  RWabstract RWvaluetype identifier '{' exportStar '}'.    (310)
 
-	.  reduce 310 (src line 2569)
+	.  reduce 310 (src line 2570)
 
 
 state 605
 	event_abs_def:  RWabstract RWeventtype identifier '{' exportStar '}'.    (379)
 
-	.  reduce 379 (src line 2922)
+	.  reduce 379 (src line 2923)
 
 
 state 606
@@ -7315,7 +7315,7 @@ state 606
 state 607
 	uses_dcl:  RWuses RWmultiple interface_type identifier.    (336)
 
-	.  reduce 336 (src line 2712)
+	.  reduce 336 (src line 2713)
 
 
 state 608
@@ -7323,7 +7323,7 @@ state 608
 	scoped_name:  scoped_name.ScopeOp identifier 
 
 	ScopeOp  shift 205
-	.  reduce 24 (src line 454)
+	.  reduce 24 (src line 455)
 
 
 state 609
@@ -7331,13 +7331,13 @@ state 609
 	primary_key_spec:  RWprimarykey scoped_name.    (368)
 
 	ScopeOp  shift 205
-	.  reduce 368 (src line 2871)
+	.  reduce 368 (src line 2872)
 
 
 state 610
 	home_header:  RWhome identifier home_inheritance_spec RWmanages scoped_name primary_key_spec.    (345)
 
-	.  reduce 345 (src line 2753)
+	.  reduce 345 (src line 2754)
 
 
 state 611
@@ -7347,20 +7347,20 @@ state 611
 
 	ScopeOp  shift 205
 	RWprimarykey  shift 524
-	.  reduce 346 (src line 2757)
+	.  reduce 346 (src line 2758)
 
 	primary_key_spec  goto 652
 
 state 612
 	home_header:  RWhome identifier supported_interface_spec RWmanages scoped_name primary_key_spec.    (343)
 
-	.  reduce 343 (src line 2745)
+	.  reduce 343 (src line 2746)
 
 
 state 613
 	enumerators:  enumerators ',' enumerator.    (169)
 
-	.  reduce 169 (src line 1504)
+	.  reduce 169 (src line 1505)
 
 
 state 614
@@ -7394,7 +7394,7 @@ state 617
 state 618
 	declaratorPlus:  declaratorPlus ',' declarator.    (190)
 
-	.  reduce 190 (src line 1671)
+	.  reduce 190 (src line 1672)
 
 
 state 619
@@ -7407,13 +7407,13 @@ state 619
 state 620
 	context_expr:  RWcontext '(' string_literalPlus ')'.    (306)
 
-	.  reduce 306 (src line 2534)
+	.  reduce 306 (src line 2535)
 
 
 state 621
 	factory_dcl:  RWfactory identifier '(' ')' raises_expr.    (357)
 
-	.  reduce 357 (src line 2812)
+	.  reduce 357 (src line 2813)
 
 
 state 622
@@ -7428,7 +7428,7 @@ state 623
 	factory_dcl:  RWfactory identifier '(' factory_param_dcls ')'.raises_expr 
 
 	RWraises  shift 622
-	.  reduce 358 (src line 2816)
+	.  reduce 358 (src line 2817)
 
 	raises_expr  goto 659
 
@@ -7451,7 +7451,7 @@ state 625
 state 626
 	finder_dcl:  RWfinder identifier '(' ')' raises_expr.    (370)
 
-	.  reduce 370 (src line 2882)
+	.  reduce 370 (src line 2883)
 
 
 state 627
@@ -7459,7 +7459,7 @@ state 627
 	finder_dcl:  RWfinder identifier '(' init_param_dcls ')'.raises_expr 
 
 	RWraises  shift 622
-	.  reduce 371 (src line 2886)
+	.  reduce 371 (src line 2887)
 
 	raises_expr  goto 662
 
@@ -7482,7 +7482,7 @@ state 629
 state 630
 	op_dcl:  op_type_spec identifier '(' ')' raises_expr.    (225)
 
-	.  reduce 225 (src line 1982)
+	.  reduce 225 (src line 1983)
 
 
 state 631
@@ -7490,7 +7490,7 @@ state 631
 	op_dcl:  op_type_spec identifier '(' parameter_dcls ')'.raises_expr 
 
 	RWraises  shift 622
-	.  reduce 226 (src line 1992)
+	.  reduce 226 (src line 1993)
 
 	raises_expr  goto 665
 
@@ -7528,7 +7528,7 @@ state 634
 state 635
 	in_parameter_dclsStar:  in_parameter_dcls.    (296)
 
-	.  reduce 296 (src line 2486)
+	.  reduce 296 (src line 2487)
 
 
 state 636
@@ -7536,13 +7536,13 @@ state 636
 	in_param_dclPlus:  in_param_dclPlus.',' in_param_dcl 
 
 	','  shift 670
-	.  reduce 298 (src line 2494)
+	.  reduce 298 (src line 2495)
 
 
 state 637
 	in_param_dclPlus:  in_param_dcl.    (299)
 
-	.  reduce 299 (src line 2500)
+	.  reduce 299 (src line 2501)
 
 
 state 638
@@ -7610,19 +7610,19 @@ state 638
 state 639
 	readonly_attr_declarator:  simple_declarator raises_expr.    (241)
 
-	.  reduce 241 (src line 2103)
+	.  reduce 241 (src line 2104)
 
 
 state 640
 	attr_raises_expr:  get_excep_expr set_excep_expr.    (246)
 
-	.  reduce 246 (src line 2159)
+	.  reduce 246 (src line 2160)
 
 
 state 641
 	get_excep_expr:  RWgetraises exception_list.    (249)
 
-	.  reduce 249 (src line 2173)
+	.  reduce 249 (src line 2174)
 
 
 state 642
@@ -7638,25 +7638,25 @@ state 642
 state 643
 	set_excep_expr:  RWsetraises exception_list.    (250)
 
-	.  reduce 250 (src line 2179)
+	.  reduce 250 (src line 2180)
 
 
 state 644
 	simple_declaratorPlus:  simple_declaratorPlus ',' simple_declarator.    (177)
 
-	.  reduce 177 (src line 1566)
+	.  reduce 177 (src line 1567)
 
 
 state 645
 	sequence_type:  RWsequence '<' type_spec ',' positive_int_const '>'.    (125)
 
-	.  reduce 125 (src line 1228)
+	.  reduce 125 (src line 1229)
 
 
 state 646
 	fixed_pt_type:  RWfixed '<' positive_int_const ',' positive_int_const '>'.    (131)
 
-	.  reduce 131 (src line 1310)
+	.  reduce 131 (src line 1311)
 
 
 state 647
@@ -7697,7 +7697,7 @@ state 647
 state 648
 	map_type:  RWmap '<' type_spec ',' type_spec '>'.    (436)
 
-	.  reduce 436 (src line 3052)
+	.  reduce 436 (src line 3053)
 
 
 state 649
@@ -7705,25 +7705,25 @@ state 649
 	value_inheritance_spec:  ':' RWtruncatable value_namePlus RWsupports interface_namePlus.    (268)
 
 	','  shift 504
-	.  reduce 268 (src line 2334)
+	.  reduce 268 (src line 2335)
 
 
 state 650
 	value_abs_def:  RWabstract RWvaluetype identifier value_inheritance_spec '{' exportStar '}'.    (309)
 
-	.  reduce 309 (src line 2558)
+	.  reduce 309 (src line 2559)
 
 
 state 651
 	event_abs_def:  RWabstract RWeventtype identifier value_inheritance_spec '{' exportStar '}'.    (380)
 
-	.  reduce 380 (src line 2927)
+	.  reduce 380 (src line 2928)
 
 
 state 652
 	home_header:  RWhome identifier home_inheritance_spec supported_interface_spec RWmanages scoped_name primary_key_spec.    (347)
 
-	.  reduce 347 (src line 2761)
+	.  reduce 347 (src line 2762)
 
 
 state 653
@@ -7736,14 +7736,14 @@ state 653
 state 654
 	struct_def:  RWstruct identifier ':' scoped_name '{' memberStar '}'.    (141)
 
-	.  reduce 141 (src line 1380)
+	.  reduce 141 (src line 1381)
 
 
 state 655
 	union_def:  RWunion identifier RWswitch '(' switch_type_spec ')' '{'.switch_body '}' 
 	case_labelPlus: .    (162)
 
-	.  reduce 162 (src line 1472)
+	.  reduce 162 (src line 1473)
 
 	switch_body  goto 675
 	casePlus  goto 676
@@ -7753,13 +7753,13 @@ state 655
 state 656
 	template_module_dcl:  RWmodule identifier '<' formal_parameters '>' '{' tpl_definitionPlus '}'.    (406)
 
-	.  reduce 406 (src line 3020)
+	.  reduce 406 (src line 3021)
 
 
 state 657
 	string_literalPlus:  string_literalPlus ',' string_literal.    (305)
 
-	.  reduce 305 (src line 2530)
+	.  reduce 305 (src line 2531)
 
 
 state 658
@@ -7775,67 +7775,67 @@ state 658
 state 659
 	factory_dcl:  RWfactory identifier '(' factory_param_dcls ')' raises_expr.    (359)
 
-	.  reduce 359 (src line 2820)
+	.  reduce 359 (src line 2821)
 
 
 state 660
 	factory_param_dclPlus:  factory_param_dclPlus ',' factory_param_dcl.    (362)
 
-	.  reduce 362 (src line 2837)
+	.  reduce 362 (src line 2838)
 
 
 state 661
 	factory_param_dcl:  RWin type_spec simple_declarator.    (363)
 
-	.  reduce 363 (src line 2841)
+	.  reduce 363 (src line 2842)
 
 
 state 662
 	finder_dcl:  RWfinder identifier '(' init_param_dcls ')' raises_expr.    (372)
 
-	.  reduce 372 (src line 2890)
+	.  reduce 372 (src line 2891)
 
 
 state 663
 	init_param_dclPlus:  init_param_dclPlus ',' init_param_dcl.    (285)
 
-	.  reduce 285 (src line 2425)
+	.  reduce 285 (src line 2426)
 
 
 state 664
 	init_param_dcl:  RWin type_spec simple_declarator.    (286)
 
-	.  reduce 286 (src line 2429)
+	.  reduce 286 (src line 2430)
 
 
 state 665
 	op_dcl:  op_type_spec identifier '(' parameter_dcls ')' raises_expr.    (227)
 
-	.  reduce 227 (src line 2002)
+	.  reduce 227 (src line 2003)
 
 
 state 666
 	param_dclPlus:  param_dclPlus ',' param_dcl.    (232)
 
-	.  reduce 232 (src line 2039)
+	.  reduce 232 (src line 2040)
 
 
 state 667
 	param_dcl:  param_attribute type_spec simple_declarator.    (233)
 
-	.  reduce 233 (src line 2044)
+	.  reduce 233 (src line 2045)
 
 
 state 668
 	op_oneway_dcl:  RWoneway RWvoid identifier '(' in_parameter_dclsStar ')'.    (294)
 
-	.  reduce 294 (src line 2480)
+	.  reduce 294 (src line 2481)
 
 
 state 669
 	in_parameter_dclsStar:  in_parameter_dclsStar in_parameter_dcls.    (297)
 
-	.  reduce 297 (src line 2490)
+	.  reduce 297 (src line 2491)
 
 
 state 670
@@ -7889,8 +7889,8 @@ state 676
 	casePlus:  casePlus.case 
 	case_labelPlus: .    (162)
 
-	'}'  reduce 158 (src line 1465)
-	.  reduce 162 (src line 1472)
+	'}'  reduce 158 (src line 1466)
+	.  reduce 162 (src line 1473)
 
 	case  goto 686
 	case_labelPlus  goto 678
@@ -7898,7 +7898,7 @@ state 676
 state 677
 	casePlus:  case.    (159)
 
-	.  reduce 159 (src line 1467)
+	.  reduce 159 (src line 1468)
 
 
 state 678
@@ -7976,25 +7976,25 @@ state 679
 state 680
 	in_param_dclPlus:  in_param_dclPlus ',' in_param_dcl.    (300)
 
-	.  reduce 300 (src line 2505)
+	.  reduce 300 (src line 2506)
 
 
 state 681
 	in_param_dcl:  RWin type_spec simple_declarator.    (301)
 
-	.  reduce 301 (src line 2509)
+	.  reduce 301 (src line 2510)
 
 
 state 682
 	exception_list:  '(' scoped_namePlus ')'.    (251)
 
-	.  reduce 251 (src line 2185)
+	.  reduce 251 (src line 2186)
 
 
 state 683
 	map_type:  RWmap '<' type_spec ',' type_spec ',' positive_int_const '>'.    (435)
 
-	.  reduce 435 (src line 3047)
+	.  reduce 435 (src line 3048)
 
 
 state 684
@@ -8009,13 +8009,13 @@ state 684
 state 685
 	union_def:  RWunion identifier RWswitch '(' switch_type_spec ')' '{' switch_body '}'.    (151)
 
-	.  reduce 151 (src line 1450)
+	.  reduce 151 (src line 1451)
 
 
 state 686
 	casePlus:  casePlus case.    (160)
 
-	.  reduce 160 (src line 1469)
+	.  reduce 160 (src line 1470)
 
 
 state 687
@@ -8038,7 +8038,7 @@ state 688
 state 689
 	raises_expr:  RWraises '(' scoped_namePlus ')'.    (237)
 
-	.  reduce 237 (src line 2073)
+	.  reduce 237 (src line 2074)
 
 
 state 690
@@ -8053,20 +8053,20 @@ state 690
 state 691
 	case:  case_labelPlus element_spec ';'.    (161)
 
-	.  reduce 161 (src line 1470)
+	.  reduce 161 (src line 1471)
 
 
 state 692
 	element_spec:  type_spec declarator.    (165)
 
-	.  reduce 165 (src line 1475)
+	.  reduce 165 (src line 1476)
 
 
 state 693
 	bitset_dcl:  RWbitset identifier '{' bitfieldStar '}' $$437 RWbitset identifier ':' scoped_name '{'.bitfieldStar '}' 
 	bitfieldStar: .    (440)
 
-	.  reduce 440 (src line 3069)
+	.  reduce 440 (src line 3070)
 
 	bitfieldStar  goto 694
 
@@ -8080,7 +8080,7 @@ state 694
 state 695
 	bitset_dcl:  RWbitset identifier '{' bitfieldStar '}' $$437 RWbitset identifier ':' scoped_name '{' bitfieldStar '}'.    (438)
 
-	.  reduce 438 (src line 3062)
+	.  reduce 438 (src line 3063)
 
 Rule not reduced: case_label:  RWcase const_expr ':' 
 Rule not reduced: case_label:  RWdefault ':' 
@@ -8134,7 +8134,7 @@ Rule not reduced: annotation_appl_paramPlus:  annotation_appl_param
 Rule not reduced: annotation_appl_paramPlus:  annotation_appl_paramPlus ',' annotation_appl_param 
 Rule not reduced: annotation_appl_param:  identifier '=' const_expr 
 
-121 terminals, 226 nonterminals
+122 terminals, 226 nonterminals
 473 grammar rules, 696/8000 states
 60 shift/reduce, 9 reduce/reduce conflicts reported
 275 working sets used
@@ -8143,6 +8143,6 @@ memory: parser 2264/120000
 1800 shift entries, 8 exceptions
 458 goto entries
 1289 entries saved by goto default
-Optimizer space used: output 1598/120000
-1598 table entries, 475 zero
-maximum spread: 120, maximum offset: 693
+Optimizer space used: output 1560/120000
+1560 table entries, 437 zero
+maximum spread: 121, maximum offset: 693

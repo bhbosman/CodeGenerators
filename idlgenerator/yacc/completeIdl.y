@@ -21,6 +21,7 @@ import "github.com/bhbosman/CodeGenerators/idlgenerator/scopedObjects"
 %token wide_character_literal
 %token wide_string_literal
 %token Hex_literal
+%token ErrorFileNotFound
 %token RWabstract
 %token RWany
 %token RWalias

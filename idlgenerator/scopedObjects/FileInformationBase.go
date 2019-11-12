@@ -15,7 +15,6 @@ type FileInformationBase struct {
 func (self *FileInformationBase) String() string {
 	_, fileName := path.Split(self.FileName)
 	return fmt.Sprintf("(%v: %v, %v)", fileName, self.Row, self.Col)
-
 }
 
 func NewFileInformationBase01(fileName string, row int, col int) FileInformationBase {

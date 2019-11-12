@@ -28,7 +28,7 @@ func main() {
 	outputType := flag.String("outType", "json", "outputType")
 	verbose := flag.Bool("verbose", false, "verbose")
 	packageName := flag.String("packageName", "default", "packageName")
-	defaultTypes := flag.Bool("defaultTypes", false, "InternalGenerate the built in types for the type in use")
+	defaultTypes := flag.Bool("defaultTypes", false, "internalGenerate the built in types for the type in use")
 	typesToUseAsString := flag.String("typesToUse", "IdlNative", `values "IdlNative" or "Mitch"`)
 	showHelp := flag.Bool("help", false, "Show this")
 

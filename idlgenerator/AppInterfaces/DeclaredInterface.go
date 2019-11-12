@@ -1,7 +1,7 @@
 package AppInterfaces
 
 import (
-	"github.com/bhbosman/CodeGenerators/idlgenerator/ScopingInterfaces"
+	si "github.com/bhbosman/CodeGenerators/idlgenerator/ScopingInterfaces"
 	"github.com/bhbosman/CodeGenerators/idlgenerator/yacc"
 	"io"
 )
@@ -32,7 +32,7 @@ type IProcessor interface {
 }
 
 type IScopeWalker interface {
-	Generate(scopingContext ScopingInterfaces.IScopingContext, indent int, declaredType ScopingInterfaces.ITypeSpec, fileName string) error
+	Scope(scopingContext si.IScopingContext, indent int, declaredType si.ITypeSpec, fileName string) error
 }
 
 type IIdlGeneratorFlags interface {
@@ -41,4 +41,10 @@ type IIdlGeneratorFlags interface {
 
 type ISetIdlGeneratorFlags interface {
 	SetFiles(files []string) error
+}
+
+
+type ICodeGenerator interface {
+	io.Closer
+	Generate(dcl si.ITypeSpec) error
 }

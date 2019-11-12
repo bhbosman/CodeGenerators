@@ -13,22 +13,23 @@ type IFileWriter interface {
 }
 
 type ScopeWalker struct {
-	Logger  IFileWriter
+	Logger IFileWriter
 }
 
 func NewScopeWalker(logger IFileWriter) *ScopeWalker {
 	return &ScopeWalker{
-		Logger:  logger,
+		Logger: logger,
 	}
 }
 
-func (self ScopeWalker) Generate(scopingContext si.IScopingContext, indent int, dcl si.ITypeSpec, fileName string) error {
+func (self ScopeWalker) Scope(scopingContext si.IScopingContext, indent int, dcl si.ITypeSpec, fileName string) error {
 	var err error
 	for typeSpec := dcl; typeSpec != nil; typeSpec, _ = typeSpec.GetNextTypeSpec() {
 		err = multierr.Append(err, self.InternalGenerate(scopingContext, 0, typeSpec))
 	}
 	return err
 }
+
 func (self ScopeWalker) InternalGenerate(scopingContext si.IScopingContext, indent int, dcl si.ITypeSpec) error {
 	switch dcl.GetKind() {
 
@@ -41,7 +42,7 @@ func (self ScopeWalker) InternalGenerate(scopingContext si.IScopingContext, inde
 	case si.ExceptionIdlType:
 		exceptionDecl, ok := dcl.(si.IIdlException)
 		if ok {
-			return self.ScopeExceptionDcl(indent+1, exceptionDecl)
+			return self.ScopeExceptionDcl(scopingContext, indent+1, exceptionDecl)
 		}
 
 	case si.ConstDclType:
@@ -92,6 +93,7 @@ func (self ScopeWalker) InternalGenerate(scopingContext si.IScopingContext, inde
 	}
 	return nil
 }
+
 func (self ScopeWalker) ScopeModuleDcl(scopingContext si.IScopingContext, indent int, dcl si.IIdlModuleDcl) error {
 	self.Logger.Println(fmt.Sprintf("(%d): %v", indent, dcl))
 	var err error
@@ -114,6 +116,7 @@ func (self ScopeWalker) ScopeModuleDcl(scopingContext si.IScopingContext, indent
 	return err
 
 }
+
 func (self ScopeWalker) ScopeStructDcl(scopingContext si.IScopingContext, indent int, dcl si.IStructType) error {
 	structScope := func(scopingContext si.IScopingContext, indent int, dcl si.IStructType) error {
 		var err error
@@ -173,6 +176,7 @@ func (self ScopeWalker) ScopeStructDcl(scopingContext si.IScopingContext, indent
 	}
 	return err
 }
+
 func (self ScopeWalker) ScopeEnumDcl(indent int, enumType si.IEnumType) error {
 	self.Logger.Println(fmt.Sprintf("(%d): %v", indent, enumType))
 	indent++
@@ -181,6 +185,7 @@ func (self ScopeWalker) ScopeEnumDcl(indent int, enumType si.IEnumType) error {
 	}
 	return nil
 }
+
 func (self ScopeWalker) buildDeclarationName(scope, name string) string {
 	if scope == "" {
 		return name
@@ -188,6 +193,7 @@ func (self ScopeWalker) buildDeclarationName(scope, name string) string {
 	return fmt.Sprintf("%v::%v", scope, name)
 
 }
+
 func (self ScopeWalker) ScopeInterfaceDcl(scopingContext si.IScopingContext, indent int, dcl si.IInterfaceDcl) error {
 	self.Logger.Println(fmt.Sprintf("(%d): %v", indent, dcl))
 
@@ -250,12 +256,13 @@ func (self ScopeWalker) ScopeInterfaceDcl(scopingContext si.IScopingContext, ind
 	}
 	return err
 }
-func (self ScopeWalker) findType(scopingContext si.IScopingContext, declaredType si.IDeclaredType) error {
-	b, _ := scopingContext.Find(declaredType.GetName())
+
+func (self ScopeWalker) findType(scopingContext si.IScopingContext, dcl si.IDeclaredType) error {
+	b, _ := scopingContext.Find(dcl.GetName())
 	if b {
 		return nil
 	}
-	return fmt.Errorf("type not found %v", declaredType.GetName())
+	return fmt.Errorf("type not found %v", dcl.GetName())
 }
 
 func (self ScopeWalker) ScopeOperationDcl(scopingContext si.IScopingContext, indent int, dcl si.IOperationDeclarations) error {
@@ -291,20 +298,20 @@ func (self ScopeWalker) ScopeConstantDcl(indent int, constDcl si.IIdlConstDcl) e
 	return nil
 }
 
-func (self ScopeWalker) ScopeExceptionDcl(indent int, exceptionType si.IIdlException) error {
-	self.Logger.Println(fmt.Sprintf("(%d): %v", indent, exceptionType))
+func (self ScopeWalker) ScopeExceptionDcl(scopingContext si.IScopingContext, indent int, dcl si.IIdlException) error {
+	self.Logger.Println(fmt.Sprintf("(%d): %v", indent, dcl))
 	indent++
-	members := exceptionType.GetMembers()
+	err := scopingContext.Add(dcl.GetName(), dcl)
+	members := dcl.Members()
 	if members != nil {
 		for _, memberInformation := range members.GetMembers() {
 			self.Logger.Println(fmt.Sprintf("(%d): %v", indent, memberInformation))
 		}
 	}
-	return nil
+	return err
 }
 
 func (self ScopeWalker) ScopeAttributeDcl(indent int, attributeDcl si.IAttributeDcl) error {
 	self.Logger.Println(fmt.Sprintf("(%d): %v", indent, attributeDcl))
 	return nil
 }
-

@@ -38,7 +38,6 @@ func NewCompleteIdlLexImpl(
 		logger:         logger,
 		lastError:      "",
 		typeSpec:       nil,
-		declaredTypes:  make(map[string]ScopingInterfaces.IIdlPlaceHolder),
 		nextNumber:     nextNumber,
 		scopingContext: scopingContext,
 	}, nil
@@ -173,6 +172,10 @@ func (self *CompleteIdlLexImpl) Lex(value *CompleteIdlSymType) int {
 	for {
 		token := self.tokenizer.yylex()
 		lexValue := self.tokenizer.yytext
+		if token == ErrorFileNotFound{
+			self.Error("File not found")
+			return token
+		}
 
 		switch token {
 		case RWvoid, RWin, RWinout, RWout, RWreadonly, RWattribute, RWsequence, RWsupports, RWinterface, RWconst, RWexception,

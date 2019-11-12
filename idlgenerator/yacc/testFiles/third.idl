@@ -1,0 +1,9 @@
+//#include<.//common//common.idl>
+
+
+
+exception E
+{
+    long abc;
+};
+
