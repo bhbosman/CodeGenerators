@@ -3,27 +3,31 @@ package fx
 import (
 	"bufio"
 	"fmt"
-	"github.com/bhbosman/CodeGenerators/idlgenerator/AppInterfaces"
+	ai "github.com/bhbosman/CodeGenerators/idlgenerator/AppInterfaces"
+	"github.com/bhbosman/CodeGenerators/idlgenerator/CodeGeneration"
 	"github.com/bhbosman/CodeGenerators/idlgenerator/ScopingInterfaces"
 	"github.com/bhbosman/CodeGenerators/idlgenerator/scoping"
 	"github.com/bhbosman/CodeGenerators/idlgenerator/yacc"
-
 	"go.uber.org/fx"
+	"go.uber.org/multierr"
 	"log"
 )
 
 type processor struct {
-	readerClosers            AppInterfaces.IIoReaders
-	context                  AppInterfaces.IIdlGeneratorFlags
+	readerClosers            ai.IIoReaders
+	context                  ai.IIdlGeneratorFlags
 	logger                   *log.Logger
-	definitionContextFactory AppInterfaces.IDefinitionContextFactory
+	definitionContextFactory ai.IDefinitionContextFactory
 	nextNumber               ScopingInterfaces.INextNumber
-	generateCode             AppInterfaces.IScopeWalker
+	scopeWalker              ai.IScopeWalker
+	codeGenerator            ai.ICodeGenerator
 }
 
 func (self *processor) Process() error {
+	var err error
 	for _, fileInformation := range self.readerClosers.GetFileInformation() {
-		typeSpec, err := func() (ScopingInterfaces.ITypeSpec, error) {
+		var typeSpec ScopingInterfaces.ITypeSpec
+		typeSpec, err = func() (ScopingInterfaces.ITypeSpec, error) {
 			self.logger.Printf("Processing %v\n", fileInformation.GetArg())
 
 			lex, err := yacc.NewCompleteIdlLexImpl(
@@ -45,11 +49,17 @@ func (self *processor) Process() error {
 		if err != nil {
 			continue
 		}
-		err = self.generateCode.Generate(
-			scoping.NewScopingContext(scoping.NewDefaultTypeService(), nil),
-			0,
-			typeSpec,
-			fileInformation.GetFileName())
+		err = multierr.Append(
+			err,
+			self.scopeWalker.Scope(
+				scoping.NewScopingContext(scoping.NewDefaultTypeService(), nil),
+				0,
+				typeSpec,
+				fileInformation.GetFileName()))
+
+		err = multierr.Append(
+			err,
+			self.codeGenerator.Generate(typeSpec))
 		if err != nil {
 			continue
 		}
@@ -60,22 +70,31 @@ func (self *processor) Process() error {
 func AppProvideProcessor() fx.Option {
 	return fx.Provide(
 		func(
-			context AppInterfaces.IIdlGeneratorFlags,
+			context ai.IIdlGeneratorFlags,
 			logger *log.Logger,
-			ioReaders AppInterfaces.IIoReaders,
-			definitionContextFactory AppInterfaces.IDefinitionContextFactory,
+			ioReaders ai.IIoReaders,
+			definitionContextFactory ai.IDefinitionContextFactory,
 			nextNumber ScopingInterfaces.INextNumber,
-			generateCode AppInterfaces.IScopeWalker) (AppInterfaces.IProcessor, error) {
+			scopeWalker ai.IScopeWalker,
+			codeGenerator ai.ICodeGenerator) (ai.IProcessor, error) {
 
-			processor := &processor{
+			var processor = &processor{
 				readerClosers:            ioReaders,
 				context:                  context,
 				logger:                   logger,
 				definitionContextFactory: definitionContextFactory,
 				nextNumber:               nextNumber,
-				generateCode:             generateCode,
+				scopeWalker:              scopeWalker,
+				codeGenerator:            codeGenerator,
 			}
 			return processor, nil
+		})
+}
+
+func AppProvideCodeGenerator() fx.Option {
+	return fx.Provide(
+		func() (ai.ICodeGenerator, error) {
+			return CodeGeneration.NewGenerateCodeGolang(), nil
 		})
 }
 

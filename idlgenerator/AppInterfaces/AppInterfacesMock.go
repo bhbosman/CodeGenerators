@@ -477,22 +477,22 @@ func (m *MockIGenerateCode) EXPECT() *MockIGenerateCodeMockRecorder {
 	return m.recorder
 }
 
-// InternalGenerate mocks base method
+// internalGenerate mocks base method
 func (m *MockIGenerateCode) Generate(indent int, definition ScopingInterfaces.ITypeSpec, fileName string) error {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, m.instance, "InternalGenerate", indent, definition, fileName)
+	ret := m.ctrl.Call(m, m.instance, "internalGenerate", indent, definition, fileName)
 	ret0, _ := ret[0].(error)
 	return ret0
 }
 
-// InternalGenerate indicates an expected call of InternalGenerate
+// internalGenerate indicates an expected call of internalGenerate
 func (mr *MockIGenerateCodeMockRecorder) Generate(indent, definition, fileName interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(
 		gomock.ReceiverInfo{
 			InstanceReceiver: mr.instance,
 			MockReceiver:     mr.mock,
-			Method:           "InternalGenerate",
+			Method:           "internalGenerate",
 			MethodType:       reflect.TypeOf((*MockIGenerateCode)(nil).Generate),
 		}, indent, definition, fileName)
 }

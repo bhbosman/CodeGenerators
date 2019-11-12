@@ -16,7 +16,6 @@ func (self *InterfaceDcl) SetBody(body ScopingInterfaces.ITypeSpec) {
 }
 
 func NewInterfaceDcl(fileInformation ScopingInterfaces.IFileInformation, identifier string, forward, abstract, local bool, body ScopingInterfaces.ITypeSpec) (*InterfaceDcl, error) {
-
 	return &InterfaceDcl{
 		TypeSpecBase: NewTypeSpecBase(
 			fileInformation,
@@ -43,8 +42,7 @@ func (self *InterfaceDcl) Local() bool {
 func (self *InterfaceDcl) Iterate(cb func(typeSpec ScopingInterfaces.ITypeSpec) error) error {
 	var err error
 	if cb != nil && self.body != nil {
-		dd := self.BodyArray()
-		for _, d := range dd {
+		for d := self.body; d != nil; d, _ = d.GetNextTypeSpec() {
 			typeSpec, ok := d.(ScopingInterfaces.ITypeSpec)
 			if ok {
 				err = multierr.Append(err, cb(typeSpec))

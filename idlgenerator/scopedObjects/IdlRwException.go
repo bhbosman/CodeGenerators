@@ -10,6 +10,10 @@ type IdlRwException struct {
 	members ScopingInterfaces.IStructMember
 }
 
+func (self *IdlRwException) Members() ScopingInterfaces.IStructMember {
+	return self.members
+}
+
 func NewIdlRwException(fileInformation ScopingInterfaces.IFileInformation, identifier string, members ScopingInterfaces.IStructMember) (*IdlRwException, error) {
 	return &IdlRwException{
 		TypeSpecBase: NewTypeSpecBase(
@@ -23,10 +27,6 @@ func NewIdlRwException(fileInformation ScopingInterfaces.IFileInformation, ident
 			false),
 		members: members,
 	}, nil
-}
-
-func (self *IdlRwException) GetMembers() ScopingInterfaces.IStructMember {
-	return self.members
 }
 
 func (self *IdlRwException) String() string {

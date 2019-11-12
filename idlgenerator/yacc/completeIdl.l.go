@@ -4,7 +4,6 @@ package yacc
 import (
 	"bufio"
 	"bytes"
-	"fmt"
 	"io"
 	"os"
 	"regexp"
@@ -75,7 +74,6 @@ type Tokenizer struct {
 }
 
 func NewTokenizer(fileName string, yyin io.Reader, ctx interface{}) *Tokenizer {
-
 	return &Tokenizer{
 		yyout:          os.Stdout,
 		userContext:    ctx,
@@ -396,23 +394,27 @@ var yyrules []yyrule = []yyrule{{
 			for {
 				b := byte(self.input())
 				if b == '\n' {
+					self.currentStream.row++
 					break
 				}
 				_ = dd.WriteByte(b)
 			}
 			s := dd.String()
-			fmt.Println(s)
 			fileName := stripToFileName(s)
 			dir, _ := path.Split(self.currentStream.fileName)
 			newFileName := path.Join(dir, fileName)
 			file, e := os.Open(newFileName)
 			if e != nil {
-				panic(fmt.Sprintf("error opening %v. error: %v", newFileName, e.Error()))
+				self.currentStream.row--
+				return yyactionreturn{
+					userReturn: ErrorFileNotFound,
+					returnType: yyRT_USER_RETURN,
+				}
 			}
 			defer func() {
 				_ = file.Close()
 			}()
-			stream := NewCurrentStream(fileName, file)
+			stream := NewCurrentStream(newFileName, file)
 			self.filePosCounter()
 			self.PushStream(stream)
 		}

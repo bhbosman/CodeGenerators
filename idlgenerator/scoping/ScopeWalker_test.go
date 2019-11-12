@@ -25,27 +25,23 @@ func TestGenerateCodeGolang_Generate(t *testing.T) {
 
 	t.Run("Interface with return value operation with params", func(t *testing.T) {
 		stream := fmt.Sprintf(`
-			module A
+module ffff{
+			interface A
 			{
-				struct A
-				{
-					int8 adsada,aadasdas,adsadasa,a;
+				struct AAA1
+				{	
+long a,v,c,c,c;
+long a,v,c,c,c;
 				};
-				struct B
+				struct AAA2
 				{
 				};
-				
-				interface IABC
+				struct AAA3
 				{
-					B aa();
-					A aa();
 				};
-			};
-			struct A
-			{
-				A::A a;
-			};
 
+			};
+};
 		`)
 		controller := gomock.NewController(t)
 		defer controller.Finish()
@@ -65,7 +61,7 @@ func TestGenerateCodeGolang_Generate(t *testing.T) {
 		dd := NewScopeWalker(log.New(os.Stdout, "", 0))
 
 		newScopingContext := NewScopingContext(nil, scopingContext)
-		err = dd.Generate(newScopingContext, 0, interfaceDcl, "")
+		err = dd.Scope(newScopingContext, 0, interfaceDcl, "")
 
 		_ = scopingContext.Iterate(func(key string, value ScopingInterfaces.IDeclaredType) error {
 			if !value.IsPrimitive() {
@@ -73,7 +69,7 @@ func TestGenerateCodeGolang_Generate(t *testing.T) {
 			}
 			return nil
 		})
-		generateCodeGolang := CodeGeneration.NewGenerateCodeGolang(log.New(os.Stdout, "", 0))
+		generateCodeGolang := CodeGeneration.NewGenerateCodeGolang()
 		_ = generateCodeGolang.Generate(interfaceDcl)
 
 		assert.NoError(t, err)

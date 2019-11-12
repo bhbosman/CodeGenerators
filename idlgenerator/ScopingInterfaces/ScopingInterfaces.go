@@ -10,7 +10,7 @@ type IScopingContext interface {
 	AddUnresolved(name string, information IFileInformation) error
 	FindTypeSpec(fileInformation IFileInformation, s string) (IDeclaredType, error)
 	Previous() IScopingContext
-	IterateUnresolved(func(name string, information []IFileInformation) error) error
+	//IterateUnresolved(func(name string, information []IFileInformation) error) error
 }
 
 type IDefaultTypeService interface {

@@ -129,7 +129,7 @@ func TestInterfaceOperationsDcl(t *testing.T) {
 
 		//typeSpec, err := actual.GetSpec()
 		//golang := fx.GenerateCodeGolang{}
-		//golang.InternalGenerate(0, typeSpec, "")
+		//golang.internalGenerate(0, typeSpec, "")
 	})
 	t.Run("Interface with return value operation with params", func(t *testing.T) {
 		stream := fmt.Sprintf(`

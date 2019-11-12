@@ -79,9 +79,14 @@ type IIdlModuleDcl interface {
 	SetModuleExports(moduleExports ITypeSpec)
 }
 
-type IStructType interface {
+type IBaseStructType interface {
 	ITypeSpec
 	Members() IStructMember
+}
+
+type IStructType interface {
+	IBaseStructType
+
 	FindMemberType(memberIdentifier string) IDeclaredType
 }
 
@@ -95,13 +100,17 @@ type ILocalDeclaration interface {
 	Local() bool
 }
 
-type IInterfaceDcl interface {
+type IBaseInterface interface {
 	IParentModule
 	ILocalDeclaration
 	GetBody() ITypeSpec
 	SetBody(ITypeSpec)
 	BodyCount() int
 	BodyArray() []IIdlDefinition
+}
+
+type IInterfaceDcl interface {
+	IBaseInterface
 }
 
 type ITypeDcl interface {
@@ -329,8 +338,7 @@ type IInterfaceMember interface {
 }
 
 type IIdlException interface {
-	ITypeSpec
-	GetMembers() IStructMember
+	IBaseStructType
 }
 
 type ISequenceType interface {
@@ -345,6 +353,7 @@ type IParamAttribute interface {
 }
 
 type IAttributeDcl interface {
+	ITypeSpec
 	ReadOnly() bool
 	AttrDeclarator() IAttrDeclarator
 	DeclaredType() IDeclaredType

@@ -64,6 +64,10 @@ func (self *StructMember) Count() int {
 }
 
 func (self *StructMember) NextStructMember(next ScopingInterfaces.IStructMember) ScopingInterfaces.IStructMember {
-	self.next = next
+	if self.next == nil{
+		self.next = next
+		return self
+	}
+	self.next.NextStructMember(next)
 	return self
 }

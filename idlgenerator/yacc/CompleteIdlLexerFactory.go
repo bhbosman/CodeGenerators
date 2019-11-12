@@ -38,7 +38,11 @@ func (self *CompleteIdlLexerFactoryImpl) Create(fileName string, inputStream io.
 		self.scopingContext)
 }
 
-func (self *CompleteIdlLexerFactoryImpl) CreateWithDefinitionContext(fileName string, inputStream io.Reader, definitionContext IDefinitionContext) (*CompleteIdlLexImpl, error) {
+func (self *CompleteIdlLexerFactoryImpl) CreateWithDefinitionContext(
+	fileName string,
+	inputStream io.Reader,
+	definitionContext IDefinitionContext) (*CompleteIdlLexImpl, error) {
+
 	return NewCompleteIdlLexImpl(
 		fileName,
 		inputStream,

@@ -17,6 +17,7 @@ func main() {
 		fx.StopTimeout(fx.DefaultTimeout),
 		FxAppProvideFxAppOverrideLogger(applicationLogger),
 		FxAppProvideApplicationLogger(applicationLogger),
+		fx2.AppProvideCodeGenerator(),
 		fx2.AppProvideDefaultTypeService(),
 		fx2.AppProvideContext(),
 		fx2.AppNextNumber(),

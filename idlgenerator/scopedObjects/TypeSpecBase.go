@@ -9,7 +9,6 @@ type TypeSpecBase struct {
 	NextTypeSpec ScopingInterfaces.ITypeSpec
 	Identifier   string
 	Kind         ScopingInterfaces.IDlSupportedTypes
-	LinkedUsages []ScopingInterfaces.IFileInformation
 	isPrimitive  bool
 	forward      bool
 	abstract     bool
@@ -30,17 +29,10 @@ func NewTypeSpecBase(
 		NextTypeSpec:        nextTypeSpec,
 		Identifier:          identifier,
 		Kind:                kind,
-		LinkedUsages:        make([]ScopingInterfaces.IFileInformation, 0, 32),
 		isPrimitive:         isPrimitive,
 		forward:             forward,
 		abstract:            abstract,
 		local:               local,
-	}
-}
-
-func (self *TypeSpecBase) LinkArray(information []ScopingInterfaces.IFileInformation) {
-	for _, info := range information {
-		self.LinkedUsages = append(self.LinkedUsages, info)
 	}
 }
 
@@ -69,10 +61,9 @@ func (self *TypeSpecBase) GetName() string {
 	return self.Identifier
 }
 
-func (self *TypeSpecBase) SetName(name string)  {
+func (self *TypeSpecBase) SetName(name string) {
 	self.Identifier = name
 }
-
 
 func (self *TypeSpecBase) Forward() bool {
 	return self.forward
