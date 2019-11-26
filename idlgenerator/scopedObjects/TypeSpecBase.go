@@ -1,25 +1,26 @@
 package scopedObjects
 
 import (
-	"github.com/bhbosman/CodeGenerators/idlgenerator/ScopingInterfaces"
+	si "github.com/bhbosman/CodeGenerators/idlgenerator/ScopingInterfaces"
 )
 
 type TypeSpecBase struct {
 	FileInformationBase
-	NextTypeSpec ScopingInterfaces.ITypeSpec
+	NextTypeSpec si.ITypeSpec
 	Identifier   string
-	Kind         ScopingInterfaces.IDlSupportedTypes
+	Kind         si.IDlSupportedTypes
 	isPrimitive  bool
 	forward      bool
 	abstract     bool
 	local        bool
+	linkedItems  []si.IBaseDeclaredType
 }
 
 func NewTypeSpecBase(
-	fileInformation ScopingInterfaces.IFileInformation,
-	nextTypeSpec ScopingInterfaces.ITypeSpec,
+	fileInformation si.IFileInformation,
+	nextTypeSpec si.ITypeSpec,
 	identifier string,
-	kind ScopingInterfaces.IDlSupportedTypes,
+	kind si.IDlSupportedTypes,
 	isPrimitive bool,
 	forward bool,
 	abstract bool,
@@ -33,27 +34,40 @@ func NewTypeSpecBase(
 		forward:             forward,
 		abstract:            abstract,
 		local:               local,
+		linkedItems:         make([]si.IBaseDeclaredType, 0, 16),
 	}
 }
 
-func (self *TypeSpecBase) SetNextTypeSpec(next ScopingInterfaces.ITypeSpec) error {
+func (self *TypeSpecBase) Link(declaredType si.IBaseDeclaredType) error {
+	self.linkedItems = append(self.linkedItems, declaredType)
+	declaredType.SetName(self.Identifier)
+
+	return nil
+}
+
+func (self *TypeSpecBase) UsageCount() int {
+	return len(self.linkedItems)
+}
+
+func (self *TypeSpecBase) SetNextTypeSpec(next si.ITypeSpec) error {
 	return self.AssignNextTypeSpec(next)
 }
 
-func (self *TypeSpecBase) AssignNextTypeSpec(next ScopingInterfaces.ITypeSpec) error {
+func (self *TypeSpecBase) AssignNextTypeSpec(next si.ITypeSpec) error {
 	if self.NextTypeSpec == nil {
 		self.NextTypeSpec = next
 	} else {
 		return self.NextTypeSpec.SetNextTypeSpec(next)
 	}
+
 	return nil
 }
 
-func (self *TypeSpecBase) GetKind() ScopingInterfaces.IDlSupportedTypes {
+func (self *TypeSpecBase) GetKind() si.IDlSupportedTypes {
 	return self.Kind
 }
 
-func (self *TypeSpecBase) GetNextTypeSpec() (ScopingInterfaces.ITypeSpec, error) {
+func (self *TypeSpecBase) GetNextTypeSpec() (si.ITypeSpec, error) {
 	return self.NextTypeSpec, nil
 }
 
@@ -63,6 +77,9 @@ func (self *TypeSpecBase) GetName() string {
 
 func (self *TypeSpecBase) SetName(name string) {
 	self.Identifier = name
+	for _, declType := range self.linkedItems {
+		declType.SetName(self.Identifier)
+	}
 }
 
 func (self *TypeSpecBase) Forward() bool {

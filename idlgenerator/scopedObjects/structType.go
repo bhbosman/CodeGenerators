@@ -27,7 +27,7 @@ func NewStructType(fileInformation ScopingInterfaces.IFileInformation, identifie
 	}
 }
 
-func (self *StructType) FindMemberType(memberIdentifier string) ScopingInterfaces.IDeclaredType {
+func (self *StructType) FindMemberType(memberIdentifier string) ScopingInterfaces.IBaseDeclaredType {
 	if self.members == nil {
 		return nil
 	}

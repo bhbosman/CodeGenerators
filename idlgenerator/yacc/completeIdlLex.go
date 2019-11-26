@@ -16,12 +16,11 @@ type CompleteIdlLexImpl struct {
 	logger         *log.Logger
 	lastError      string
 	typeSpec       ScopingInterfaces.ITypeSpec
-	declaredTypes  map[string]ScopingInterfaces.IIdlPlaceHolder
 	nextNumber     ScopingInterfaces.INextNumber
 	scopingContext ScopingInterfaces.IScopingContext
 }
 
-func (self *CompleteIdlLexImpl) FindPrimitive(fileInformation ScopingInterfaces.IFileInformation, s string) (ScopingInterfaces.IDeclaredType, error) {
+func (self *CompleteIdlLexImpl) FindPrimitive(fileInformation ScopingInterfaces.IFileInformation, s string) (ScopingInterfaces.IBaseDeclaredType, error) {
 	return self.scopingContext.FindTypeSpec(fileInformation, s)
 }
 
@@ -43,7 +42,7 @@ func NewCompleteIdlLexImpl(
 	}, nil
 }
 
-func (self *CompleteIdlLexImpl) NewTypeDeclarator(simpleTypeSpec ScopingInterfaces.IDeclaredType, declarator ScopingInterfaces.IDeclarator) (ScopingInterfaces.ITypeDeclarator, error) {
+func (self *CompleteIdlLexImpl) NewTypeDeclarator(simpleTypeSpec ScopingInterfaces.IBaseDeclaredType, declarator ScopingInterfaces.IDeclarator) (ScopingInterfaces.ITypeDeclarator, error) {
 
 	return scopedObjects.NewTypeDeclarator(simpleTypeSpec, declarator)
 }
@@ -52,7 +51,7 @@ func (self *CompleteIdlLexImpl) NewIdlConstDcl(fileInformation ScopingInterfaces
 	return scopedObjects.NewIdlConstDcl(fileInformation, identifier, value), nil
 }
 
-func (self *CompleteIdlLexImpl) NewMember(typeSpec ScopingInterfaces.IDeclaredType, declarator ScopingInterfaces.IDeclarator) (ScopingInterfaces.IStructMember, error) {
+func (self *CompleteIdlLexImpl) NewMember(typeSpec ScopingInterfaces.IBaseDeclaredType, declarator ScopingInterfaces.IDeclarator) (ScopingInterfaces.IStructMember, error) {
 	return scopedObjects.NewStructMember(typeSpec, declarator)
 }
 
@@ -172,7 +171,7 @@ func (self *CompleteIdlLexImpl) Lex(value *CompleteIdlSymType) int {
 	for {
 		token := self.tokenizer.yylex()
 		lexValue := self.tokenizer.yytext
-		if token == ErrorFileNotFound{
+		if token == ErrorFileNotFound {
 			self.Error("File not found")
 			return token
 		}

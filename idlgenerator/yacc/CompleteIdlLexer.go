@@ -7,7 +7,7 @@ import "github.com/bhbosman/CodeGenerators/idlgenerator/ScopingInterfaces"
 type CompleteIdlLexer interface {
 	Lex(lval *CompleteIdlSymType) int
 	Error(s string)
-	FindPrimitive(fileInformation ScopingInterfaces.IFileInformation, s string) (ScopingInterfaces.IDeclaredType, error)
+	FindPrimitive(fileInformation ScopingInterfaces.IFileInformation, s string) (ScopingInterfaces.IBaseDeclaredType, error)
 	InfoAt(info string, params ...interface{})
 	LastError() string
 	MultiExpr(a int) (int, error)
@@ -27,9 +27,9 @@ type CompleteIdlLexer interface {
 	GetSpec() (ScopingInterfaces.ITypeSpec, error)
 	NewDeclarator(fileInformation ScopingInterfaces.IFileInformation, identifier string) (ScopingInterfaces.IDeclarator, error)
 	CreateInterfaceKind(fileInformation ScopingInterfaces.IFileInformation, local bool, abstract bool) (ScopingInterfaces.IInterfaceKind, error)
-	NewMember(typeSpec ScopingInterfaces.IDeclaredType, declarator ScopingInterfaces.IDeclarator) (ScopingInterfaces.IStructMember, error)
+	NewMember(typeSpec ScopingInterfaces.IBaseDeclaredType, declarator ScopingInterfaces.IDeclarator) (ScopingInterfaces.IStructMember, error)
 	NewIdlConstDcl(fileInformation ScopingInterfaces.IFileInformation, identifier string, value int) (ScopingInterfaces.IIdlConstDcl, error)
-	NewTypeDeclarator(simpleTypeSpec ScopingInterfaces.IDeclaredType, declarator ScopingInterfaces.IDeclarator) (ScopingInterfaces.ITypeDeclarator, error)
+	NewTypeDeclarator(simpleTypeSpec ScopingInterfaces.IBaseDeclaredType, declarator ScopingInterfaces.IDeclarator) (ScopingInterfaces.ITypeDeclarator, error)
 }
 
 type IDefinitionContext interface {

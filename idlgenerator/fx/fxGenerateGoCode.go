@@ -9,7 +9,7 @@ import (
 
 func AppProvideGenerateCodeGolang() fx.Option {
 	return fx.Provide(
-		func( logger *log.Logger) (AppInterfaces.IScopeWalker, error) {
+		func(logger *log.Logger) (AppInterfaces.IScopeWalker, error) {
 			generateCodeGolang := scoping.NewScopeWalker(logger)
 			return generateCodeGolang, nil
 		})

@@ -25,7 +25,9 @@ func NewScopeWalker(logger IFileWriter) *ScopeWalker {
 func (self ScopeWalker) Scope(scopingContext si.IScopingContext, indent int, dcl si.ITypeSpec, fileName string) error {
 	var err error
 	for typeSpec := dcl; typeSpec != nil; typeSpec, _ = typeSpec.GetNextTypeSpec() {
-		err = multierr.Append(err, self.InternalGenerate(scopingContext, 0, typeSpec))
+		err = multierr.Append(
+			err,
+			self.InternalGenerate(scopingContext, 0, typeSpec))
 	}
 	return err
 }
@@ -63,7 +65,7 @@ func (self ScopeWalker) InternalGenerate(scopingContext si.IScopingContext, inde
 	case si.RWEnumIdlType:
 		enumType, ok := dcl.(si.IEnumType)
 		if ok {
-			return self.ScopeEnumDcl(indent+1, enumType)
+			return self.ScopeEnumDcl(scopingContext, indent+1, enumType)
 		}
 
 	case si.InterfaceIdlType:
@@ -101,7 +103,7 @@ func (self ScopeWalker) ScopeModuleDcl(scopingContext si.IScopingContext, indent
 	newScopingContext := NewScopingContext(nil, scopingContext)
 	defer func() {
 		_ = newScopingContext.Iterate(
-			func(key string, value si.IDeclaredType) error {
+			func(key string, value si.IBaseDeclaredType) error {
 				scopeName := self.buildDeclarationName(dcl.GetName(), key)
 				value.SetName(scopeName)
 				return scopingContext.Add(scopeName, value)
@@ -126,9 +128,16 @@ func (self ScopeWalker) ScopeStructDcl(scopingContext si.IScopingContext, indent
 			if members != nil {
 				for _, memberInformation := range members.GetMembers() {
 					self.Logger.Println(fmt.Sprintf("(%d): %v", indent, memberInformation))
-					err = multierr.Append(
-						err,
-						self.findType(scopingContext, memberInformation.GetTypeSpec()))
+					memberType := memberInformation.GetTypeSpec()
+					if memberType.GetKind() == si.DeclareTypePlaceHolderType {
+						if found, foundDeclareType := scopingContext.Find(memberType.GetName()); found {
+							if declaredType, ok := foundDeclareType.(si.IDeclaredType); ok {
+								err = multierr.Append(
+									err,
+									declaredType.Link(memberType))
+							}
+						}
+					}
 				}
 			}
 		}
@@ -177,9 +186,11 @@ func (self ScopeWalker) ScopeStructDcl(scopingContext si.IScopingContext, indent
 	return err
 }
 
-func (self ScopeWalker) ScopeEnumDcl(indent int, enumType si.IEnumType) error {
+func (self ScopeWalker) ScopeEnumDcl(scopingContext si.IScopingContext, indent int, enumType si.IEnumType) error {
 	self.Logger.Println(fmt.Sprintf("(%d): %v", indent, enumType))
 	indent++
+
+	scopingContext.Add(enumType.GetName(), enumType)
 	for m := enumType.Enumerator(); m != nil; m = m.Next() {
 		self.Logger.Println(fmt.Sprintf("(%d): %v", indent, m))
 	}
@@ -203,7 +214,7 @@ func (self ScopeWalker) ScopeInterfaceDcl(scopingContext si.IScopingContext, ind
 			newScopingContext := NewScopingContext(nil, scopingContext)
 			defer func() {
 				_ = newScopingContext.Iterate(
-					func(key string, value si.IDeclaredType) error {
+					func(key string, value si.IBaseDeclaredType) error {
 						scopeName := self.buildDeclarationName(dcl.GetName(), key)
 						return scopingContext.Add(scopeName, value)
 					})
@@ -257,7 +268,7 @@ func (self ScopeWalker) ScopeInterfaceDcl(scopingContext si.IScopingContext, ind
 	return err
 }
 
-func (self ScopeWalker) findType(scopingContext si.IScopingContext, dcl si.IDeclaredType) error {
+func (self ScopeWalker) findType(scopingContext si.IScopingContext, dcl si.IBaseDeclaredType) error {
 	b, _ := scopingContext.Find(dcl.GetName())
 	if b {
 		return nil
@@ -306,6 +317,16 @@ func (self ScopeWalker) ScopeExceptionDcl(scopingContext si.IScopingContext, ind
 	if members != nil {
 		for _, memberInformation := range members.GetMembers() {
 			self.Logger.Println(fmt.Sprintf("(%d): %v", indent, memberInformation))
+			memberType := memberInformation.GetTypeSpec()
+			if memberType.GetKind() == si.DeclareTypePlaceHolderType {
+				if found, foundDeclareType := scopingContext.Find(memberType.GetName()); found {
+					if declaredType, ok := foundDeclareType.(si.IDeclaredType); ok {
+						err = multierr.Append(
+							err,
+							declaredType.Link(memberType))
+					}
+				}
+			}
 		}
 	}
 	return err

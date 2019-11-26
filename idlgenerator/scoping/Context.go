@@ -7,12 +7,12 @@ import (
 )
 
 type Context struct {
-	declaredTypes   map[string]ScopingInterfaces.IDeclaredType
+	declaredTypes   map[string]ScopingInterfaces.IBaseDeclaredType
 	unresolvedTypes map[string][]ScopingInterfaces.IFileInformation
 	prevContext     ScopingInterfaces.IScopingContext
 }
 
-func (self *Context) Replace(name string, structType ScopingInterfaces.IDeclaredType) error {
+func (self *Context) Replace(name string, structType ScopingInterfaces.IBaseDeclaredType) error {
 	_, _ = self.declaredTypes[name]
 	return nil
 }
@@ -32,7 +32,7 @@ func (self *Context) Previous() ScopingInterfaces.IScopingContext {
 	return self.prevContext
 }
 
-func (self *Context) FindTypeSpec(fileInformation ScopingInterfaces.IFileInformation, s string) (ScopingInterfaces.IDeclaredType, error) {
+func (self *Context) FindTypeSpec(fileInformation ScopingInterfaces.IFileInformation, s string) (ScopingInterfaces.IBaseDeclaredType, error) {
 	b, declaredType := self.Find(s)
 	if b {
 		return declaredType, nil
@@ -41,9 +41,9 @@ func (self *Context) FindTypeSpec(fileInformation ScopingInterfaces.IFileInforma
 }
 
 func NewScopingContext(defaultTypeService ScopingInterfaces.IDefaultTypeService, prevContext ScopingInterfaces.IScopingContext) *Context {
-	declaredTypes := make(map[string]ScopingInterfaces.IDeclaredType)
+	declaredTypes := make(map[string]ScopingInterfaces.IBaseDeclaredType)
 	if defaultTypeService != nil {
-		defaultTypeService.Iterate(func(key string, declaredType ScopingInterfaces.IDeclaredType) {
+		defaultTypeService.Iterate(func(key string, declaredType ScopingInterfaces.IBaseDeclaredType) {
 			declaredTypes[key] = declaredType
 		})
 	}
@@ -64,7 +64,7 @@ func (self *Context) AddUnresolved(name string, information ScopingInterfaces.IF
 	return nil
 }
 
-func (self *Context) Iterate(cb func(key string, value ScopingInterfaces.IDeclaredType) error) error {
+func (self *Context) Iterate(cb func(key string, value ScopingInterfaces.IBaseDeclaredType) error) error {
 	var err error
 	if cb != nil {
 		for key, value := range self.declaredTypes {
@@ -75,7 +75,7 @@ func (self *Context) Iterate(cb func(key string, value ScopingInterfaces.IDeclar
 	return err
 }
 
-func (self *Context) Find(name string) (bool, ScopingInterfaces.IDeclaredType) {
+func (self *Context) Find(name string) (bool, ScopingInterfaces.IBaseDeclaredType) {
 	result, ok := self.declaredTypes[name]
 	if !ok && self.prevContext != nil {
 		return self.prevContext.Find(name)
@@ -83,7 +83,7 @@ func (self *Context) Find(name string) (bool, ScopingInterfaces.IDeclaredType) {
 	return ok, result
 }
 
-func (self *Context) Add(name string, structType ScopingInterfaces.IDeclaredType) error {
+func (self *Context) Add(name string, structType ScopingInterfaces.IBaseDeclaredType) error {
 	_, ok := self.declaredTypes[name]
 	if ok {
 		return fmt.Errorf("%v already added", name)

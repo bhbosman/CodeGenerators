@@ -25,32 +25,29 @@ func TestGenerateCodeGolang_Generate(t *testing.T) {
 
 	t.Run("Interface with return value operation with params", func(t *testing.T) {
 		stream := fmt.Sprintf(`
-module ffff{
-			interface A
-			{
-				struct AAA1
-				{	
-long a,v,c,c,c;
-long a,v,c,c,c;
-				};
-				struct AAA2
+			module ffff{
+				enum A
 				{
+					a,b,c,e
 				};
-				struct AAA3
+				
+				interface IABC
 				{
+					struct DEF 
+					{
+						A AAAA;
+					};
 				};
-
 			};
-};
 		`)
 		controller := gomock.NewController(t)
 		defer controller.Finish()
 		reader := bufio.NewReader(strings.NewReader(stream))
 		actual, _ := factory.Create("(string test)", reader)
 
-		mock := yacc.NewMockCompleteIdlLexerInstanceWrapper(controller, actual)
-		result := yacc.CompleteIdlParse(mock)
-		if !assert.Equal(t, 0, result, mock.LastError()) {
+		//mock := yacc.NewMockCompleteIdlLexerInstanceWrapper(controller, actual)
+		result := yacc.CompleteIdlParse(actual)
+		if !assert.Equal(t, 0, result, actual.LastError()) {
 			return
 		}
 
@@ -63,7 +60,7 @@ long a,v,c,c,c;
 		newScopingContext := NewScopingContext(nil, scopingContext)
 		err = dd.Scope(newScopingContext, 0, interfaceDcl, "")
 
-		_ = scopingContext.Iterate(func(key string, value ScopingInterfaces.IDeclaredType) error {
+		_ = scopingContext.Iterate(func(key string, value ScopingInterfaces.IBaseDeclaredType) error {
 			if !value.IsPrimitive() {
 				fmt.Println(key)
 			}

@@ -7,11 +7,11 @@ import (
 
 type SequenceType struct {
 	TypeSpecBase
-	declaredType ScopingInterfaces.IDeclaredType
+	declaredType ScopingInterfaces.IBaseDeclaredType
 	count        int
 }
 
-func NewSequenceType(fileInformation ScopingInterfaces.IFileInformation, declaredType ScopingInterfaces.IDeclaredType, count int) (*SequenceType, error) {
+func NewSequenceType(fileInformation ScopingInterfaces.IFileInformation, declaredType ScopingInterfaces.IBaseDeclaredType, count int) (*SequenceType, error) {
 	identifier := fmt.Sprintf("sequence_%v_%v", declaredType.GetName(), count)
 	return &SequenceType{
 		TypeSpecBase: NewTypeSpecBase(
@@ -28,7 +28,7 @@ func NewSequenceType(fileInformation ScopingInterfaces.IFileInformation, declare
 	}, nil
 }
 
-func (self *SequenceType) TypeSpec() ScopingInterfaces.IDeclaredType {
+func (self *SequenceType) TypeSpec() ScopingInterfaces.IBaseDeclaredType {
 	return self.declaredType
 }
 

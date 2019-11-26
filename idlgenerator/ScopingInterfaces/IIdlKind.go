@@ -21,10 +21,20 @@ type IIdlDefinition interface {
 	IIdlKind
 }
 
-type IDeclaredType interface {
+type IBaseDeclaredType interface {
 	IIdlDefinition
 	IsDefined() bool
 	IsPrimitive() bool
+}
+
+type IDeclaredType interface {
+	IBaseDeclaredType
+	Link(declaredType IBaseDeclaredType) error
+	UsageCount() int
+}
+
+type IDeclaredTypePlaceHolder interface {
+	IBaseDeclaredType
 }
 
 type ITypeSpec interface {
@@ -49,14 +59,14 @@ type IDeclarator interface {
 
 type IStructMemberInformation interface {
 	GetId() string
-	GetTypeSpec() IDeclaredType
+	GetTypeSpec() IBaseDeclaredType
 }
 
 type IStructMember interface {
 	NextStructMember(next IStructMember) IStructMember
 	Count() int
 	GetMembers() []IStructMemberInformation
-	DeclaredType() IDeclaredType
+	DeclaredType() IBaseDeclaredType
 	GetDeclarator() IDeclarator
 	GetNext() IStructMember
 }
@@ -87,7 +97,7 @@ type IBaseStructType interface {
 type IStructType interface {
 	IBaseStructType
 
-	FindMemberType(memberIdentifier string) IDeclaredType
+	FindMemberType(memberIdentifier string) IBaseDeclaredType
 }
 
 type IInterfaceKind interface {
@@ -154,7 +164,7 @@ type ITypedefDcl interface {
 
 type ITypeDeclarator interface {
 	ITypedefDcl
-	TypeSpec() IDeclaredType
+	TypeSpec() IBaseDeclaredType
 	//Declarator() IDeclarator
 }
 
@@ -212,7 +222,7 @@ type IParameterDeclarations interface {
 	GetParamIn() bool
 	GetParamOut() bool
 	GetParamName() string
-	GetParamDeclarationType() IDeclaredType
+	GetParamDeclarationType() IBaseDeclaredType
 }
 
 type IPrimaryExpressionType int
@@ -239,12 +249,6 @@ type IIdlComparer interface {
 
 type IIdlCompareFactory interface {
 	Create() IIdlComparer
-}
-
-type IIdlPlaceHolder interface {
-	IdlName() string
-	IdlType() IIdlDefinition
-	DoCompare(x, iIdlDefinition IIdlDefinition) (IIdlDefinition, error)
 }
 
 type IEnumType interface {
@@ -342,7 +346,7 @@ type IIdlException interface {
 }
 
 type ISequenceType interface {
-	TypeSpec() IDeclaredType
+	TypeSpec() IBaseDeclaredType
 	Count() int
 }
 
@@ -356,7 +360,7 @@ type IAttributeDcl interface {
 	ITypeSpec
 	ReadOnly() bool
 	AttrDeclarator() IAttrDeclarator
-	DeclaredType() IDeclaredType
+	DeclaredType() IBaseDeclaredType
 }
 
 type INextNumber interface {
@@ -371,7 +375,7 @@ type IIdltemplate_module_dcl interface {
 
 type IOperationDeclarations interface {
 	ITypeSpec
-	GetOperationDeclaratorType() IDeclaredType
+	GetOperationDeclaratorType() IBaseDeclaredType
 	GetOperationName() string
 	GetParams() IParameterDeclarations
 	GetExceptionList() interface{}

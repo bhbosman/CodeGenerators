@@ -43,7 +43,6 @@ type ISetIdlGeneratorFlags interface {
 	SetFiles(files []string) error
 }
 
-
 type ICodeGenerator interface {
 	io.Closer
 	Generate(dcl si.ITypeSpec) error

@@ -47,7 +47,7 @@ type CompleteIdlSymType struct {
 	AttrDeclarator           ScopingInterfaces.IAttrDeclarator
 	ValueInheritanceSpec     ScopingInterfaces.IValueInheritanceSpec
 	IdlValueHeader           ScopingInterfaces.IIdlValueHeader
-	DeclaredType             ScopingInterfaces.IDeclaredType
+	DeclaredType             ScopingInterfaces.IBaseDeclaredType
 	ScopedName               ScopingInterfaces.IScopedName
 	ParamAttribute           ScopingInterfaces.IParamAttribute
 }

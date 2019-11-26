@@ -8,11 +8,11 @@ import (
 type AttributeDcl struct {
 	TypeSpecBase
 	attrDeclarator ScopingInterfaces.IAttrDeclarator
-	declaredType   ScopingInterfaces.IDeclaredType
+	declaredType   ScopingInterfaces.IBaseDeclaredType
 	readOnly       bool
 }
 
-func NewAttributeDcl(fileInformation ScopingInterfaces.IFileInformation, attrDeclarator ScopingInterfaces.IAttrDeclarator, declaredType ScopingInterfaces.IDeclaredType, readOnly bool) (*AttributeDcl, error) {
+func NewAttributeDcl(fileInformation ScopingInterfaces.IFileInformation, attrDeclarator ScopingInterfaces.IAttrDeclarator, declaredType ScopingInterfaces.IBaseDeclaredType, readOnly bool) (*AttributeDcl, error) {
 	return &AttributeDcl{
 		TypeSpecBase: NewTypeSpecBase(
 			fileInformation,
@@ -29,7 +29,7 @@ func NewAttributeDcl(fileInformation ScopingInterfaces.IFileInformation, attrDec
 	}, nil
 }
 
-func (self *AttributeDcl) DeclaredType() ScopingInterfaces.IDeclaredType {
+func (self *AttributeDcl) DeclaredType() ScopingInterfaces.IBaseDeclaredType {
 	return self.declaredType
 }
 

@@ -51,7 +51,6 @@ func (self *AttrDeclarator) GetName() string {
 	return strings.Join(self.Names(), ",")
 }
 
-
 func (self *AttrDeclarator) SetName(string) {
 	panic("implement me")
 }

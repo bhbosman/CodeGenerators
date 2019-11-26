@@ -7,6 +7,7 @@ type IDlSupportedTypes byte
 const (
 	Invalid IDlSupportedTypes = iota
 	Unknown
+	DeclareTypePlaceHolderType
 	TypeDeclaratorIdlType
 	Idlvalue_forward_dclType
 	TypePrefixDefinitionIdlType

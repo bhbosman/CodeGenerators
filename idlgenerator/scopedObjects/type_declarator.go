@@ -8,10 +8,10 @@ import (
 
 type TypeDeclarator struct {
 	TypeSpecBase
-	simpleTypeSpec ScopingInterfaces.IDeclaredType
+	simpleTypeSpec ScopingInterfaces.IBaseDeclaredType
 }
 
-func NewTypeDeclarator(simpleTypeSpec ScopingInterfaces.IDeclaredType, declarator ScopingInterfaces.IDeclarator) (*TypeDeclarator, error) {
+func NewTypeDeclarator(simpleTypeSpec ScopingInterfaces.IBaseDeclaredType, declarator ScopingInterfaces.IDeclarator) (*TypeDeclarator, error) {
 	sl := make([]string, 0, 0)
 	for decl := declarator; decl != nil; decl = decl.GetNext() {
 		sl = append(sl, decl.GetIdentifier())
@@ -31,7 +31,7 @@ func NewTypeDeclarator(simpleTypeSpec ScopingInterfaces.IDeclaredType, declarato
 	}, nil
 }
 
-func (self *TypeDeclarator) TypeSpec() ScopingInterfaces.IDeclaredType {
+func (self *TypeDeclarator) TypeSpec() ScopingInterfaces.IBaseDeclaredType {
 	return self.simpleTypeSpec
 }
 func (self *TypeDeclarator) String() string {
