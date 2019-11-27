@@ -11,16 +11,16 @@ type ParameterDeclarations struct {
 	paramIn                   bool
 	paramOut                  bool
 	paramName                 string
-	paramDeclarationType      si.IDeclaredType
+	paramDeclarationType      si.IBaseDeclaredType
 }
 
 func NewParameterDeclarations(
 	fileInformation si.IFileInformation,
 	paramIn, paramOut bool,
 	paramName string,
-	paramDeclarationType si.IDeclaredType) *ParameterDeclarations {
+	paramDeclarationType si.IBaseDeclaredType) *ParameterDeclarations {
 
-	if paramDeclarationType == nil{
+	if paramDeclarationType == nil {
 		fmt.Println("ddddddd")
 	}
 	return &ParameterDeclarations{
@@ -53,7 +53,7 @@ func (self *ParameterDeclarations) GetParamName() string {
 	return self.paramName
 }
 
-func (self *ParameterDeclarations) GetParamDeclarationType() si.IDeclaredType {
+func (self *ParameterDeclarations) GetParamDeclarationType() si.IBaseDeclaredType {
 	return self.paramDeclarationType
 }
 

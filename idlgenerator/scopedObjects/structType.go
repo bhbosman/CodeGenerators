@@ -22,12 +22,13 @@ func NewStructType(fileInformation ScopingInterfaces.IFileInformation, identifie
 			false,
 			forward,
 			false,
+			false,
 			false),
 		members: members,
 	}
 }
 
-func (self *StructType) FindMemberType(memberIdentifier string) ScopingInterfaces.IDeclaredType {
+func (self *StructType) FindMemberType(memberIdentifier string) ScopingInterfaces.IBaseDeclaredType {
 	if self.members == nil {
 		return nil
 	}
@@ -43,10 +44,6 @@ func (self *StructType) FindMemberType(memberIdentifier string) ScopingInterface
 
 func (self *StructType) Members() ScopingInterfaces.IStructMember {
 	return self.members
-}
-
-func (self *StructType) Create() ScopingInterfaces.IIdlComparer {
-	return &StructTypeComparer{}
 }
 
 func (self *StructType) String() string {

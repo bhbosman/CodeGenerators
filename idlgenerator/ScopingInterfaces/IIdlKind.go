@@ -21,22 +21,32 @@ type IIdlDefinition interface {
 	IIdlKind
 }
 
-type IDeclaredType interface {
+type IBaseDeclaredType interface {
 	IIdlDefinition
+}
+
+type IDeclaredTypePlaceHolder interface {
+	IBaseDeclaredType
+	AssignDeclaredTypeValues()
+}
+
+type IDeclaredType interface {
+	IBaseDeclaredType
+	Link(placeHolder IDeclaredTypePlaceHolder) error
+	GetLinkedItems() []IBaseDeclaredType
+	UsageCount() int
 	IsDefined() bool
 	IsPrimitive() bool
+	//SequenceRequired(b bool)
 }
 
 type ITypeSpec interface {
 	IDeclaredType
 	Forward() bool
 	Abstract() bool
+	Local() bool
 	SetNextTypeSpec(next ITypeSpec) error
 	GetNextTypeSpec() (ITypeSpec, error)
-}
-
-type IValueAbsoluteDefinition interface {
-	IParentModule
 }
 
 type IDeclarator interface {
@@ -49,14 +59,14 @@ type IDeclarator interface {
 
 type IStructMemberInformation interface {
 	GetId() string
-	GetTypeSpec() IDeclaredType
+	GetTypeSpec() IBaseDeclaredType
 }
 
 type IStructMember interface {
 	NextStructMember(next IStructMember) IStructMember
 	Count() int
 	GetMembers() []IStructMemberInformation
-	DeclaredType() IDeclaredType
+	DeclaredType() IBaseDeclaredType
 	GetDeclarator() IDeclarator
 	GetNext() IStructMember
 }
@@ -87,7 +97,7 @@ type IBaseStructType interface {
 type IStructType interface {
 	IBaseStructType
 
-	FindMemberType(memberIdentifier string) IDeclaredType
+	FindMemberType(memberIdentifier string) IBaseDeclaredType
 }
 
 type IInterfaceKind interface {
@@ -102,14 +112,16 @@ type ILocalDeclaration interface {
 
 type IBaseInterface interface {
 	IParentModule
-	ILocalDeclaration
 	GetBody() ITypeSpec
-	SetBody(ITypeSpec)
 	BodyCount() int
 	BodyArray() []IIdlDefinition
 }
 
 type IInterfaceDcl interface {
+	IBaseInterface
+}
+
+type IValueAbsoluteDefinition interface {
 	IBaseInterface
 }
 
@@ -154,7 +166,7 @@ type ITypedefDcl interface {
 
 type ITypeDeclarator interface {
 	ITypedefDcl
-	TypeSpec() IDeclaredType
+	TypeSpec() IBaseDeclaredType
 	//Declarator() IDeclarator
 }
 
@@ -212,7 +224,7 @@ type IParameterDeclarations interface {
 	GetParamIn() bool
 	GetParamOut() bool
 	GetParamName() string
-	GetParamDeclarationType() IDeclaredType
+	GetParamDeclarationType() IBaseDeclaredType
 }
 
 type IPrimaryExpressionType int
@@ -231,20 +243,6 @@ const (
 type IPrimaryExpression interface {
 	Type() IPrimaryExpressionType
 	Value() interface{}
-}
-
-type IIdlComparer interface {
-	Compare(x, y IIdlDefinition) (IIdlDefinition, error)
-}
-
-type IIdlCompareFactory interface {
-	Create() IIdlComparer
-}
-
-type IIdlPlaceHolder interface {
-	IdlName() string
-	IdlType() IIdlDefinition
-	DoCompare(x, iIdlDefinition IIdlDefinition) (IIdlDefinition, error)
 }
 
 type IEnumType interface {
@@ -342,7 +340,8 @@ type IIdlException interface {
 }
 
 type ISequenceType interface {
-	TypeSpec() IDeclaredType
+	ITypeSpec
+	TypeSpec() IBaseDeclaredType
 	Count() int
 }
 
@@ -356,7 +355,7 @@ type IAttributeDcl interface {
 	ITypeSpec
 	ReadOnly() bool
 	AttrDeclarator() IAttrDeclarator
-	DeclaredType() IDeclaredType
+	DeclaredType() IBaseDeclaredType
 }
 
 type INextNumber interface {
@@ -371,7 +370,7 @@ type IIdltemplate_module_dcl interface {
 
 type IOperationDeclarations interface {
 	ITypeSpec
-	GetOperationDeclaratorType() IDeclaredType
+	GetOperationDeclaratorType() IBaseDeclaredType
 	GetOperationName() string
 	GetParams() IParameterDeclarations
 	GetExceptionList() interface{}

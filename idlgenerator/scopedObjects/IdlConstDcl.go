@@ -20,6 +20,7 @@ func NewIdlConstDcl(fileInformation ScopingInterfaces.IFileInformation, identifi
 			false,
 			false,
 			false,
+			false,
 			false),
 		value: value,
 	}

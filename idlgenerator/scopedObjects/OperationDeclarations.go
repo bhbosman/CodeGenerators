@@ -7,7 +7,7 @@ import (
 
 type OperationDeclarations struct {
 	TypeSpecBase
-	declarator    ScopingInterfaces.IDeclaredType
+	declarator    ScopingInterfaces.IBaseDeclaredType
 	params        ScopingInterfaces.IParameterDeclarations
 	exceptionList interface{}
 }
@@ -15,7 +15,7 @@ type OperationDeclarations struct {
 func NewOperationDeclarations(
 	fileInformation ScopingInterfaces.IFileInformation,
 	operationName string,
-	declarator ScopingInterfaces.IDeclaredType,
+	declarator ScopingInterfaces.IBaseDeclaredType,
 	params ScopingInterfaces.IParameterDeclarations,
 	exceptionList interface{}) *OperationDeclarations {
 
@@ -28,6 +28,7 @@ func NewOperationDeclarations(
 			false,
 			false,
 			false,
+			false,
 			false),
 		declarator:    declarator,
 		params:        params,
@@ -35,7 +36,7 @@ func NewOperationDeclarations(
 	}
 }
 
-func (self *OperationDeclarations) GetOperationDeclaratorType() ScopingInterfaces.IDeclaredType {
+func (self *OperationDeclarations) GetOperationDeclaratorType() ScopingInterfaces.IBaseDeclaredType {
 	return self.declarator
 }
 

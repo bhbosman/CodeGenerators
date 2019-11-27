@@ -10,13 +10,19 @@ type WideStringType struct {
 }
 
 func NewWideStringType(fileInformation ScopingInterfaces.IFileInformation, n int) (ScopingInterfaces.ITypeSpec, error) {
-	id := fmt.Sprintf("string_")
+	id := func() string {
+		if n == 0 {
+			return fmt.Sprintf("string")
+		}
+		return fmt.Sprintf("string_%v", n)
+	}()
 	return &WideStringType{
 		TypeSpecBase: NewTypeSpecBase(
 			fileInformation,
 			nil,
 			id,
-			ScopingInterfaces.StringIdlType,
+			ScopingInterfaces.WideStringIdlType,
+			true,
 			false,
 			false,
 			false,

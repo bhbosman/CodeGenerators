@@ -89,10 +89,10 @@ func (mr *MockCompleteIdlLexerMockRecorder) Error(s interface{}) *gomock.Call {
 }
 
 // FindPrimitive mocks base method
-func (m *MockCompleteIdlLexer) FindPrimitive(fileInformation ScopingInterfaces.IFileInformation, s string) (ScopingInterfaces.IDeclaredType, error) {
+func (m *MockCompleteIdlLexer) FindPrimitive(fileInformation ScopingInterfaces.IFileInformation, s string) (ScopingInterfaces.IBaseDeclaredType, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, m.instance, "FindPrimitive", fileInformation, s)
-	ret0, _ := ret[0].(ScopingInterfaces.IDeclaredType)
+	ret0, _ := ret[0].(ScopingInterfaces.IBaseDeclaredType)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
@@ -510,7 +510,7 @@ func (mr *MockCompleteIdlLexerMockRecorder) CreateInterfaceKind(fileInformation,
 }
 
 // NewMember mocks base method
-func (m *MockCompleteIdlLexer) NewMember(typeSpec ScopingInterfaces.IDeclaredType, declarator ScopingInterfaces.IDeclarator) (ScopingInterfaces.IStructMember, error) {
+func (m *MockCompleteIdlLexer) NewMember(typeSpec ScopingInterfaces.IBaseDeclaredType, declarator ScopingInterfaces.IDeclarator) (ScopingInterfaces.IStructMember, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, m.instance, "NewMember", typeSpec, declarator)
 	ret0, _ := ret[0].(ScopingInterfaces.IStructMember)
@@ -552,7 +552,7 @@ func (mr *MockCompleteIdlLexerMockRecorder) NewIdlConstDcl(fileInformation, iden
 }
 
 // NewTypeDeclarator mocks base method
-func (m *MockCompleteIdlLexer) NewTypeDeclarator(simpleTypeSpec ScopingInterfaces.IDeclaredType, declarator ScopingInterfaces.IDeclarator) (ScopingInterfaces.ITypeDeclarator, error) {
+func (m *MockCompleteIdlLexer) NewTypeDeclarator(simpleTypeSpec ScopingInterfaces.IBaseDeclaredType, declarator ScopingInterfaces.IDeclarator) (ScopingInterfaces.ITypeDeclarator, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, m.instance, "NewTypeDeclarator", simpleTypeSpec, declarator)
 	ret0, _ := ret[0].(ScopingInterfaces.ITypeDeclarator)

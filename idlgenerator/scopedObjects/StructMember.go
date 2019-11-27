@@ -6,12 +6,12 @@ import (
 )
 
 type StructMember struct {
-	typeSpec   ScopingInterfaces.IDeclaredType
+	typeSpec   ScopingInterfaces.IBaseDeclaredType
 	declarator ScopingInterfaces.IDeclarator
 	next       ScopingInterfaces.IStructMember
 }
 
-func NewStructMember(typeSpec ScopingInterfaces.IDeclaredType, declarator ScopingInterfaces.IDeclarator) (ScopingInterfaces.IStructMember, error) {
+func NewStructMember(typeSpec ScopingInterfaces.IBaseDeclaredType, declarator ScopingInterfaces.IDeclarator) (ScopingInterfaces.IStructMember, error) {
 	if typeSpec == nil {
 		return nil, fmt.Errorf("type spec needed for new member")
 	}
@@ -25,7 +25,7 @@ func NewStructMember(typeSpec ScopingInterfaces.IDeclaredType, declarator Scopin
 	}, nil
 }
 
-func NewStructMember01(declaredType ScopingInterfaces.IDeclaredType, declarator ScopingInterfaces.IDeclarator, nextStructMember ScopingInterfaces.IStructMember) ScopingInterfaces.IStructMember {
+func NewStructMember01(declaredType ScopingInterfaces.IBaseDeclaredType, declarator ScopingInterfaces.IDeclarator, nextStructMember ScopingInterfaces.IStructMember) ScopingInterfaces.IStructMember {
 	result, _ := NewStructMember(declaredType, declarator)
 	result.NextStructMember(nextStructMember)
 	return result
@@ -35,7 +35,7 @@ func (self *StructMember) GetNext() ScopingInterfaces.IStructMember {
 	return self.next
 }
 
-func (self *StructMember) DeclaredType() ScopingInterfaces.IDeclaredType {
+func (self *StructMember) DeclaredType() ScopingInterfaces.IBaseDeclaredType {
 	return self.typeSpec
 }
 
@@ -64,7 +64,7 @@ func (self *StructMember) Count() int {
 }
 
 func (self *StructMember) NextStructMember(next ScopingInterfaces.IStructMember) ScopingInterfaces.IStructMember {
-	if self.next == nil{
+	if self.next == nil {
 		self.next = next
 		return self
 	}

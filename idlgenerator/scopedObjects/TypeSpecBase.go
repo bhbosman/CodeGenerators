@@ -1,29 +1,32 @@
 package scopedObjects
 
 import (
-	"github.com/bhbosman/CodeGenerators/idlgenerator/ScopingInterfaces"
+	si "github.com/bhbosman/CodeGenerators/idlgenerator/ScopingInterfaces"
 )
 
 type TypeSpecBase struct {
 	FileInformationBase
-	NextTypeSpec ScopingInterfaces.ITypeSpec
-	Identifier   string
-	Kind         ScopingInterfaces.IDlSupportedTypes
-	isPrimitive  bool
-	forward      bool
-	abstract     bool
-	local        bool
+	NextTypeSpec     si.ITypeSpec
+	Identifier       string
+	Kind             si.IDlSupportedTypes
+	isPrimitive      bool
+	forward          bool
+	abstract         bool
+	local            bool
+	linkedItems      []si.IBaseDeclaredType
+	sequenceRequired bool
 }
 
 func NewTypeSpecBase(
-	fileInformation ScopingInterfaces.IFileInformation,
-	nextTypeSpec ScopingInterfaces.ITypeSpec,
+	fileInformation si.IFileInformation,
+	nextTypeSpec si.ITypeSpec,
 	identifier string,
-	kind ScopingInterfaces.IDlSupportedTypes,
+	kind si.IDlSupportedTypes,
 	isPrimitive bool,
 	forward bool,
 	abstract bool,
-	local bool) TypeSpecBase {
+	local bool,
+	sequenceRequired bool) TypeSpecBase {
 	return TypeSpecBase{
 		FileInformationBase: NewFileInformationBase02(fileInformation),
 		NextTypeSpec:        nextTypeSpec,
@@ -33,14 +36,37 @@ func NewTypeSpecBase(
 		forward:             forward,
 		abstract:            abstract,
 		local:               local,
+		linkedItems:         make([]si.IBaseDeclaredType, 0, 16),
+		sequenceRequired:    sequenceRequired,
 	}
 }
 
-func (self *TypeSpecBase) SetNextTypeSpec(next ScopingInterfaces.ITypeSpec) error {
+func (self *TypeSpecBase) Local() bool {
+	return self.local
+}
+
+func (self *TypeSpecBase) GetLinkedItems() []si.IBaseDeclaredType {
+	return self.linkedItems
+}
+
+func (self *TypeSpecBase) Link(placeHolder si.IDeclaredTypePlaceHolder) error {
+	if placeHolder != nil {
+		self.linkedItems = append(self.linkedItems, placeHolder)
+		placeHolder.SetName(self.Identifier)
+		placeHolder.AssignDeclaredTypeValues()
+	}
+	return nil
+}
+
+func (self *TypeSpecBase) UsageCount() int {
+	return len(self.linkedItems)
+}
+
+func (self *TypeSpecBase) SetNextTypeSpec(next si.ITypeSpec) error {
 	return self.AssignNextTypeSpec(next)
 }
 
-func (self *TypeSpecBase) AssignNextTypeSpec(next ScopingInterfaces.ITypeSpec) error {
+func (self *TypeSpecBase) AssignNextTypeSpec(next si.ITypeSpec) error {
 	if self.NextTypeSpec == nil {
 		self.NextTypeSpec = next
 	} else {
@@ -49,11 +75,11 @@ func (self *TypeSpecBase) AssignNextTypeSpec(next ScopingInterfaces.ITypeSpec) e
 	return nil
 }
 
-func (self *TypeSpecBase) GetKind() ScopingInterfaces.IDlSupportedTypes {
+func (self *TypeSpecBase) GetKind() si.IDlSupportedTypes {
 	return self.Kind
 }
 
-func (self *TypeSpecBase) GetNextTypeSpec() (ScopingInterfaces.ITypeSpec, error) {
+func (self *TypeSpecBase) GetNextTypeSpec() (si.ITypeSpec, error) {
 	return self.NextTypeSpec, nil
 }
 
@@ -63,6 +89,9 @@ func (self *TypeSpecBase) GetName() string {
 
 func (self *TypeSpecBase) SetName(name string) {
 	self.Identifier = name
+	for _, declType := range self.linkedItems {
+		declType.SetName(self.Identifier)
+	}
 }
 
 func (self *TypeSpecBase) Forward() bool {

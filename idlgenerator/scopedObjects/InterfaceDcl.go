@@ -11,10 +11,6 @@ type InterfaceDcl struct {
 	body ScopingInterfaces.ITypeSpec
 }
 
-func (self *InterfaceDcl) SetBody(body ScopingInterfaces.ITypeSpec) {
-	self.body = body
-}
-
 func NewInterfaceDcl(fileInformation ScopingInterfaces.IFileInformation, identifier string, forward, abstract, local bool, body ScopingInterfaces.ITypeSpec) (*InterfaceDcl, error) {
 	return &InterfaceDcl{
 		TypeSpecBase: NewTypeSpecBase(
@@ -25,7 +21,8 @@ func NewInterfaceDcl(fileInformation ScopingInterfaces.IFileInformation, identif
 			false,
 			forward,
 			abstract,
-			local),
+			local,
+			false),
 		body: func() ScopingInterfaces.ITypeSpec {
 			if body == nil {
 				return nil
@@ -70,10 +67,6 @@ func (self *InterfaceDcl) BodyCount() int {
 		n++
 	}
 	return n
-}
-
-func (self *InterfaceDcl) Create() ScopingInterfaces.IIdlComparer {
-	return &InterfaceDclComparer{}
 }
 
 func (self *InterfaceDcl) String() string {

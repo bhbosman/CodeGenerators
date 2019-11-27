@@ -9,20 +9,20 @@ type E struct {
 
 //Constructors
 func NewEDefaultPointer() (*E, error) {
-	return &E {
+	return &E{
 		Abc: 0,
 	}, nil
 }
 
 func NewEDefaultValue() (E, error) {
-	return E {
+	return E{
 		Abc: 0,
 	}, nil
 }
 
 func NewEValue(
 	abc int32) (E, error) {
-	return E {
+	return E{
 		Abc: abc,
 	}, nil
 }

@@ -50,11 +50,11 @@ func (m *MockIScopingContext) EXPECT() *MockIScopingContextMockRecorder {
 }
 
 // Find mocks base method
-func (m *MockIScopingContext) Find(name string) (bool, IDeclaredType) {
+func (m *MockIScopingContext) Find(name string) (bool, IBaseDeclaredType) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, m.instance, "Find", name)
 	ret0, _ := ret[0].(bool)
-	ret1, _ := ret[1].(IDeclaredType)
+	ret1, _ := ret[1].(IBaseDeclaredType)
 	return ret0, ret1
 }
 
@@ -71,7 +71,7 @@ func (mr *MockIScopingContextMockRecorder) Find(name interface{}) *gomock.Call {
 }
 
 // Add mocks base method
-func (m *MockIScopingContext) Add(name string, structType IDeclaredType) error {
+func (m *MockIScopingContext) Add(name string, structType IBaseDeclaredType) error {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, m.instance, "Add", name, structType)
 	ret0, _ := ret[0].(error)
@@ -91,7 +91,7 @@ func (mr *MockIScopingContextMockRecorder) Add(name, structType interface{}) *go
 }
 
 // Iterate mocks base method
-func (m *MockIScopingContext) Iterate(cb func(string, IDeclaredType) error) error {
+func (m *MockIScopingContext) Iterate(cb func(string, IBaseDeclaredType) error) error {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, m.instance, "Iterate", cb)
 	ret0, _ := ret[0].(error)
@@ -151,10 +151,10 @@ func (mr *MockIScopingContextMockRecorder) AddUnresolved(name, information inter
 }
 
 // FindPrimitive mocks base method
-func (m *MockIScopingContext) FindTypeSpec(fileInformation IFileInformation, s string) (IDeclaredType, error) {
+func (m *MockIScopingContext) FindTypeSpec(fileInformation IFileInformation, s string) (IBaseDeclaredType, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, m.instance, "FindPrimitive", fileInformation, s)
-	ret0, _ := ret[0].(IDeclaredType)
+	ret0, _ := ret[0].(IBaseDeclaredType)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
@@ -354,7 +354,7 @@ func (m *MockIScopingService) EXPECT() *MockIScopingServiceMockRecorder {
 }
 
 // Scope mocks base method
-func (m *MockIScopingService) Scope(scopingContext IScopingContext, declaredType IDeclaredType) (IScopingContext, error) {
+func (m *MockIScopingService) Scope(scopingContext IScopingContext, declaredType IBaseDeclaredType) (IScopingContext, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, m.instance, "Scope", scopingContext, declaredType)
 	ret0, _ := ret[0].(IScopingContext)
@@ -416,7 +416,7 @@ func (m *MockIDefaultTypeService) EXPECT() *MockIDefaultTypeServiceMockRecorder 
 }
 
 // Iterate mocks base method
-func (m *MockIDefaultTypeService) Iterate(cb func(string, IDeclaredType)) {
+func (m *MockIDefaultTypeService) Iterate(cb func(string, IBaseDeclaredType)) {
 	m.ctrl.T.Helper()
 	m.ctrl.Call(m, m.instance, "Iterate", cb)
 }
@@ -434,10 +434,10 @@ func (mr *MockIDefaultTypeServiceMockRecorder) Iterate(cb interface{}) *gomock.C
 }
 
 // FindOk mocks base method
-func (m *MockIDefaultTypeService) FindOk(s string) (IDeclaredType, bool) {
+func (m *MockIDefaultTypeService) FindOk(s string) (IBaseDeclaredType, bool) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, m.instance, "FindOk", s)
-	ret0, _ := ret[0].(IDeclaredType)
+	ret0, _ := ret[0].(IBaseDeclaredType)
 	ret1, _ := ret[1].(bool)
 	return ret0, ret1
 }
@@ -455,10 +455,10 @@ func (mr *MockIDefaultTypeServiceMockRecorder) FindOk(s interface{}) *gomock.Cal
 }
 
 // Find mocks base method
-func (m *MockIDefaultTypeService) Find(s string) IDeclaredType {
+func (m *MockIDefaultTypeService) Find(s string) IBaseDeclaredType {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, m.instance, "Find", s)
-	ret0, _ := ret[0].(IDeclaredType)
+	ret0, _ := ret[0].(IBaseDeclaredType)
 	return ret0
 }
 

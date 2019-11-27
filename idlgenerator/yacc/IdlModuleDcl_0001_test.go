@@ -18,7 +18,7 @@ func TestModuleDecl(t *testing.T) {
 	factory := NewCompleteIdlLexerFactoryImpl(
 		log.New(os.Stdout, "test", 0),
 		scopedObjects.NewNextNumber(),
-		scoping.NewScopingContext(scoping.NewDefaultTypeService(), nil))
+		scoping.NewScopingContext("", scoping.NewDefaultTypeService(), nil))
 	t.Run("Empty Module", func(t *testing.T) {
 		stream := fmt.Sprintf(`
 			module ABC 

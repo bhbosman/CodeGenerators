@@ -21,6 +21,7 @@ func NewFixedPointType(fileInformation ScopingInterfaces.IFileInformation, n1, n
 			false,
 			false,
 			false,
+			false,
 			false),
 		n1: n1,
 		n2: n2,

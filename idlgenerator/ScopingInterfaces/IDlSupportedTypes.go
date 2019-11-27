@@ -7,6 +7,7 @@ type IDlSupportedTypes byte
 const (
 	Invalid IDlSupportedTypes = iota
 	Unknown
+	DeclareTypePlaceHolderType
 	TypeDeclaratorIdlType
 	Idlvalue_forward_dclType
 	TypePrefixDefinitionIdlType
@@ -24,7 +25,7 @@ const (
 	ExceptionIdlType
 	// Begin of primitive types
 	RWfloatIdlType
-	StringIdlType
+	AnsiStringIdlType
 	WideStringIdlType
 	RWVoidType
 	RWvaluebaseIdlType
@@ -84,7 +85,7 @@ var IDlSupportedTypesNames = []string{
 	RWuint32IdlType:               "uint32",
 	RWuint64IdlType:               "uint64",
 	RWVoidType:                    "void",
-	StringIdlType:                 "string",
+	AnsiStringIdlType:             "string",
 	WideStringIdlType:             "wstring",
 }
 

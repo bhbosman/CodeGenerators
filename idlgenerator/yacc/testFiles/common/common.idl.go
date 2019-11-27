@@ -9,20 +9,20 @@ type Common struct {
 
 //Constructors
 func NewCommonDefaultPointer() (*Common, error) {
-	return &Common {
+	return &Common{
 		ABC: 0,
 	}, nil
 }
 
 func NewCommonDefaultValue() (Common, error) {
-	return Common {
+	return Common{
 		ABC: 0,
 	}, nil
 }
 
 func NewCommonValue(
 	aBC int32) (Common, error) {
-	return Common {
+	return Common{
 		ABC: aBC,
 	}, nil
 }

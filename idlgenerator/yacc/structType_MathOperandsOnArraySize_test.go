@@ -17,7 +17,7 @@ func TestMathOperandsOnArraySize(t *testing.T) {
 	factory := NewCompleteIdlLexerFactoryImpl(
 		log.New(os.Stdout, "test", 0),
 		scopedObjects.NewNextNumber(),
-		scoping.NewScopingContext(scoping.NewDefaultTypeService(), nil))
+		scoping.NewScopingContext("", scoping.NewDefaultTypeService(), nil))
 	t.Run("SHL", func(t *testing.T) {
 		stream := fmt.Sprintf("struct demo{double c[1024 << 2];};")
 
