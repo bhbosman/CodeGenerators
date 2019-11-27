@@ -27,6 +27,7 @@ func NewEnumType(fileInformation ScopingInterfaces.IFileInformation, id string, 
 			false,
 			false,
 			false,
+			false,
 			false),
 		enumerator: enumerator,
 	}, nil

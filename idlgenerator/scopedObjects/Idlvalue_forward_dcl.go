@@ -18,6 +18,7 @@ func NewIdlvalue_forward_dcl(fileInformation ScopingInterfaces.IFileInformation,
 			false,
 			false,
 			false,
+			false,
 			false),
 	}, nil
 }

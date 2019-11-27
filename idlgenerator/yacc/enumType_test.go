@@ -20,7 +20,7 @@ func TestIfEnumsAreParsing(t *testing.T) {
 	factory := NewCompleteIdlLexerFactoryImpl(
 		log.New(os.Stdout, "test", 0),
 		scopedObjects.NewNextNumber(),
-		scoping.NewScopingContext(scoping.NewDefaultTypeService(), nil))
+		scoping.NewScopingContext("", scoping.NewDefaultTypeService(), nil))
 	type streamTest struct {
 		name   string
 		stream string

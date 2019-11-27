@@ -18,6 +18,7 @@ func NewDeclaredType(kind ScopingInterfaces.IDlSupportedTypes, fileName string, 
 			kind, true,
 			false,
 			false,
+			false,
 			false),
 	}
 }

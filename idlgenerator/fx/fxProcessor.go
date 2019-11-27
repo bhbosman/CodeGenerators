@@ -36,7 +36,7 @@ func (self *processor) Process() error {
 				self.logger,
 				self.definitionContextFactory.Create(),
 				self.nextNumber,
-				scoping.NewScopingContext(scoping.NewDefaultTypeService(), nil))
+				scoping.NewScopingContext("", scoping.NewDefaultTypeService(), nil))
 			if err != nil {
 				return nil, err
 			}
@@ -52,7 +52,7 @@ func (self *processor) Process() error {
 		err = multierr.Append(
 			err,
 			self.scopeWalker.Scope(
-				scoping.NewScopingContext(scoping.NewDefaultTypeService(), nil),
+				scoping.NewScopingContext("", scoping.NewDefaultTypeService(), nil),
 				0,
 				typeSpec,
 				fileInformation.GetFileName()))

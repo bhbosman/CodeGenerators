@@ -2,7 +2,7 @@ package scopedObjects
 
 import (
 	"fmt"
-	"github.com/bhbosman/CodeGenerators/idlgenerator/ScopingInterfaces"
+	si "github.com/bhbosman/CodeGenerators/idlgenerator/ScopingInterfaces"
 	"go.uber.org/multierr"
 )
 
@@ -16,25 +16,26 @@ const (
 
 type ValueAbsoluteDefinition struct {
 	TypeSpecBase
-	typeSpec ScopingInterfaces.ITypeSpec
+	typeSpec si.ITypeSpec
 }
 
-func NewIdlValueAbsoluteDefinition(fileInformation ScopingInterfaces.IFileInformation, identifier string, typeSpec ScopingInterfaces.ITypeSpec, flags ValueAbsoluteDefinitionFlags) (*ValueAbsoluteDefinition, error) {
+func NewIdlValueAbsoluteDefinition(fileInformation si.IFileInformation, identifier string, typeSpec si.ITypeSpec, flags ValueAbsoluteDefinitionFlags) (*ValueAbsoluteDefinition, error) {
 	return &ValueAbsoluteDefinition{
 		TypeSpecBase: NewTypeSpecBase(
 			fileInformation,
 			nil,
 			identifier,
-			ScopingInterfaces.IdlValue_Abs_DefType,
+			si.IdlValue_Abs_DefType,
 			false,
 			flags&VADForward == VADForward,
 			flags&VADAbstract == VADAbstract,
+			false,
 			false),
 		typeSpec: typeSpec,
 	}, nil
 }
 
-func (self *ValueAbsoluteDefinition) Iterate(cb func(typeSpec ScopingInterfaces.ITypeSpec) error) error {
+func (self *ValueAbsoluteDefinition) Iterate(cb func(typeSpec si.ITypeSpec) error) error {
 	var err error
 	if cb != nil && self.typeSpec != nil {
 		for b := self.typeSpec; b != nil; b, _ = b.GetNextTypeSpec() {
@@ -42,10 +43,6 @@ func (self *ValueAbsoluteDefinition) Iterate(cb func(typeSpec ScopingInterfaces.
 		}
 	}
 	return err
-}
-
-func (self *ValueAbsoluteDefinition) Create() ScopingInterfaces.IIdlComparer {
-	return &ValueAbsoluteDefinitionComparer{}
 }
 
 func (self *ValueAbsoluteDefinition) String() string {

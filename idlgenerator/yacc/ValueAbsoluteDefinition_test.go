@@ -18,7 +18,7 @@ func TestValueType(t *testing.T) {
 	factory := NewCompleteIdlLexerFactoryImpl(
 		log.New(os.Stdout, "test", 0),
 		scopedObjects.NewNextNumber(),
-		scoping.NewScopingContext(scoping.NewDefaultTypeService(), nil))
+		scoping.NewScopingContext("", scoping.NewDefaultTypeService(), nil))
 	t.Run("abstract valuetype forward declaration", func(t *testing.T) {
 		stream := fmt.Sprintf(`
 			abstract valuetype CustomMarshal;

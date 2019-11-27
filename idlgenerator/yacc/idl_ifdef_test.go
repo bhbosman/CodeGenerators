@@ -18,7 +18,7 @@ func TestIfDef(t *testing.T) {
 	factory := NewCompleteIdlLexerFactoryImpl(
 		log.New(os.Stdout, "test", 0),
 		scopedObjects.NewNextNumber(),
-		scoping.NewScopingContext(scoping.NewDefaultTypeService(), nil))
+		scoping.NewScopingContext("", scoping.NewDefaultTypeService(), nil))
 	t.Run("Basic struct in a definition block", func(t *testing.T) {
 		controller := gomock.NewController(t)
 		defer controller.Finish()

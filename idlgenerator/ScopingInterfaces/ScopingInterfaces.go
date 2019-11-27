@@ -3,7 +3,7 @@ package ScopingInterfaces
 type ScopingContextFlags uint
 
 type IScopingContext interface {
-	Find(name string) (bool, IBaseDeclaredType)
+	Find(name string, allContext bool) (bool, IBaseDeclaredType)
 	Add(name string, structType IBaseDeclaredType) error
 	Replace(name string, structType IBaseDeclaredType) error
 	Iterate(cb func(key string, value IBaseDeclaredType) error) error

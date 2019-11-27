@@ -19,10 +19,11 @@ func NewTypeDeclarator(simpleTypeSpec ScopingInterfaces.IBaseDeclaredType, decla
 	id := strings.Join(sl, ",")
 	return &TypeDeclarator{
 		TypeSpecBase: NewTypeSpecBase(
-			simpleTypeSpec,
+			declarator,
 			nil,
 			id,
 			ScopingInterfaces.TypeDeclaratorIdlType,
+			false,
 			false,
 			false,
 			false,

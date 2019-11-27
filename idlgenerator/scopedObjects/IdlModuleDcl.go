@@ -43,6 +43,7 @@ func NewModuleDcl(fileInformation ScopingInterfaces.IFileInformation, moduleIden
 			false,
 			false,
 			false,
+			false,
 			false),
 		moduleExports: moduleExports,
 	}

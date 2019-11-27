@@ -12,13 +12,15 @@ type SequenceType struct {
 }
 
 func NewSequenceType(fileInformation ScopingInterfaces.IFileInformation, declaredType ScopingInterfaces.IBaseDeclaredType, count int) (*SequenceType, error) {
-	identifier := fmt.Sprintf("sequence_%v_%v", declaredType.GetName(), count)
+	identifier := fmt.Sprintf("sequence_%v", declaredType.GetName())
+
 	return &SequenceType{
 		TypeSpecBase: NewTypeSpecBase(
 			fileInformation,
 			nil,
 			identifier,
 			ScopingInterfaces.SequenceIdlType,
+			false,
 			false,
 			false,
 			false,

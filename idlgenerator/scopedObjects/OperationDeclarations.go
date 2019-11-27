@@ -28,6 +28,7 @@ func NewOperationDeclarations(
 			false,
 			false,
 			false,
+			false,
 			false),
 		declarator:    declarator,
 		params:        params,

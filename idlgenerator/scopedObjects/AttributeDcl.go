@@ -22,6 +22,7 @@ func NewAttributeDcl(fileInformation ScopingInterfaces.IFileInformation, attrDec
 			false,
 			false,
 			false,
+			false,
 			false),
 		attrDeclarator: attrDeclarator,
 		declaredType:   declaredType,

@@ -87,7 +87,7 @@ func (self ScopeWalker) InternalGenerate(scopingContext si.IScopingContext, inde
 	case si.TypeDeclaratorIdlType:
 		typeDecl, ok := dcl.(si.ITypeDeclarator)
 		if ok {
-			return self.ScopeTypeDcl(indent+1, typeDecl)
+			return self.ScopeTypeDcl(scopingContext, indent+1, typeDecl)
 		}
 	default:
 		self.Logger.Println(fmt.Sprintf(">>>>>>>>>>>>>%v<<<<<<<<<", dcl))
@@ -99,8 +99,8 @@ func (self ScopeWalker) InternalGenerate(scopingContext si.IScopingContext, inde
 func (self ScopeWalker) ScopeModuleDcl(scopingContext si.IScopingContext, indent int, dcl si.IIdlModuleDcl) error {
 	self.Logger.Println(fmt.Sprintf("(%d): %v", indent, dcl))
 	var err error
-
-	newScopingContext := NewScopingContext(nil, scopingContext)
+	scopeName := dcl.GetName()
+	newScopingContext := NewScopingContext(scopeName, nil, scopingContext)
 	defer func() {
 		_ = newScopingContext.Iterate(
 			func(key string, value si.IBaseDeclaredType) error {
@@ -128,13 +128,14 @@ func (self ScopeWalker) ScopeStructDcl(scopingContext si.IScopingContext, indent
 			if members != nil {
 				for _, memberInformation := range members.GetMembers() {
 					self.Logger.Println(fmt.Sprintf("(%d): %v", indent, memberInformation))
-					memberType := memberInformation.GetTypeSpec()
-					if memberType.GetKind() == si.DeclareTypePlaceHolderType {
-						if found, foundDeclareType := scopingContext.Find(memberType.GetName()); found {
-							if declaredType, ok := foundDeclareType.(si.IDeclaredType); ok {
-								err = multierr.Append(
-									err,
-									declaredType.Link(memberType))
+					if placeHolder, isPlaceHolder := memberInformation.GetTypeSpec().(si.IDeclaredTypePlaceHolder); isPlaceHolder {
+						if placeHolder.GetKind() == si.DeclareTypePlaceHolderType {
+							if found, foundDeclareType := scopingContext.Find(placeHolder.GetName(), true); found {
+								if declaredType, ok := foundDeclareType.(si.IDeclaredType); ok {
+									err = multierr.Append(
+										err,
+										declaredType.Link(placeHolder))
+								}
 							}
 						}
 					}
@@ -146,7 +147,7 @@ func (self ScopeWalker) ScopeStructDcl(scopingContext si.IScopingContext, indent
 
 	var err error
 	self.Logger.Println(fmt.Sprintf("(%d): %v", indent, dcl))
-	if found, declType := scopingContext.Find(dcl.GetName()); found {
+	if found, declType := scopingContext.Find(dcl.GetName(), false); found {
 		if existingDecl, ok := declType.(si.IInterfaceDcl); ok {
 			if dcl.Forward() && existingDecl.Forward() {
 				err = multierr.Append(
@@ -190,11 +191,11 @@ func (self ScopeWalker) ScopeEnumDcl(scopingContext si.IScopingContext, indent i
 	self.Logger.Println(fmt.Sprintf("(%d): %v", indent, enumType))
 	indent++
 
-	scopingContext.Add(enumType.GetName(), enumType)
+	err := scopingContext.Add(enumType.GetName(), enumType)
 	for m := enumType.Enumerator(); m != nil; m = m.Next() {
 		self.Logger.Println(fmt.Sprintf("(%d): %v", indent, m))
 	}
-	return nil
+	return err
 }
 
 func (self ScopeWalker) buildDeclarationName(scope, name string) string {
@@ -207,11 +208,15 @@ func (self ScopeWalker) buildDeclarationName(scope, name string) string {
 
 func (self ScopeWalker) ScopeInterfaceDcl(scopingContext si.IScopingContext, indent int, dcl si.IInterfaceDcl) error {
 	self.Logger.Println(fmt.Sprintf("(%d): %v", indent, dcl))
+	if dcl.GetName() == "Container" {
+		fmt.Println("Container")
+	}
 
 	interfaceScope := func(scopingContext si.IScopingContext, indent int, dcl si.IInterfaceDcl) error {
 		var err error
 		if !dcl.Forward() {
-			newScopingContext := NewScopingContext(nil, scopingContext)
+			scopeName := dcl.GetName()
+			newScopingContext := NewScopingContext(scopeName, nil, scopingContext)
 			defer func() {
 				_ = newScopingContext.Iterate(
 					func(key string, value si.IBaseDeclaredType) error {
@@ -228,7 +233,7 @@ func (self ScopeWalker) ScopeInterfaceDcl(scopingContext si.IScopingContext, ind
 		return err
 	}
 	var err error
-	if found, declType := scopingContext.Find(dcl.GetName()); found {
+	if found, declType := scopingContext.Find(dcl.GetName(), false); found {
 		if existingInterfaceDecl, ok := declType.(si.IInterfaceDcl); ok {
 			if dcl.Forward() && existingInterfaceDecl.Forward() {
 				err = multierr.Append(
@@ -268,40 +273,61 @@ func (self ScopeWalker) ScopeInterfaceDcl(scopingContext si.IScopingContext, ind
 	return err
 }
 
-func (self ScopeWalker) findType(scopingContext si.IScopingContext, dcl si.IBaseDeclaredType) error {
-	b, _ := scopingContext.Find(dcl.GetName())
-	if b {
-		return nil
-	}
-	return fmt.Errorf("type not found %v", dcl.GetName())
-}
+//func (self ScopeWalker) findType(scopingContext si.IScopingContext, dcl si.IBaseDeclaredType) error {
+//	b, _ := scopingContext.Find(dcl.GetName())
+//	if b {
+//		return nil
+//	}
+//	return fmt.Errorf("type not found %v", dcl.GetName())
+//}
 
 func (self ScopeWalker) ScopeOperationDcl(scopingContext si.IScopingContext, indent int, dcl si.IOperationDeclarations) error {
 	var err error
 	self.Logger.Println(fmt.Sprintf("(%d): %v", indent, dcl))
 	indent++
-	err = multierr.Append(
-		err,
-		self.findType(scopingContext, dcl.GetOperationDeclaratorType()))
+	if found, foundDeclareType := scopingContext.Find(dcl.GetOperationDeclaratorType().GetName(), true); found {
+		if declaredType, ok := foundDeclareType.(si.IDeclaredType); ok {
+			if placeHolder, isPlaceHolder := dcl.GetOperationDeclaratorType().(si.IDeclaredTypePlaceHolder); isPlaceHolder {
+				err = multierr.Append(
+					err,
+					declaredType.Link(placeHolder))
+			}
+		}
+	}
 	for param := dcl.GetParams(); param != nil; param = param.GetNextParameterDeclarations() {
-		self.Logger.Println(fmt.Sprintf("(%d): %v", indent, param))
-		err = multierr.Append(
-			err,
-			self.findType(scopingContext, param.GetParamDeclarationType()))
+		if found, foundDeclareType := scopingContext.Find(param.GetParamDeclarationType().GetName(), true); found {
+			if declaredType, ok := foundDeclareType.(si.IDeclaredType); ok {
+				if placeHolder, isPlaceHolder := param.GetParamDeclarationType().(si.IDeclaredTypePlaceHolder); isPlaceHolder {
+					err = multierr.Append(
+						err,
+						declaredType.Link(placeHolder))
+				}
+			}
+		}
 	}
 	return err
 }
 
-func (self ScopeWalker) ScopeTypeDcl(indent int, dcl si.ITypeDeclarator) error {
+func (self ScopeWalker) ScopeTypeDcl(scopingContext si.IScopingContext, indent int, dcl si.ITypeDeclarator) error {
 	self.Logger.Println(fmt.Sprintf("(%d): %v", indent, dcl))
-	return nil
+	return scopingContext.Add(dcl.GetName(), dcl)
 }
 
-func (self ScopeWalker) ScopeValueAbsolute(scopingContext si.IScopingContext, indent int, definition si.IValueAbsoluteDefinition) error {
-	self.Logger.Println(fmt.Sprintf("(%d): %v", indent, definition))
-	return definition.Iterate(func(typeSpec si.ITypeSpec) error {
-		return self.InternalGenerate(scopingContext, indent, typeSpec)
-	})
+func (self ScopeWalker) ScopeValueAbsolute(scopingContext si.IScopingContext, indent int, dcl si.IValueAbsoluteDefinition) error {
+	self.Logger.Println(fmt.Sprintf("(%d): %v", indent, dcl))
+	var err error
+	err = multierr.Append(
+		err,
+		scopingContext.Add(dcl.GetName(), dcl))
+
+	err = multierr.Append(
+		err,
+		dcl.Iterate(
+			func(typeSpec si.ITypeSpec) error {
+				return self.InternalGenerate(scopingContext, indent, typeSpec)
+			}))
+
+	return err
 }
 
 func (self ScopeWalker) ScopeConstantDcl(indent int, constDcl si.IIdlConstDcl) error {
@@ -317,15 +343,26 @@ func (self ScopeWalker) ScopeExceptionDcl(scopingContext si.IScopingContext, ind
 	if members != nil {
 		for _, memberInformation := range members.GetMembers() {
 			self.Logger.Println(fmt.Sprintf("(%d): %v", indent, memberInformation))
-			memberType := memberInformation.GetTypeSpec()
-			if memberType.GetKind() == si.DeclareTypePlaceHolderType {
-				if found, foundDeclareType := scopingContext.Find(memberType.GetName()); found {
+			memberInformationTypeSpec := memberInformation.GetTypeSpec()
+			switch memberInformationTypeSpec.GetKind() {
+			case si.DeclareTypePlaceHolderType:
+				if found, foundDeclareType := scopingContext.Find(memberInformationTypeSpec.GetName(), true); found {
 					if declaredType, ok := foundDeclareType.(si.IDeclaredType); ok {
-						err = multierr.Append(
-							err,
-							declaredType.Link(memberType))
+						if placeHolder, isPlaceHolder := memberInformationTypeSpec.(si.IDeclaredTypePlaceHolder); isPlaceHolder {
+							err = multierr.Append(
+								err,
+								declaredType.Link(placeHolder))
+						}
 					}
 				}
+				break
+			case si.SequenceIdlType:
+				//if found, foundDeclareType := scopingContext.Find(memberInformationTypeSpec.GetName()); found {
+				//	if declaredType, ok := foundDeclareType.(si.IDeclaredType); ok {
+				//		declaredType.SequenceRequired(true)
+				//	}
+				//}
+				break
 			}
 		}
 	}

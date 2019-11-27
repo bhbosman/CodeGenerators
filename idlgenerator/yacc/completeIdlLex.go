@@ -43,7 +43,6 @@ func NewCompleteIdlLexImpl(
 }
 
 func (self *CompleteIdlLexImpl) NewTypeDeclarator(simpleTypeSpec ScopingInterfaces.IBaseDeclaredType, declarator ScopingInterfaces.IDeclarator) (ScopingInterfaces.ITypeDeclarator, error) {
-
 	return scopedObjects.NewTypeDeclarator(simpleTypeSpec, declarator)
 }
 

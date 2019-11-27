@@ -45,7 +45,7 @@ func TestIfPrimitivesTypesPassParsing(t *testing.T) {
 	factory := NewCompleteIdlLexerFactoryImpl(
 		log.New(os.Stdout, "test", 0),
 		scopedObjects.NewNextNumber(),
-		scoping.NewScopingContext(scoping.NewDefaultTypeService(), nil))
+		scoping.NewScopingContext("", scoping.NewDefaultTypeService(), nil))
 	t.Run("Simple TypeStruct", func(t *testing.T) {
 		for k, v := range m {
 			t.Run(fmt.Sprintf("%v", k), func(t *testing.T) {

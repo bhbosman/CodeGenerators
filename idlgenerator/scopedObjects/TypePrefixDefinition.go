@@ -10,10 +10,6 @@ type TypePrefixDefinition struct {
 	stringLiteral string
 }
 
-func (self *TypePrefixDefinition) Create() ScopingInterfaces.IIdlComparer {
-	return &TypePrefixDefinitionComparer{}
-}
-
 func NewCreateTypePrefixDcl(fileInformation ScopingInterfaces.IFileInformation, scopedName string, stringLiteral string) (*TypePrefixDefinition, error) {
 	return &TypePrefixDefinition{
 		TypeSpecBase: NewTypeSpecBase(
@@ -21,6 +17,7 @@ func NewCreateTypePrefixDcl(fileInformation ScopingInterfaces.IFileInformation, 
 			nil,
 			scopedName,
 			ScopingInterfaces.TypePrefixDefinitionIdlType,
+			false,
 			false,
 			false,
 			false,

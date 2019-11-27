@@ -1,23 +1,17 @@
 package scopedObjects
 
 import (
-	"fmt"
 	si "github.com/bhbosman/CodeGenerators/idlgenerator/ScopingInterfaces"
 )
-
-//type IDeclareTypeInformation interface {
-//
-//
-//}
-//
-//type DeclareTypeInformation struct {
-//
-//}
 
 type DeclaredTypePlaceHolder struct {
 	FileInformationBase
 	identifier string
 	kind       si.IDlSupportedTypes
+}
+
+func (self *DeclaredTypePlaceHolder) AssignDeclaredTypeValues() {
+	//panic("implement me")
 }
 
 func NewEmptyIdlDefinition(fileInformation si.IFileInformation, identifier string) si.IBaseDeclaredType {
@@ -26,26 +20,6 @@ func NewEmptyIdlDefinition(fileInformation si.IFileInformation, identifier strin
 		identifier:          identifier,
 		kind:                si.DeclareTypePlaceHolderType,
 	}
-}
-
-func (self *DeclaredTypePlaceHolder) Link(declaredType si.IBaseDeclaredType) error {
-	return fmt.Errorf("error as this is a place holder for %v", self.identifier)
-}
-
-func (self *DeclaredTypePlaceHolder) UsageCount() int {
-	return -1
-}
-
-func (self *DeclaredTypePlaceHolder) IsPrimitive() bool {
-	return false
-}
-
-func (self *DeclaredTypePlaceHolder) IsDefined() bool {
-	return false
-}
-
-func (self *DeclaredTypePlaceHolder) Create() si.IIdlComparer {
-	return &EmptyIdlDefinitionComparer{}
 }
 
 func (self *DeclaredTypePlaceHolder) GetName() string {

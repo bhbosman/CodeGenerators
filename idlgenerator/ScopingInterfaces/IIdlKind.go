@@ -23,30 +23,30 @@ type IIdlDefinition interface {
 
 type IBaseDeclaredType interface {
 	IIdlDefinition
-	IsDefined() bool
-	IsPrimitive() bool
-}
-
-type IDeclaredType interface {
-	IBaseDeclaredType
-	Link(declaredType IBaseDeclaredType) error
-	UsageCount() int
 }
 
 type IDeclaredTypePlaceHolder interface {
 	IBaseDeclaredType
+	AssignDeclaredTypeValues()
+}
+
+type IDeclaredType interface {
+	IBaseDeclaredType
+	Link(placeHolder IDeclaredTypePlaceHolder) error
+	GetLinkedItems() []IBaseDeclaredType
+	UsageCount() int
+	IsDefined() bool
+	IsPrimitive() bool
+	//SequenceRequired(b bool)
 }
 
 type ITypeSpec interface {
 	IDeclaredType
 	Forward() bool
 	Abstract() bool
+	Local() bool
 	SetNextTypeSpec(next ITypeSpec) error
 	GetNextTypeSpec() (ITypeSpec, error)
-}
-
-type IValueAbsoluteDefinition interface {
-	IParentModule
 }
 
 type IDeclarator interface {
@@ -112,14 +112,16 @@ type ILocalDeclaration interface {
 
 type IBaseInterface interface {
 	IParentModule
-	ILocalDeclaration
 	GetBody() ITypeSpec
-	SetBody(ITypeSpec)
 	BodyCount() int
 	BodyArray() []IIdlDefinition
 }
 
 type IInterfaceDcl interface {
+	IBaseInterface
+}
+
+type IValueAbsoluteDefinition interface {
 	IBaseInterface
 }
 
@@ -243,14 +245,6 @@ type IPrimaryExpression interface {
 	Value() interface{}
 }
 
-type IIdlComparer interface {
-	Compare(x, y IIdlDefinition) (IIdlDefinition, error)
-}
-
-type IIdlCompareFactory interface {
-	Create() IIdlComparer
-}
-
 type IEnumType interface {
 	Ienum_dcl
 	Enumerator() IEnumerator
@@ -346,6 +340,7 @@ type IIdlException interface {
 }
 
 type ISequenceType interface {
+	ITypeSpec
 	TypeSpec() IBaseDeclaredType
 	Count() int
 }

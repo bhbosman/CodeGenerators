@@ -6,14 +6,15 @@ import (
 
 type TypeSpecBase struct {
 	FileInformationBase
-	NextTypeSpec si.ITypeSpec
-	Identifier   string
-	Kind         si.IDlSupportedTypes
-	isPrimitive  bool
-	forward      bool
-	abstract     bool
-	local        bool
-	linkedItems  []si.IBaseDeclaredType
+	NextTypeSpec     si.ITypeSpec
+	Identifier       string
+	Kind             si.IDlSupportedTypes
+	isPrimitive      bool
+	forward          bool
+	abstract         bool
+	local            bool
+	linkedItems      []si.IBaseDeclaredType
+	sequenceRequired bool
 }
 
 func NewTypeSpecBase(
@@ -24,7 +25,8 @@ func NewTypeSpecBase(
 	isPrimitive bool,
 	forward bool,
 	abstract bool,
-	local bool) TypeSpecBase {
+	local bool,
+	sequenceRequired bool) TypeSpecBase {
 	return TypeSpecBase{
 		FileInformationBase: NewFileInformationBase02(fileInformation),
 		NextTypeSpec:        nextTypeSpec,
@@ -35,13 +37,24 @@ func NewTypeSpecBase(
 		abstract:            abstract,
 		local:               local,
 		linkedItems:         make([]si.IBaseDeclaredType, 0, 16),
+		sequenceRequired:    sequenceRequired,
 	}
 }
 
-func (self *TypeSpecBase) Link(declaredType si.IBaseDeclaredType) error {
-	self.linkedItems = append(self.linkedItems, declaredType)
-	declaredType.SetName(self.Identifier)
+func (self *TypeSpecBase) Local() bool {
+	return self.local
+}
 
+func (self *TypeSpecBase) GetLinkedItems() []si.IBaseDeclaredType {
+	return self.linkedItems
+}
+
+func (self *TypeSpecBase) Link(placeHolder si.IDeclaredTypePlaceHolder) error {
+	if placeHolder != nil {
+		self.linkedItems = append(self.linkedItems, placeHolder)
+		placeHolder.SetName(self.Identifier)
+		placeHolder.AssignDeclaredTypeValues()
+	}
 	return nil
 }
 
@@ -59,7 +72,6 @@ func (self *TypeSpecBase) AssignNextTypeSpec(next si.ITypeSpec) error {
 	} else {
 		return self.NextTypeSpec.SetNextTypeSpec(next)
 	}
-
 	return nil
 }
 

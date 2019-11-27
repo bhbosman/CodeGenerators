@@ -24,6 +24,7 @@ func NewIdlRwException(fileInformation ScopingInterfaces.IFileInformation, ident
 			false,
 			false,
 			false,
+			false,
 			false),
 		members: members,
 	}, nil
