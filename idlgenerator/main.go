@@ -2,15 +2,26 @@ package main
 
 import (
 	"context"
+	"flag"
 	"github.com/bhbosman/CodeGenerators/idlgenerator/AppInterfaces"
+	"github.com/bhbosman/CodeGenerators/idlgenerator/CodeGeneration"
 	fx2 "github.com/bhbosman/CodeGenerators/idlgenerator/fx"
 	"go.uber.org/fx"
+	"io"
 	"log"
 	"os"
 )
 
 func main() {
-	var applicationLogger = log.New(os.Stdout, "Idl Generator: ", log.Ldate|log.Ltime|log.Lmicroseconds)
+	verbose := flag.Bool("verbose", false, "Logging")
+	flag.Parse()
+
+	out := getLogger(*verbose)
+
+
+
+
+	applicationLogger := log.New(out, "Idl Generator: ", log.Ldate|log.Ltime|log.Lmicroseconds)
 	var processor AppInterfaces.IProcessor
 	app := fx.New(
 		fx.StartTimeout(fx.DefaultTimeout),
@@ -41,4 +52,11 @@ func main() {
 	if err == nil {
 
 	}
+}
+
+func getLogger(verbose bool) io.Writer  {
+	if verbose {
+		return os.Stdout
+	}
+	return  &CodeGeneration.NullWriter{}
 }

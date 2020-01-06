@@ -9,7 +9,7 @@ type CORBA_ScopedName AnsiString
 type CORBA_RepositoryId AnsiString
 
 //line CORBA_InterfaceRepository.idl:8
-//Usage Count: 4
+//Usage Count: 5
 type CORBA_DefinitionKind int
 
 const (
@@ -57,6 +57,7 @@ const (
 type CORBA_IRObject interface {
 
 	//line CORBA_InterfaceRepository.idl:29
+	GetDef_kind() CORBA_DefinitionKind
 
 	//line CORBA_InterfaceRepository.idl:31
 	Destroy() error
@@ -97,16 +98,25 @@ func NewCORBA_Contained_DescriptionValue(
 type CORBA_Contained interface {
 
 	//line CORBA_InterfaceRepository.idl:39
+	GetId() CORBA_RepositoryId
+	SetId(value CORBA_RepositoryId)
 
 	//line CORBA_InterfaceRepository.idl:40
+	GetName() CORBA_Identifier
+	SetName(value CORBA_Identifier)
 
 	//line CORBA_InterfaceRepository.idl:41
+	GetVersion() CORBA_VersionSpec
+	SetVersion(value CORBA_VersionSpec)
 
 	//line CORBA_InterfaceRepository.idl:43
+	GetDefined_in() CORBA_Container
 
 	//line CORBA_InterfaceRepository.idl:44
+	GetAbsolute_name() CORBA_ScopedName
 
 	//line CORBA_InterfaceRepository.idl:45
+	GetContaining_repository() CORBA_Repository
 
 	//line CORBA_InterfaceRepository.idl:50
 	Describe() (CORBA_Contained_Description, error)
@@ -425,7 +435,7 @@ type CORBA_Container_DescriptionSeq Sequence_Description
 
 //line CORBA_InterfaceRepository.idl:124
 //Interface Decl: CORBA_Container
-//Usage Count: 1
+//Usage Count: 2
 type CORBA_Container interface {
 
 	//line CORBA_InterfaceRepository.idl:126
@@ -485,14 +495,15 @@ type CORBA_Container interface {
 
 //line CORBA_InterfaceRepository.idl:248
 //Interface Decl: CORBA_IDLType
-//Usage Count: 8
+//Usage Count: 17
 type CORBA_IDLType interface {
 
 	//line CORBA_InterfaceRepository.idl:249
+	GetType() CORBA_TypeCode
 }
 
 //line CORBA_InterfaceRepository.idl:252
-//Usage Count: 1
+//Usage Count: 2
 type CORBA_PrimitiveKind int
 
 const (
@@ -522,7 +533,7 @@ const (
 
 //line CORBA_InterfaceRepository.idl:260
 //Interface Decl: CORBA_Repository
-//Usage Count: 0
+//Usage Count: 1
 type CORBA_Repository interface {
 
 	//line CORBA_InterfaceRepository.idl:262
@@ -594,10 +605,15 @@ func NewCORBA_ModuleDescriptionValue(
 type CORBA_ConstantDef interface {
 
 	//line CORBA_InterfaceRepository.idl:289
+	GetType() CORBA_TypeCode
 
 	//line CORBA_InterfaceRepository.idl:290
+	GetType_def() CORBA_IDLType
+	SetType_def(value CORBA_IDLType)
 
 	//line CORBA_InterfaceRepository.idl:291
+	GetValue() CorbaAny
+	SetValue(value CorbaAny)
 }
 
 //line CORBA_InterfaceRepository.idl:293
@@ -685,6 +701,8 @@ func NewCORBA_TypeDescriptionValue(
 type CORBA_StructDef interface {
 
 	//line CORBA_InterfaceRepository.idl:314
+	GetMembers() CORBA_StructMemberSeq
+	SetMembers(value CORBA_StructMemberSeq)
 }
 
 //line CORBA_InterfaceRepository.idl:317
@@ -693,10 +711,15 @@ type CORBA_StructDef interface {
 type CORBA_UnionDef interface {
 
 	//line CORBA_InterfaceRepository.idl:318
+	GetDiscriminator_type() CORBA_TypeCode
 
 	//line CORBA_InterfaceRepository.idl:319
+	GetDiscriminator_type_def() CORBA_IDLType
+	SetDiscriminator_type_def(value CORBA_IDLType)
 
 	//line CORBA_InterfaceRepository.idl:320
+	GetMembers() CORBA_UnionMemberSeq
+	SetMembers(value CORBA_UnionMemberSeq)
 }
 
 //line CORBA_InterfaceRepository.idl:323
@@ -705,6 +728,8 @@ type CORBA_UnionDef interface {
 type CORBA_EnumDef interface {
 
 	//line CORBA_InterfaceRepository.idl:324
+	GetMembers() CORBA_EnumMemberSeq
+	SetMembers(value CORBA_EnumMemberSeq)
 }
 
 //line CORBA_InterfaceRepository.idl:326
@@ -713,6 +738,8 @@ type CORBA_EnumDef interface {
 type CORBA_AliasDef interface {
 
 	//line CORBA_InterfaceRepository.idl:327
+	GetOriginal_type_def() CORBA_IDLType
+	SetOriginal_type_def(value CORBA_IDLType)
 }
 
 //line CORBA_InterfaceRepository.idl:329
@@ -727,6 +754,7 @@ type CORBA_NativeDef interface {
 type CORBA_PrimitiveDef interface {
 
 	//line CORBA_InterfaceRepository.idl:332
+	GetKind() CORBA_PrimitiveKind
 }
 
 //line CORBA_InterfaceRepository.idl:334
@@ -735,6 +763,8 @@ type CORBA_PrimitiveDef interface {
 type CORBA_StringDef interface {
 
 	//line CORBA_InterfaceRepository.idl:335
+	GetBound() uint32
+	SetBound(value uint32)
 }
 
 //line CORBA_InterfaceRepository.idl:337
@@ -743,6 +773,8 @@ type CORBA_StringDef interface {
 type CORBA_WstringDef interface {
 
 	//line CORBA_InterfaceRepository.idl:338
+	GetBound() uint32
+	SetBound(value uint32)
 }
 
 //line CORBA_InterfaceRepository.idl:340
@@ -751,8 +783,12 @@ type CORBA_WstringDef interface {
 type CORBA_FixedDef interface {
 
 	//line CORBA_InterfaceRepository.idl:341
+	GetDigits() uint16
+	SetDigits(value uint16)
 
 	//line CORBA_InterfaceRepository.idl:342
+	GetScale() int16
+	SetScale(value int16)
 }
 
 //line CORBA_InterfaceRepository.idl:344
@@ -761,10 +797,15 @@ type CORBA_FixedDef interface {
 type CORBA_SequenceDef interface {
 
 	//line CORBA_InterfaceRepository.idl:345
+	GetBound() uint32
+	SetBound(value uint32)
 
 	//line CORBA_InterfaceRepository.idl:346
+	GetElement_type() CORBA_TypeCode
 
 	//line CORBA_InterfaceRepository.idl:347
+	GetElement_type_def() CORBA_IDLType
+	SetElement_type_def(value CORBA_IDLType)
 }
 
 //line CORBA_InterfaceRepository.idl:349
@@ -773,10 +814,15 @@ type CORBA_SequenceDef interface {
 type CORBA_ArrayDef interface {
 
 	//line CORBA_InterfaceRepository.idl:350
+	GetLength() uint32
+	SetLength(value uint32)
 
 	//line CORBA_InterfaceRepository.idl:351
+	GetElement_type() CORBA_TypeCode
 
 	//line CORBA_InterfaceRepository.idl:352
+	GetElement_type_def() CORBA_IDLType
+	SetElement_type_def(value CORBA_IDLType)
 }
 
 //line CORBA_InterfaceRepository.idl:354
@@ -785,12 +831,15 @@ type CORBA_ArrayDef interface {
 type CORBA_ExceptionDef interface {
 
 	//line CORBA_InterfaceRepository.idl:355
+	GetType() CORBA_TypeCode
 
 	//line CORBA_InterfaceRepository.idl:356
+	GetMembers() CORBA_StructMemberSeq
+	SetMembers(value CORBA_StructMemberSeq)
 }
 
 //line CORBA_InterfaceRepository.idl:358
-//Usage Count: 4
+//Usage Count: 5
 type CORBA_AttributeMode int
 
 const (
@@ -804,10 +853,15 @@ const (
 type CORBA_AttributeDef interface {
 
 	//line CORBA_InterfaceRepository.idl:360
+	GetType() CORBA_TypeCode
 
 	//line CORBA_InterfaceRepository.idl:361
+	GetType_def() CORBA_IDLType
+	SetType_def(value CORBA_IDLType)
 
 	//line CORBA_InterfaceRepository.idl:362
+	GetMode() CORBA_AttributeMode
+	SetMode(value CORBA_AttributeMode)
 }
 
 //line CORBA_InterfaceRepository.idl:364
@@ -898,15 +952,19 @@ func NewCORBA_ExtAttributeDescriptionValue(
 type CORBA_ExtAttributeDef interface {
 
 	//line CORBA_InterfaceRepository.idl:384
+	GetGet_exceptions() CORBA_ExcDescriptionSeq
+	SetGet_exceptions(value CORBA_ExcDescriptionSeq)
 
 	//line CORBA_InterfaceRepository.idl:385
+	GetSet_exceptions() CORBA_ExcDescriptionSeq
+	SetSet_exceptions(value CORBA_ExcDescriptionSeq)
 
 	//line CORBA_InterfaceRepository.idl:387
 	Describe_attribute() (CORBA_ExtAttributeDescription, error)
 }
 
 //line CORBA_InterfaceRepository.idl:389
-//Usage Count: 1
+//Usage Count: 2
 type CORBA_OperationMode int
 
 const (
@@ -986,16 +1044,27 @@ type CORBA_ExceptionDefSeq Sequence_ExceptionDef
 type CORBA_OperationDef interface {
 
 	//line CORBA_InterfaceRepository.idl:403
+	GetResult() CORBA_TypeCode
 
 	//line CORBA_InterfaceRepository.idl:404
+	GetResult_def() CORBA_IDLType
+	SetResult_def(value CORBA_IDLType)
 
 	//line CORBA_InterfaceRepository.idl:405
+	GetParams() CORBA_ParDescriptionSeq
+	SetParams(value CORBA_ParDescriptionSeq)
 
 	//line CORBA_InterfaceRepository.idl:406
+	GetMode() CORBA_OperationMode
+	SetMode(value CORBA_OperationMode)
 
 	//line CORBA_InterfaceRepository.idl:407
+	GetContexts() CORBA_ContextIdSeq
+	SetContexts(value CORBA_ContextIdSeq)
 
 	//line CORBA_InterfaceRepository.idl:408
+	GetExceptions() CORBA_ExceptionDefSeq
+	SetExceptions(value CORBA_ExceptionDefSeq)
 }
 
 //line CORBA_InterfaceRepository.idl:411
@@ -1126,12 +1195,16 @@ func NewCORBA_InterfaceDef_FullInterfaceDescriptionValue(
 
 //line CORBA_InterfaceRepository.idl:427
 //Interface Decl: CORBA_InterfaceDef
-//Usage Count: 3
+//Usage Count: 5
 type CORBA_InterfaceDef interface {
 
 	//line CORBA_InterfaceRepository.idl:429
+	GetBase_interfaces() CORBA_InterfaceDefSeq
+	SetBase_interfaces(value CORBA_InterfaceDefSeq)
 
 	//line CORBA_InterfaceRepository.idl:430
+	GetIs_abstract() bool
+	SetIs_abstract(value bool)
 
 	//line CORBA_InterfaceRepository.idl:432
 	Is_a(interface_id CORBA_RepositoryId) (bool, error)
@@ -1249,6 +1322,10 @@ type CORBA_ExtInterfaceDef interface {
 //line CORBA_InterfaceRepository.idl:501
 type CORBA_Visibility int16
 
+//line CORBA_InterfaceRepository.idl:502
+
+//line CORBA_InterfaceRepository.idl:503
+
 //line CORBA_InterfaceRepository.idl:505
 //Struct Decl: CORBA_ValueMember
 //Usage Count: 0
@@ -1304,10 +1381,15 @@ type CORBA_ValueMemberSeq Sequence_ValueMember
 type CORBA_ValueMemberDef interface {
 
 	//line CORBA_InterfaceRepository.idl:516
+	GetType() CORBA_TypeCode
 
 	//line CORBA_InterfaceRepository.idl:517
+	GetType_def() CORBA_IDLType
+	SetType_def(value CORBA_IDLType)
 
 	//line CORBA_InterfaceRepository.idl:518
+	GetAccess() CORBA_Visibility
+	SetAccess(value CORBA_Visibility)
 }
 
 //line CORBA_InterfaceRepository.idl:531
@@ -1377,22 +1459,36 @@ func NewCORBA_ValueDef_FullValueDescriptionValue(
 
 //line CORBA_InterfaceRepository.idl:520
 //Interface Decl: CORBA_ValueDef
-//Usage Count: 2
+//Usage Count: 4
 type CORBA_ValueDef interface {
 
 	//line CORBA_InterfaceRepository.idl:522
+	GetSupported_interfaces() CORBA_InterfaceDefSeq
+	SetSupported_interfaces(value CORBA_InterfaceDefSeq)
 
 	//line CORBA_InterfaceRepository.idl:523
+	GetInitializers() CORBA_InitializerSeq
+	SetInitializers(value CORBA_InitializerSeq)
 
 	//line CORBA_InterfaceRepository.idl:524
+	GetBase_value() CORBA_ValueDef
+	SetBase_value(value CORBA_ValueDef)
 
 	//line CORBA_InterfaceRepository.idl:525
+	GetAbstract_base_values() CORBA_ValueDefSeq
+	SetAbstract_base_values(value CORBA_ValueDefSeq)
 
 	//line CORBA_InterfaceRepository.idl:526
+	GetIs_abstract() bool
+	SetIs_abstract(value bool)
 
 	//line CORBA_InterfaceRepository.idl:527
+	GetIs_custom() bool
+	SetIs_custom(value bool)
 
 	//line CORBA_InterfaceRepository.idl:528
+	GetIs_truncatable() bool
+	SetIs_truncatable(value bool)
 
 	//line CORBA_InterfaceRepository.idl:530
 	Is_a(id CORBA_RepositoryId) (bool, error)
@@ -1531,6 +1627,8 @@ func NewCORBA_ExtValueDef_ExtFullValueDescriptionValue(
 type CORBA_ExtValueDef interface {
 
 	//line CORBA_InterfaceRepository.idl:589
+	GetExt_initializers() CORBA_ExtInitializerSeq
+	SetExt_initializers(value CORBA_ExtInitializerSeq)
 
 	//line CORBA_InterfaceRepository.idl:608
 	Describe_ext_value() (CORBA_ExtValueDef_ExtFullValueDescription, error)
@@ -1545,6 +1643,8 @@ type CORBA_ExtValueDef interface {
 type CORBA_ValueBoxDef interface {
 
 	//line CORBA_InterfaceRepository.idl:622
+	GetOriginal_type_def() CORBA_IDLType
+	SetOriginal_type_def(value CORBA_IDLType)
 }
 
 //line CORBA_InterfaceRepository.idl:624
@@ -1571,9 +1671,11 @@ type CORBA_LocalInterfaceDef interface {
 type CORBA_ExtLocalInterfaceDef interface {
 }
 
+//line CORBA_InterfaceRepository.idl:637
+
 //line CORBA_InterfaceRepository.idl:641
 //Interface Decl: CORBA_ComponentIR_EventDef
-//Usage Count: 4
+//Usage Count: 5
 type CORBA_ComponentIR_EventDef interface {
 }
 
@@ -1610,6 +1712,8 @@ type CORBA_ComponentIR_Repository interface {
 type CORBA_ComponentIR_ProvidesDef interface {
 
 	//line CORBA_InterfaceRepository.idl:675
+	GetInterface_type() CORBA_InterfaceDef
+	SetInterface_type(value CORBA_InterfaceDef)
 }
 
 //line CORBA_InterfaceRepository.idl:677
@@ -1653,8 +1757,12 @@ func NewCORBA_ComponentIR_ProvidesDescriptionValue(
 type CORBA_ComponentIR_UsesDef interface {
 
 	//line CORBA_InterfaceRepository.idl:685
+	GetInterface_type() CORBA_InterfaceDef
+	SetInterface_type(value CORBA_InterfaceDef)
 
 	//line CORBA_InterfaceRepository.idl:686
+	GetIs_multiple() bool
+	SetIs_multiple(value bool)
 }
 
 //line CORBA_InterfaceRepository.idl:688
@@ -1701,6 +1809,8 @@ func NewCORBA_ComponentIR_UsesDescriptionValue(
 type CORBA_ComponentIR_EventPortDef interface {
 
 	//line CORBA_InterfaceRepository.idl:698
+	GetEvent() CORBA_ComponentIR_EventDef
+	SetEvent(value CORBA_ComponentIR_EventDef)
 
 	//line CORBA_InterfaceRepository.idl:700
 	Is_a(event_id CORBA_RepositoryId) (bool, error)
@@ -1761,12 +1871,16 @@ type CORBA_ComponentIR_ConsumesDef interface {
 
 //line CORBA_InterfaceRepository.idl:712
 //Interface Decl: CORBA_ComponentIR_ComponentDef
-//Usage Count: 1
+//Usage Count: 3
 type CORBA_ComponentIR_ComponentDef interface {
 
 	//line CORBA_InterfaceRepository.idl:714
+	GetBase_component() CORBA_ComponentIR_ComponentDef
+	SetBase_component(value CORBA_ComponentIR_ComponentDef)
 
 	//line CORBA_InterfaceRepository.idl:715
+	GetSupported_interfaces() CORBA_InterfaceDefSeq
+	SetSupported_interfaces(value CORBA_InterfaceDefSeq)
 
 	//line CORBA_InterfaceRepository.idl:717
 	Create_provides(id CORBA_RepositoryId, interface_type CORBA_InterfaceDef) (CORBA_ComponentIR_ProvidesDef, error)
@@ -1881,16 +1995,24 @@ type CORBA_ComponentIR_FinderDef interface {
 
 //line CORBA_InterfaceRepository.idl:771
 //Interface Decl: CORBA_ComponentIR_HomeDef
-//Usage Count: 1
+//Usage Count: 2
 type CORBA_ComponentIR_HomeDef interface {
 
 	//line CORBA_InterfaceRepository.idl:773
+	GetBase_home() CORBA_ComponentIR_HomeDef
+	SetBase_home(value CORBA_ComponentIR_HomeDef)
 
 	//line CORBA_InterfaceRepository.idl:774
+	GetSupported_interfaces() CORBA_InterfaceDefSeq
+	SetSupported_interfaces(value CORBA_InterfaceDefSeq)
 
 	//line CORBA_InterfaceRepository.idl:775
+	GetManaged_component() CORBA_ComponentIR_ComponentDef
+	SetManaged_component(value CORBA_ComponentIR_ComponentDef)
 
 	//line CORBA_InterfaceRepository.idl:776
+	GetPrimary_key() CORBA_ValueDef
+	SetPrimary_key(value CORBA_ValueDef)
 
 	//line CORBA_InterfaceRepository.idl:778
 	Create_factory(id CORBA_RepositoryId, exceptions CORBA_ExceptionDefSeq) (CORBA_ComponentIR_FactoryDef, error)

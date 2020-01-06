@@ -1,7 +1,7 @@
 package scopedObjects
 
 import (
-	"github.com/bhbosman/CodeGenerators/idlgenerator/ScopingInterfaces"
+	si "github.com/bhbosman/CodeGenerators/idlgenerator/ScopingInterfaces"
 )
 
 type InterfaceHeader struct {
@@ -9,10 +9,10 @@ type InterfaceHeader struct {
 	identifier               string
 	local                    bool
 	abstract                 bool
-	interfaceInheritanceSpec ScopingInterfaces.IInterfaceInheritanceSpec
+	interfaceInheritanceSpec si.IInterfaceInheritanceSpec
 }
 
-func NewInterfaceHeader(fileInformation ScopingInterfaces.IFileInformation, identifier string, local, abstract bool, interfaceInheritanceSpec ScopingInterfaces.IInterfaceInheritanceSpec) (*InterfaceHeader, error) {
+func NewInterfaceHeader(fileInformation si.IFileInformation, identifier string, local, abstract bool, interfaceInheritanceSpec si.IInterfaceInheritanceSpec) (*InterfaceHeader, error) {
 	return &InterfaceHeader{
 		FileInformationBase:      NewFileInformationBase02(fileInformation),
 		identifier:               identifier,

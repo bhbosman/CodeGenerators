@@ -1,0 +1,8 @@
+#ifdef common
+#define common
+
+struct Common
+{
+};
+
+#endif

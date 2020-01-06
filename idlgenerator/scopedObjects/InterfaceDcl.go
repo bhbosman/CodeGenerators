@@ -2,28 +2,36 @@ package scopedObjects
 
 import (
 	"fmt"
-	"github.com/bhbosman/CodeGenerators/idlgenerator/ScopingInterfaces"
+	si "github.com/bhbosman/CodeGenerators/idlgenerator/ScopingInterfaces"
 	"go.uber.org/multierr"
 )
 
 type InterfaceDcl struct {
 	TypeSpecBase
-	body ScopingInterfaces.ITypeSpec
+	body si.ITypeSpec
 }
 
-func NewInterfaceDcl(fileInformation ScopingInterfaces.IFileInformation, identifier string, forward, abstract, local bool, body ScopingInterfaces.ITypeSpec) (*InterfaceDcl, error) {
+func NewInterfaceDcl(
+	fileInformation si.IFileInformation,
+	kind si.IDlSupportedTypes,
+	identifier string,
+	forward bool,
+	abstract bool,
+	local bool,
+	body si.ITypeSpec) (si.IInterfaceDcl, error) {
+
 	return &InterfaceDcl{
 		TypeSpecBase: NewTypeSpecBase(
 			fileInformation,
 			nil,
 			identifier,
-			ScopingInterfaces.InterfaceIdlType,
+			kind,
 			false,
 			forward,
 			abstract,
 			local,
 			false),
-		body: func() ScopingInterfaces.ITypeSpec {
+		body: func() si.ITypeSpec {
 			if body == nil {
 				return nil
 			}
@@ -36,11 +44,11 @@ func (self *InterfaceDcl) Local() bool {
 	return self.local
 }
 
-func (self *InterfaceDcl) Iterate(cb func(typeSpec ScopingInterfaces.ITypeSpec) error) error {
+func (self *InterfaceDcl) Iterate(cb func(typeSpec si.ITypeSpec) error) error {
 	var err error
 	if cb != nil && self.body != nil {
 		for d := self.body; d != nil; d, _ = d.GetNextTypeSpec() {
-			typeSpec, ok := d.(ScopingInterfaces.ITypeSpec)
+			typeSpec, ok := d.(si.ITypeSpec)
 			if ok {
 				err = multierr.Append(err, cb(typeSpec))
 			}
@@ -49,12 +57,12 @@ func (self *InterfaceDcl) Iterate(cb func(typeSpec ScopingInterfaces.ITypeSpec) 
 	return err
 }
 
-func (self *InterfaceDcl) GetBody() ScopingInterfaces.ITypeSpec {
+func (self *InterfaceDcl) GetBody() si.ITypeSpec {
 	return self.body
 }
 
-func (self *InterfaceDcl) BodyArray() []ScopingInterfaces.IIdlDefinition {
-	result := make([]ScopingInterfaces.IIdlDefinition, 0, 16)
+func (self *InterfaceDcl) BodyArray() []si.IIdlDefinition {
+	result := make([]si.IIdlDefinition, 0, 16)
 	for item := self.GetBody(); item != nil; item, _ = item.GetNextTypeSpec() {
 		result = append(result, item)
 	}

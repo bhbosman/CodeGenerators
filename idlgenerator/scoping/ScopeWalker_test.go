@@ -29,7 +29,16 @@ func TestGenerateCodeGolang_Generate(t *testing.T) {
 		
 			module aa
 			{
-				abstract valuetype DataInputStream {};
+				typedef unsigned long PolicyType;
+			
+				// Basic IDL definition
+				interface a {
+					attribute PolicyType policy_type;
+					Policy copy();
+					void destroy();
+				};
+				interface b:a {
+				};
 			};
 			
 		
@@ -54,12 +63,6 @@ func TestGenerateCodeGolang_Generate(t *testing.T) {
 		newScopingContext := NewScopingContext("", nil, scopingContext)
 		err = dd.Scope(newScopingContext, 0, interfaceDcl, "")
 
-		//_ = scopingContext.Iterate(func(key string, value ScopingInterfaces.IBaseDeclaredType) error {
-		//	if !value.IsPrimitive() {
-		//		fmt.Println(key)
-		//	}
-		//	return nil
-		//})
 		generateCodeGolang := CodeGeneration.NewGenerateCodeGolang()
 		_ = generateCodeGolang.Generate(interfaceDcl)
 

@@ -5,15 +5,14 @@ import (
 	"github.com/bhbosman/CodeGenerators/idlgenerator/AppImpl"
 	"github.com/bhbosman/CodeGenerators/idlgenerator/AppInterfaces"
 	"go.uber.org/fx"
-	"log"
 )
 
 func FxAppProvideIoReaders() fx.Option {
-	return fx.Provide(func(context AppInterfaces.IIdlGeneratorFlags, logger *log.Logger) (AppInterfaces.IIoReaders, error) {
+	return fx.Provide(func(context AppInterfaces.IIdlGeneratorFlags, logFactory AppImpl.ILogFactory) (AppInterfaces.IIoReaders, error) {
 		ioReaders := &AppImpl.IoReaders{
 			FileInformation: nil,
 			Context:         context,
-			Logger:          logger,
+			Logger:          logFactory.Create(),
 		}
 		return ioReaders, nil
 	})

@@ -100,3 +100,8 @@ func (self *IoReaders) Exists(name string) bool {
 	}
 	return true
 }
+
+
+
+
+

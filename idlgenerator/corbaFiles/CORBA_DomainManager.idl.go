@@ -11,6 +11,8 @@ type CORBA_DomainManager interface {
 	Get_domain_policy(policy_type CORBA_PolicyType) (CORBA_Policy, error)
 }
 
+//line CORBA_DomainManager.idl:10
+
 //line CORBA_DomainManager.idl:12
 //Interface Decl: CORBA_ConstructionPolicy
 //Usage Count: 0

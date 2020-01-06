@@ -4,7 +4,7 @@ package yacc
 
 import (
 	"fmt"
-	"github.com/bhbosman/CodeGenerators/idlgenerator/ScopingInterfaces"
+	si "github.com/bhbosman/CodeGenerators/idlgenerator/ScopingInterfaces"
 	"github.com/bhbosman/CodeGenerators/idlgenerator/scopedObjects"
 	"io"
 	"log"
@@ -15,12 +15,12 @@ type CompleteIdlLexImpl struct {
 	tokenizer      *Tokenizer
 	logger         *log.Logger
 	lastError      string
-	typeSpec       ScopingInterfaces.ITypeSpec
-	nextNumber     ScopingInterfaces.INextNumber
-	scopingContext ScopingInterfaces.IScopingContext
+	typeSpec       si.ITypeSpec
+	nextNumber     si.INextNumber
+	scopingContext si.IScopingContext
 }
 
-func (self *CompleteIdlLexImpl) FindPrimitive(fileInformation ScopingInterfaces.IFileInformation, s string) (ScopingInterfaces.IBaseDeclaredType, error) {
+func (self *CompleteIdlLexImpl) FindPrimitive(fileInformation si.IFileInformation, s string) (si.IBaseDeclaredType, error) {
 	return self.scopingContext.FindTypeSpec(fileInformation, s)
 }
 
@@ -29,8 +29,8 @@ func NewCompleteIdlLexImpl(
 	inputStream io.Reader,
 	logger *log.Logger,
 	definitionContext IDefinitionContext,
-	nextNumber ScopingInterfaces.INextNumber,
-	scopingContext ScopingInterfaces.IScopingContext) (*CompleteIdlLexImpl, error) {
+	nextNumber si.INextNumber,
+	scopingContext si.IScopingContext) (*CompleteIdlLexImpl, error) {
 
 	return &CompleteIdlLexImpl{
 		tokenizer:      NewTokenizer(fileName, inputStream, NewAdditionalInformation(definitionContext)),
@@ -42,27 +42,27 @@ func NewCompleteIdlLexImpl(
 	}, nil
 }
 
-func (self *CompleteIdlLexImpl) NewTypeDeclarator(simpleTypeSpec ScopingInterfaces.IBaseDeclaredType, declarator ScopingInterfaces.IDeclarator) (ScopingInterfaces.ITypeDeclarator, error) {
+func (self *CompleteIdlLexImpl) NewTypeDeclarator(simpleTypeSpec si.IBaseDeclaredType, declarator si.IDeclarator) (si.ITypeDeclarator, error) {
 	return scopedObjects.NewTypeDeclarator(simpleTypeSpec, declarator)
 }
 
-func (self *CompleteIdlLexImpl) NewIdlConstDcl(fileInformation ScopingInterfaces.IFileInformation, identifier string, value int) (ScopingInterfaces.IIdlConstDcl, error) {
+func (self *CompleteIdlLexImpl) NewIdlConstDcl(fileInformation si.IFileInformation, identifier string, value int) (si.IIdlConstDcl, error) {
 	return scopedObjects.NewIdlConstDcl(fileInformation, identifier, value), nil
 }
 
-func (self *CompleteIdlLexImpl) NewMember(typeSpec ScopingInterfaces.IBaseDeclaredType, declarator ScopingInterfaces.IDeclarator) (ScopingInterfaces.IStructMember, error) {
+func (self *CompleteIdlLexImpl) NewMember(typeSpec si.IBaseDeclaredType, declarator si.IDeclarator) (si.IStructMember, error) {
 	return scopedObjects.NewStructMember(typeSpec, declarator)
 }
 
-func (self *CompleteIdlLexImpl) CreateInterfaceKind(fileInformation ScopingInterfaces.IFileInformation, local bool, abstract bool) (ScopingInterfaces.IInterfaceKind, error) {
+func (self *CompleteIdlLexImpl) CreateInterfaceKind(fileInformation si.IFileInformation, local bool, abstract bool) (si.IInterfaceKind, error) {
 	return scopedObjects.NewInterfaceKindImpl(fileInformation, local, abstract), nil
 }
 
-func (self *CompleteIdlLexImpl) NewDeclarator(fileInformation ScopingInterfaces.IFileInformation, identifier string) (ScopingInterfaces.IDeclarator, error) {
+func (self *CompleteIdlLexImpl) NewDeclarator(fileInformation si.IFileInformation, identifier string) (si.IDeclarator, error) {
 	return scopedObjects.NewDeclarator(fileInformation, identifier), nil
 }
 
-func (self *CompleteIdlLexImpl) GetSpec() (ScopingInterfaces.ITypeSpec, error) {
+func (self *CompleteIdlLexImpl) GetSpec() (si.ITypeSpec, error) {
 	return self.typeSpec, nil
 }
 
@@ -78,36 +78,43 @@ func (self *CompleteIdlLexImpl) GetCol() int {
 	return self.tokenizer.currentStream.column
 }
 
-func (self *CompleteIdlLexImpl) AssignSpec(typeSpec ScopingInterfaces.ITypeSpec) (ScopingInterfaces.ITypeSpec, error) {
+func (self *CompleteIdlLexImpl) AssignSpec(typeSpec si.ITypeSpec) (si.ITypeSpec, error) {
 	self.typeSpec = typeSpec
 	return typeSpec, nil
 }
 
-func (self *CompleteIdlLexImpl) CreateModuleDcl(fileInformation ScopingInterfaces.IFileInformation, identifier string, typeSpec ScopingInterfaces.ITypeSpec) (ScopingInterfaces.IIdlModuleDcl, error) {
+func (self *CompleteIdlLexImpl) CreateModuleDcl(fileInformation si.IFileInformation, identifier string, typeSpec si.ITypeSpec) (si.IIdlModuleDcl, error) {
 	return scopedObjects.NewModuleDcl(fileInformation, identifier, typeSpec), nil
 }
 
-func (self *CompleteIdlLexImpl) CreateInterfaceDcl(fileInformation ScopingInterfaces.IFileInformation, identifier string, forward, abstract, local bool, body ScopingInterfaces.ITypeSpec) (ScopingInterfaces.ITypeSpec, error) {
-	return scopedObjects.NewInterfaceDcl(fileInformation, identifier, forward, abstract, local, body)
+func (self *CompleteIdlLexImpl) CreateInterfaceDcl(fileInformation si.IFileInformation, identifier string, forward, abstract, local bool, body si.ITypeSpec) (si.ITypeSpec, error) {
+	return scopedObjects.NewInterfaceDcl(
+		fileInformation,
+		si.InterfaceIdlType,
+		identifier,
+		forward,
+		abstract,
+		local,
+		body)
 }
 
-func (self *CompleteIdlLexImpl) CreateTypePrefixDcl(fileInformation ScopingInterfaces.IFileInformation, scopedName, stringLiteral string) (ScopingInterfaces.ITypeSpec, error) {
+func (self *CompleteIdlLexImpl) CreateTypePrefixDcl(fileInformation si.IFileInformation, scopedName, stringLiteral string) (si.ITypeSpec, error) {
 	return scopedObjects.NewCreateTypePrefixDcl(fileInformation, scopedName, stringLiteral)
 }
 
-func (self *CompleteIdlLexImpl) TransformString(value string) (ScopingInterfaces.IPrimaryExpression, error) {
-	return scopedObjects.NewPrimaryExpression(value, ScopingInterfaces.PetString), nil
+func (self *CompleteIdlLexImpl) TransformString(value string) (si.IPrimaryExpression, error) {
+	return scopedObjects.NewPrimaryExpression(value, si.PetString), nil
 }
 
-func (self *CompleteIdlLexImpl) TransformInteger(value int) (ScopingInterfaces.IPrimaryExpression, error) {
-	return scopedObjects.NewPrimaryExpression(value, ScopingInterfaces.PetInteger), nil
+func (self *CompleteIdlLexImpl) TransformInteger(value int) (si.IPrimaryExpression, error) {
+	return scopedObjects.NewPrimaryExpression(value, si.PetInteger), nil
 }
 
-func (self *CompleteIdlLexImpl) TransformValue(value interface{}, valuetype ScopingInterfaces.IPrimaryExpressionType) (ScopingInterfaces.IPrimaryExpression, error) {
+func (self *CompleteIdlLexImpl) TransformValue(value interface{}, valuetype si.IPrimaryExpressionType) (si.IPrimaryExpression, error) {
 	return scopedObjects.NewPrimaryExpression(value, valuetype), nil
 }
 
-func (self *CompleteIdlLexImpl) NewStructType(fileInformation ScopingInterfaces.IFileInformation, identifier string, members ScopingInterfaces.IStructMember, forward bool) (ScopingInterfaces.IStructType, error) {
+func (self *CompleteIdlLexImpl) NewStructType(fileInformation si.IFileInformation, identifier string, members si.IStructMember, forward bool) (si.IStructType, error) {
 	if identifier == "" {
 		return nil, fmt.Errorf("invalid identifier")
 	}

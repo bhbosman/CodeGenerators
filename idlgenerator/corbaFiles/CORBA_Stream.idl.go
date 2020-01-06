@@ -152,3 +152,231 @@ func NewCORBA_BadFixedValueExceptionValue(
 		Offset: offset,
 	}, nil
 }
+
+//line CORBA_Stream.idl:25
+//Interface Decl: CORBA_DataOutputStream
+//Usage Count: 1
+type CORBA_DataOutputStream interface {
+
+	//line CORBA_Stream.idl:26
+	Write_any(value CorbaAny) error
+
+	//line CORBA_Stream.idl:27
+	Write_boolean(value bool) error
+
+	//line CORBA_Stream.idl:28
+	Write_char(value AnsiChar) error
+
+	//line CORBA_Stream.idl:29
+	Write_wchar(value WideChar) error
+
+	//line CORBA_Stream.idl:30
+	Write_octet(value int) error
+
+	//line CORBA_Stream.idl:31
+	Write_short(value int16) error
+
+	//line CORBA_Stream.idl:32
+	Write_ushort(value uint16) error
+
+	//line CORBA_Stream.idl:33
+	Write_long(value int32) error
+
+	//line CORBA_Stream.idl:34
+	Write_ulong(value uint32) error
+
+	//line CORBA_Stream.idl:35
+	Write_longlong(value int64) error
+
+	//line CORBA_Stream.idl:36
+	Write_ulonglong(value uint64) error
+
+	//line CORBA_Stream.idl:37
+	Write_float(value CorbaFloat) error
+
+	//line CORBA_Stream.idl:38
+	Write_double(value CorbaDouble) error
+
+	//line CORBA_Stream.idl:39
+	Write_longdouble(value CorbaLongDouble) error
+
+	//line CORBA_Stream.idl:40
+	Write_string(value AnsiString) error
+
+	//line CORBA_Stream.idl:41
+	Write_wstring(value WideString) error
+
+	//line CORBA_Stream.idl:42
+	Write_Object(value CorbaObject) error
+
+	//line CORBA_Stream.idl:43
+	Write_Abstract(value AbstractBase) error
+
+	//line CORBA_Stream.idl:44
+	Write_Value(value Valuebase) error
+
+	//line CORBA_Stream.idl:45
+	Write_TypeCode(value CORBA_TypeCode) error
+
+	//line CORBA_Stream.idl:46
+	Write_any_array(seq CORBA_AnySeq, length uint32) error
+
+	//line CORBA_Stream.idl:49
+	Write_boolean_array(seq CORBA_BooleanSeq, length uint32) error
+
+	//line CORBA_Stream.idl:52
+	Write_char_array(seq CORBA_CharSeq, length uint32) error
+
+	//line CORBA_Stream.idl:55
+	Write_wchar_array(seq CORBA_WCharSeq, length uint32) error
+
+	//line CORBA_Stream.idl:58
+	Write_octet_array(seq CORBA_OctetSeq, length uint32) error
+
+	//line CORBA_Stream.idl:61
+	Write_short_array(seq CORBA_ShortSeq, length uint32) error
+
+	//line CORBA_Stream.idl:64
+	Write_ushort_array(seq CORBA_UShortSeq, length uint32) error
+
+	//line CORBA_Stream.idl:67
+	Write_long_array(seq CORBA_LongSeq, length uint32) error
+
+	//line CORBA_Stream.idl:70
+	Write_ulong_array(seq CORBA_ULongSeq, length uint32) error
+
+	//line CORBA_Stream.idl:73
+	Write_ulonglong_array(seq CORBA_ULongLongSeq, length uint32) error
+
+	//line CORBA_Stream.idl:76
+	Write_longlong_array(seq CORBA_LongLongSeq, length uint32) error
+
+	//line CORBA_Stream.idl:79
+	Write_float_array(seq CORBA_FloatSeq, length uint32) error
+
+	//line CORBA_Stream.idl:82
+	Write_double_array(seq CORBA_DoubleSeq, length uint32) error
+
+	//line CORBA_Stream.idl:85
+	Write_long_double_array(seq CORBA_LongDoubleSeq, length uint32) error
+
+	//line CORBA_Stream.idl:89
+	Write_fixed(fixed_value CorbaAny) error
+
+	//line CORBA_Stream.idl:92
+	Write_fixed_array(seq CORBA_AnySeq, length uint32) error
+}
+
+//line CORBA_Stream.idl:99
+//Interface Decl: CORBA_DataInputStream
+//Usage Count: 1
+type CORBA_DataInputStream interface {
+
+	//line CORBA_Stream.idl:100
+	Read_any() (CorbaAny, error)
+
+	//line CORBA_Stream.idl:101
+	Read_boolean() (bool, error)
+
+	//line CORBA_Stream.idl:102
+	Read_char() (AnsiChar, error)
+
+	//line CORBA_Stream.idl:103
+	Read_wchar() (WideChar, error)
+
+	//line CORBA_Stream.idl:104
+	Read_octet() (int, error)
+
+	//line CORBA_Stream.idl:105
+	Read_short() (int16, error)
+
+	//line CORBA_Stream.idl:106
+	Read_ushort() (uint16, error)
+
+	//line CORBA_Stream.idl:107
+	Read_long() (int32, error)
+
+	//line CORBA_Stream.idl:108
+	Read_ulong() (uint32, error)
+
+	//line CORBA_Stream.idl:109
+	Read_longlong() (int64, error)
+
+	//line CORBA_Stream.idl:110
+	Read_ulonglong() (uint64, error)
+
+	//line CORBA_Stream.idl:111
+	Read_float() (CorbaFloat, error)
+
+	//line CORBA_Stream.idl:112
+	Read_double() (CorbaDouble, error)
+
+	//line CORBA_Stream.idl:113
+	Read_longdouble() (CorbaLongDouble, error)
+
+	//line CORBA_Stream.idl:114
+	Read_string() (AnsiString, error)
+
+	//line CORBA_Stream.idl:115
+	Read_wstring() (WideString, error)
+
+	//line CORBA_Stream.idl:116
+	Read_Object() (CorbaObject, error)
+
+	//line CORBA_Stream.idl:117
+	Read_Abstract() (AbstractBase, error)
+
+	//line CORBA_Stream.idl:118
+	Read_Value() (Valuebase, error)
+
+	//line CORBA_Stream.idl:119
+	Read_TypeCode() (CORBA_TypeCode, error)
+
+	//line CORBA_Stream.idl:121
+	Read_any_array(seq CORBA_AnySeq, length uint32) error
+
+	//line CORBA_Stream.idl:125
+	Read_boolean_array(seq CORBA_BooleanSeq, length uint32) error
+
+	//line CORBA_Stream.idl:129
+	Read_char_array(seq CORBA_CharSeq, length uint32) error
+
+	//line CORBA_Stream.idl:133
+	Read_wchar_array(seq CORBA_WCharSeq, length uint32) error
+
+	//line CORBA_Stream.idl:137
+	Read_octet_array(seq CORBA_OctetSeq, length uint32) error
+
+	//line CORBA_Stream.idl:141
+	Read_short_array(seq CORBA_ShortSeq, length uint32) error
+
+	//line CORBA_Stream.idl:145
+	Read_ushort_array(seq CORBA_UShortSeq, length uint32) error
+
+	//line CORBA_Stream.idl:149
+	Read_long_array(seq CORBA_LongSeq, length uint32) error
+
+	//line CORBA_Stream.idl:153
+	Read_ulong_array(seq CORBA_ULongSeq, length uint32) error
+
+	//line CORBA_Stream.idl:157
+	Read_ulonglong_array(seq CORBA_ULongLongSeq, length uint32) error
+
+	//line CORBA_Stream.idl:161
+	Read_longlong_array(seq CORBA_LongLongSeq, length uint32) error
+
+	//line CORBA_Stream.idl:165
+	Read_float_array(seq CORBA_FloatSeq, length uint32) error
+
+	//line CORBA_Stream.idl:169
+	Read_double_array(seq CORBA_DoubleSeq, length uint32) error
+
+	//line CORBA_Stream.idl:173
+	Read_long_double_array(seq CORBA_DoubleSeq, length uint32) error
+
+	//line CORBA_Stream.idl:177
+	Read_fixed(digits uint16, scale int16) (CorbaAny, error)
+
+	//line CORBA_Stream.idl:181
+	Read_fixed_array(seq CORBA_AnySeq, scale int16) error
+}

@@ -49,6 +49,14 @@ const (
 //line CORBA_TypeCode.idl:26
 type CORBA_ValueModifier int16
 
+//line CORBA_TypeCode.idl:27
+
+//line CORBA_TypeCode.idl:28
+
+//line CORBA_TypeCode.idl:29
+
+//line CORBA_TypeCode.idl:30
+
 //line CORBA_TypeCode.idl:33
 //Exception Decl: CORBA_TypeCode_BoundsException
 //Usage Count: 0
@@ -81,7 +89,7 @@ func NewCORBA_TypeCode_BadKindExceptionDefaultValue() (CORBA_TypeCode_BadKindExc
 
 //line CORBA_TypeCode.idl:32
 //Interface Decl: CORBA_TypeCode
-//Usage Count: 25
+//Usage Count: 36
 type CORBA_TypeCode interface {
 
 	//line CORBA_TypeCode.idl:36

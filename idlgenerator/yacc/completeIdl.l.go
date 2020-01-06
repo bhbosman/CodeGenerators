@@ -403,6 +403,7 @@ var yyrules []yyrule = []yyrule{{
 			fileName := stripToFileName(s)
 			dir, _ := path.Split(self.currentStream.fileName)
 			newFileName := path.Join(dir, fileName)
+
 			file, e := os.Open(newFileName)
 			if e != nil {
 				self.currentStream.row--

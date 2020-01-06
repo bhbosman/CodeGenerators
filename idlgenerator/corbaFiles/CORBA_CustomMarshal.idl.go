@@ -3,9 +3,9 @@
 package corbaFiles
 
 //line CORBA_CustomMarshal.idl:5
-//ValueAbsolute Decl: CustomMarshal
+//Interface Decl: CORBA_CustomMarshal
 //Usage Count: 0
-type CustomMarshal interface {
+type CORBA_CustomMarshal interface {
 
 	//line CORBA_CustomMarshal.idl:6
 	Marshal(os CORBA_DataOutputStream) error

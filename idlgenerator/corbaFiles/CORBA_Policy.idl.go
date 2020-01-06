@@ -11,6 +11,7 @@ type CORBA_PolicyType uint32
 type CORBA_Policy interface {
 
 	//line CORBA_Policy.idl:8
+	GetPolicy_type() CORBA_PolicyType
 
 	//line CORBA_Policy.idl:9
 	Copy() (CORBA_Policy, error)
@@ -60,6 +61,16 @@ func NewCORBA_PolicyErrorExceptionValue(
 		Reason: reason,
 	}, nil
 }
+
+//line CORBA_Policy.idl:19
+
+//line CORBA_Policy.idl:20
+
+//line CORBA_Policy.idl:21
+
+//line CORBA_Policy.idl:22
+
+//line CORBA_Policy.idl:23
 
 //line CORBA_Policy.idl:25
 //Usage Count: 1

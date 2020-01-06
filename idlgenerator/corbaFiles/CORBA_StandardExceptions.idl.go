@@ -2,6 +2,8 @@
 
 package corbaFiles
 
+//line CORBA_StandardExceptions.idl:4
+
 //line CORBA_StandardExceptions.idl:8
 //Usage Count: 36
 type CORBA_Completion_status int

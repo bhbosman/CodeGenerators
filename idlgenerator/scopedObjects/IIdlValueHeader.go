@@ -1,15 +1,15 @@
 package scopedObjects
 
-import "github.com/bhbosman/CodeGenerators/idlgenerator/ScopingInterfaces"
+import si "github.com/bhbosman/CodeGenerators/idlgenerator/ScopingInterfaces"
 
 type IdlValueHeader struct {
-	fileInformation      ScopingInterfaces.IFileInformation
-	idlValueKind         ScopingInterfaces.IIdlValueKind
-	id                   ScopingInterfaces.IIdlIdentifier
-	valueInheritanceSpec ScopingInterfaces.IValueInheritanceSpec
+	fileInformation      si.IFileInformation
+	idlValueKind         si.IIdlValueKind
+	id                   si.IIdlIdentifier
+	valueInheritanceSpec si.IValueInheritanceSpec
 }
 
-func NewIdlValueHeader(fileInformation ScopingInterfaces.IFileInformation, idlValueKind ScopingInterfaces.IIdlValueKind, id ScopingInterfaces.IIdlIdentifier, valueInheritanceSpec ScopingInterfaces.IValueInheritanceSpec) (ScopingInterfaces.IIdlValueHeader, error) {
+func NewIdlValueHeader(fileInformation si.IFileInformation, idlValueKind si.IIdlValueKind, id si.IIdlIdentifier, valueInheritanceSpec si.IValueInheritanceSpec) (si.IIdlValueHeader, error) {
 	return &IdlValueHeader{
 		fileInformation:      fileInformation,
 		idlValueKind:         idlValueKind,

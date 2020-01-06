@@ -3,6 +3,7 @@ package fx
 import (
 	"bufio"
 	"fmt"
+	"github.com/bhbosman/CodeGenerators/idlgenerator/AppImpl"
 	ai "github.com/bhbosman/CodeGenerators/idlgenerator/AppInterfaces"
 	"github.com/bhbosman/CodeGenerators/idlgenerator/CodeGeneration"
 	"github.com/bhbosman/CodeGenerators/idlgenerator/ScopingInterfaces"
@@ -71,7 +72,7 @@ func AppProvideProcessor() fx.Option {
 	return fx.Provide(
 		func(
 			context ai.IIdlGeneratorFlags,
-			logger *log.Logger,
+			logFactory AppImpl.ILogFactory,
 			ioReaders ai.IIoReaders,
 			definitionContextFactory ai.IDefinitionContextFactory,
 			nextNumber ScopingInterfaces.INextNumber,
@@ -81,7 +82,7 @@ func AppProvideProcessor() fx.Option {
 			var processor = &processor{
 				readerClosers:            ioReaders,
 				context:                  context,
-				logger:                   logger,
+				logger:                   logFactory.Create(),
 				definitionContextFactory: definitionContextFactory,
 				nextNumber:               nextNumber,
 				scopeWalker:              scopeWalker,

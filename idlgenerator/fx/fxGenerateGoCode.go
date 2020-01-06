@@ -4,13 +4,12 @@ import (
 	"github.com/bhbosman/CodeGenerators/idlgenerator/AppInterfaces"
 	"github.com/bhbosman/CodeGenerators/idlgenerator/scoping"
 	"go.uber.org/fx"
-	"log"
 )
 
 func AppProvideGenerateCodeGolang() fx.Option {
 	return fx.Provide(
-		func(logger *log.Logger) (AppInterfaces.IScopeWalker, error) {
-			generateCodeGolang := scoping.NewScopeWalker(logger)
+		func() (AppInterfaces.IScopeWalker, error) {
+			generateCodeGolang := scoping.NewScopeWalker()
 			return generateCodeGolang, nil
 		})
 }

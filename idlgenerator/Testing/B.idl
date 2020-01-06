@@ -1,0 +1,7 @@
+#include<common.idl>
+#include<A.idl>
+
+struct B
+{
+    Common c;
+};

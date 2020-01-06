@@ -7,18 +7,18 @@ import (
 	"reflect"
 )
 
-type IFileWriter interface {
-	Println(v ...interface{})
-	Printf(format string, v ...interface{})
-}
+//type IFileWriter interface {
+//	Println(v ...interface{})
+//	Printf(format string, v ...interface{})
+//}
 
 type ScopeWalker struct {
-	Logger IFileWriter
+
 }
 
-func NewScopeWalker(logger IFileWriter) *ScopeWalker {
+func NewScopeWalker() *ScopeWalker {
 	return &ScopeWalker{
-		Logger: logger,
+
 	}
 }
 
@@ -29,75 +29,79 @@ func (self ScopeWalker) Scope(scopingContext si.IScopingContext, indent int, dcl
 			err,
 			self.InternalGenerate(scopingContext, 0, typeSpec))
 	}
+
 	return err
 }
 
 func (self ScopeWalker) InternalGenerate(scopingContext si.IScopingContext, indent int, dcl si.ITypeSpec) error {
 	switch dcl.GetKind() {
-
 	case si.Attr_specIdlType:
 		attributeDecl, ok := dcl.(si.IAttributeDcl)
 		if ok {
-			return self.ScopeAttributeDcl(indent+1, attributeDecl)
+			return self.ScopeAttributeDcl(scopingContext, indent+1, attributeDecl)
 		}
-
+		return fmt.Errorf("could not type case to si.IAttributeDcl")
 	case si.ExceptionIdlType:
 		exceptionDecl, ok := dcl.(si.IIdlException)
 		if ok {
 			return self.ScopeExceptionDcl(scopingContext, indent+1, exceptionDecl)
 		}
+		return fmt.Errorf("could not type case to si.IAttributeDcl")
 
 	case si.ConstDclType:
 		constantDecl, ok := dcl.(si.IIdlConstDcl)
 		if ok {
 			return self.ScopeConstantDcl(indent+1, constantDecl)
 		}
+		return fmt.Errorf("could not type case to si.IIdlConstDcl")
 	case si.ModuleIdlType:
 		moduleDcl, ok := dcl.(si.IIdlModuleDcl)
 		if ok {
 			return self.ScopeModuleDcl(scopingContext, indent+1, moduleDcl)
 		}
+		return fmt.Errorf("could not type case to si.IIdlModuleDcl")
 	case si.StructIdlType:
 		structType, ok := dcl.(si.IStructType)
 		if ok {
 			return self.ScopeStructDcl(scopingContext, indent+1, structType)
 		}
+		return fmt.Errorf("could not type case to si.IStructType")
 	case si.RWEnumIdlType:
 		enumType, ok := dcl.(si.IEnumType)
 		if ok {
 			return self.ScopeEnumDcl(scopingContext, indent+1, enumType)
 		}
-
+		return fmt.Errorf("could not type case to si.IEnumType")
 	case si.InterfaceIdlType:
 		interfaceDcl, ok := dcl.(si.IInterfaceDcl)
 		if ok {
 			return self.ScopeInterfaceDcl(scopingContext, indent+1, interfaceDcl)
 		}
+		return fmt.Errorf("could not type case to si.IInterfaceDcl")
 	case si.Op_dclIdlType:
 		operation, ok := dcl.(si.IOperationDeclarations)
 		if ok {
 			return self.ScopeOperationDcl(scopingContext, indent+1, operation)
 		}
+		return fmt.Errorf("could not type case to si.IOperationDeclarations")
 	case si.IdlValue_Abs_DefType:
-		value, ok := dcl.(si.IValueAbsoluteDefinition)
+		value, ok := dcl.(si.IInterfaceDcl)
 		if ok {
-			return self.ScopeValueAbsolute(scopingContext, indent+1, value)
+			return self.ScopeInterfaceDcl(scopingContext, indent+1, value)
 		}
-
+		return fmt.Errorf("could not type case to si.IInterfaceDcl")
 	case si.TypeDeclaratorIdlType:
 		typeDecl, ok := dcl.(si.ITypeDeclarator)
 		if ok {
 			return self.ScopeTypeDcl(scopingContext, indent+1, typeDecl)
 		}
+		return fmt.Errorf("could not type case to si.ITypeDeclarator")
 	default:
-		self.Logger.Println(fmt.Sprintf(">>>>>>>>>>>>>%v<<<<<<<<<", dcl))
 		return nil
 	}
-	return nil
 }
 
 func (self ScopeWalker) ScopeModuleDcl(scopingContext si.IScopingContext, indent int, dcl si.IIdlModuleDcl) error {
-	self.Logger.Println(fmt.Sprintf("(%d): %v", indent, dcl))
 	var err error
 	scopeName := dcl.GetName()
 	newScopingContext := NewScopingContext(scopeName, nil, scopingContext)
@@ -116,7 +120,6 @@ func (self ScopeWalker) ScopeModuleDcl(scopingContext si.IScopingContext, indent
 		}))
 
 	return err
-
 }
 
 func (self ScopeWalker) ScopeStructDcl(scopingContext si.IScopingContext, indent int, dcl si.IStructType) error {
@@ -127,7 +130,6 @@ func (self ScopeWalker) ScopeStructDcl(scopingContext si.IScopingContext, indent
 			members := dcl.Members()
 			if members != nil {
 				for _, memberInformation := range members.GetMembers() {
-					self.Logger.Println(fmt.Sprintf("(%d): %v", indent, memberInformation))
 					if placeHolder, isPlaceHolder := memberInformation.GetTypeSpec().(si.IDeclaredTypePlaceHolder); isPlaceHolder {
 						if placeHolder.GetKind() == si.DeclareTypePlaceHolderType {
 							if found, foundDeclareType := scopingContext.Find(placeHolder.GetName(), true); found {
@@ -146,7 +148,6 @@ func (self ScopeWalker) ScopeStructDcl(scopingContext si.IScopingContext, indent
 	}
 
 	var err error
-	self.Logger.Println(fmt.Sprintf("(%d): %v", indent, dcl))
 	if found, declType := scopingContext.Find(dcl.GetName(), false); found {
 		if existingDecl, ok := declType.(si.IInterfaceDcl); ok {
 			if dcl.Forward() && existingDecl.Forward() {
@@ -188,12 +189,10 @@ func (self ScopeWalker) ScopeStructDcl(scopingContext si.IScopingContext, indent
 }
 
 func (self ScopeWalker) ScopeEnumDcl(scopingContext si.IScopingContext, indent int, enumType si.IEnumType) error {
-	self.Logger.Println(fmt.Sprintf("(%d): %v", indent, enumType))
 	indent++
 
 	err := scopingContext.Add(enumType.GetName(), enumType)
 	for m := enumType.Enumerator(); m != nil; m = m.Next() {
-		self.Logger.Println(fmt.Sprintf("(%d): %v", indent, m))
 	}
 	return err
 }
@@ -207,11 +206,6 @@ func (self ScopeWalker) buildDeclarationName(scope, name string) string {
 }
 
 func (self ScopeWalker) ScopeInterfaceDcl(scopingContext si.IScopingContext, indent int, dcl si.IInterfaceDcl) error {
-	self.Logger.Println(fmt.Sprintf("(%d): %v", indent, dcl))
-	if dcl.GetName() == "Container" {
-		fmt.Println("Container")
-	}
-
 	interfaceScope := func(scopingContext si.IScopingContext, indent int, dcl si.IInterfaceDcl) error {
 		var err error
 		if !dcl.Forward() {
@@ -229,6 +223,7 @@ func (self ScopeWalker) ScopeInterfaceDcl(scopingContext si.IScopingContext, ind
 				dcl.Iterate(func(typeSpec si.ITypeSpec) error {
 					return self.InternalGenerate(newScopingContext, indent, typeSpec)
 				}))
+
 		}
 		return err
 	}
@@ -273,17 +268,8 @@ func (self ScopeWalker) ScopeInterfaceDcl(scopingContext si.IScopingContext, ind
 	return err
 }
 
-//func (self ScopeWalker) findType(scopingContext si.IScopingContext, dcl si.IBaseDeclaredType) error {
-//	b, _ := scopingContext.Find(dcl.GetName())
-//	if b {
-//		return nil
-//	}
-//	return fmt.Errorf("type not found %v", dcl.GetName())
-//}
-
 func (self ScopeWalker) ScopeOperationDcl(scopingContext si.IScopingContext, indent int, dcl si.IOperationDeclarations) error {
 	var err error
-	self.Logger.Println(fmt.Sprintf("(%d): %v", indent, dcl))
 	indent++
 	if found, foundDeclareType := scopingContext.Find(dcl.GetOperationDeclaratorType().GetName(), true); found {
 		if declaredType, ok := foundDeclareType.(si.IDeclaredType); ok {
@@ -309,40 +295,19 @@ func (self ScopeWalker) ScopeOperationDcl(scopingContext si.IScopingContext, ind
 }
 
 func (self ScopeWalker) ScopeTypeDcl(scopingContext si.IScopingContext, indent int, dcl si.ITypeDeclarator) error {
-	self.Logger.Println(fmt.Sprintf("(%d): %v", indent, dcl))
 	return scopingContext.Add(dcl.GetName(), dcl)
 }
 
-func (self ScopeWalker) ScopeValueAbsolute(scopingContext si.IScopingContext, indent int, dcl si.IValueAbsoluteDefinition) error {
-	self.Logger.Println(fmt.Sprintf("(%d): %v", indent, dcl))
-	var err error
-	err = multierr.Append(
-		err,
-		scopingContext.Add(dcl.GetName(), dcl))
-
-	err = multierr.Append(
-		err,
-		dcl.Iterate(
-			func(typeSpec si.ITypeSpec) error {
-				return self.InternalGenerate(scopingContext, indent, typeSpec)
-			}))
-
-	return err
-}
-
 func (self ScopeWalker) ScopeConstantDcl(indent int, constDcl si.IIdlConstDcl) error {
-	self.Logger.Println(fmt.Sprintf("(%d): %v", indent, constDcl))
 	return nil
 }
 
 func (self ScopeWalker) ScopeExceptionDcl(scopingContext si.IScopingContext, indent int, dcl si.IIdlException) error {
-	self.Logger.Println(fmt.Sprintf("(%d): %v", indent, dcl))
 	indent++
 	err := scopingContext.Add(dcl.GetName(), dcl)
 	members := dcl.Members()
 	if members != nil {
 		for _, memberInformation := range members.GetMembers() {
-			self.Logger.Println(fmt.Sprintf("(%d): %v", indent, memberInformation))
 			memberInformationTypeSpec := memberInformation.GetTypeSpec()
 			switch memberInformationTypeSpec.GetKind() {
 			case si.DeclareTypePlaceHolderType:
@@ -357,11 +322,6 @@ func (self ScopeWalker) ScopeExceptionDcl(scopingContext si.IScopingContext, ind
 				}
 				break
 			case si.SequenceIdlType:
-				//if found, foundDeclareType := scopingContext.Find(memberInformationTypeSpec.GetName()); found {
-				//	if declaredType, ok := foundDeclareType.(si.IDeclaredType); ok {
-				//		declaredType.SequenceRequired(true)
-				//	}
-				//}
 				break
 			}
 		}
@@ -369,7 +329,17 @@ func (self ScopeWalker) ScopeExceptionDcl(scopingContext si.IScopingContext, ind
 	return err
 }
 
-func (self ScopeWalker) ScopeAttributeDcl(indent int, attributeDcl si.IAttributeDcl) error {
-	self.Logger.Println(fmt.Sprintf("(%d): %v", indent, attributeDcl))
+func (self ScopeWalker) ScopeAttributeDcl(scopingContext si.IScopingContext, indent int, dcl si.IAttributeDcl) error {
+	var err error
+	if found, foundDeclareType := scopingContext.Find(dcl.DeclaredType().GetName(), true); found {
+		if declaredType, ok := foundDeclareType.(si.IDeclaredType); ok {
+			if placeHolder, isPlaceHolder := dcl.DeclaredType().(si.IDeclaredTypePlaceHolder); isPlaceHolder {
+				err = multierr.Append(
+					err,
+					declaredType.Link(placeHolder))
+			}
+		}
+	}
+
 	return nil
 }

@@ -121,9 +121,9 @@ type IInterfaceDcl interface {
 	IBaseInterface
 }
 
-type IValueAbsoluteDefinition interface {
-	IBaseInterface
-}
+//type IValueAbsoluteDefinition interface {
+//	IBaseInterface
+//}
 
 type ITypeDcl interface {
 	ITypeSpec

@@ -20,9 +20,6 @@ func NewParameterDeclarations(
 	paramName string,
 	paramDeclarationType si.IBaseDeclaredType) *ParameterDeclarations {
 
-	if paramDeclarationType == nil {
-		fmt.Println("ddddddd")
-	}
 	return &ParameterDeclarations{
 		FileInformationBase:       NewFileInformationBase02(fileInformation),
 		nextParameterDeclarations: nil,

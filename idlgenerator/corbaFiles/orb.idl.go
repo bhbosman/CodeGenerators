@@ -2,5 +2,7 @@
 
 package corbaFiles
 
+//line orb.idl:26
+
 //line orb.idl:89
 type CORBA_Identifier AnsiString

@@ -14,16 +14,14 @@ type Context struct {
 }
 
 func (self *Context) Replace(name string, dcl si.IBaseDeclaredType) error {
-	if name == "Container" {
-		fmt.Println("Container")
-	}
-
+	var err error
 	if incomingDeclaredType, ok22 := dcl.(si.IDeclaredType); ok22 {
 		if existing, ok := self.declaredTypes[name]; ok {
 			if existingDeclaredType, ok2 := existing.(si.IDeclaredType); ok2 {
 				for _, item := range existingDeclaredType.GetLinkedItems() {
-					incomingDeclaredType.Link(item.(si.IDeclaredTypePlaceHolder))
-
+					err = multierr.Append(
+						err,
+						incomingDeclaredType.Link(item.(si.IDeclaredTypePlaceHolder)))
 				}
 			}
 		}
@@ -93,9 +91,6 @@ func (self *Context) Iterate(cb func(key string, value si.IBaseDeclaredType) err
 }
 
 func (self *Context) Find(name string, allContext bool) (bool, si.IBaseDeclaredType) {
-	if name == "Container" {
-		fmt.Println("Container")
-	}
 	result, ok := self.declaredTypes[name]
 	if !ok && self.prevContext != nil && allContext {
 		return self.prevContext.Find(name, allContext)
